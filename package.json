@@ -1,0 +1,61 @@
+{
+  "name": "super-tech-heroes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A REST API for technology-themed superheroes",
+  "keywords": [
+    "rest",
+    "api",
+    "demo",
+    "fun"
+  ],
+  "author": {
+    "name": "James Messinger",
+    "url": "http://jamesmessinger.com"
+  },
+  "license": "MIT",
+  "homepage": "http://heroes.bigstickcarpet.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BigstickCarpet/super-tech-heroes.git"
+  },
+  "main": "lib/index.js",
+  "bin": "bin/server.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "lint": "eslint bin lib test docs/js/super-tech-heroes.js --fix",
+    "test": "mocha",
+    "cover": "istanbul cover _mocha",
+    "start": "node bin/server.js",
+    "package": "scripts/package.sh",
+    "deploy": "scripts/deploy.sh",
+    "bump": "scripts/bump.sh",
+    "upgrade": "npm-check -u",
+    "release": "scripts/release.sh"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "codacy-coverage": "^2.0.3",
+    "cors": "^2.8.4",
+    "coveralls": "^3.0.0",
+    "eslint": "^4.8.0",
+    "eslint-config-modular": "^4.1.0",
+    "express": "^4.16.2",
+    "istanbul": "^0.4.5",
+    "lodash": "^4.17.4",
+    "mocha": "^4.0.1",
+    "npm-check": "^5.4.5"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.131.0",
+    "serialize-error": "^2.1.0",
+    "uuid": "^3.1.0"
+  },
+  "bundledDependencies": [
+    "serialize-error",
+    "uuid"
+  ]
+}
