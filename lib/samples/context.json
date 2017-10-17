@@ -1,0 +1,11 @@
+{
+  "callbackWaitsForEmptyEventLoop": false,
+  "logGroupName": "/aws/lambda/SuperTechHeroesLambda",
+  "logStreamName": "2017/10/04/[$LATEST]example87df087a954630c4cf7b8e364",
+  "functionName": "SuperTechHeroesLambda",
+  "memoryLimitInMB": "128",
+  "functionVersion": "$LATEST",
+  "invokeid": "",
+  "awsRequestId": "",
+  "invokedFunctionArn": "arn:aws:lambda:us-east-1:219784300716:function:SuperTechHeroesLambda"
+}

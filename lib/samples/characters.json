@@ -1,0 +1,298 @@
+[
+  {
+    "id": "134f5eec3e9a4f64a72f35e58fcef6ef",
+    "name": "Code Review Boy",
+    "type": "sidekick",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "cce57e4dc8b448f7ab127a3971be3cc4",
+    "name": "Time Cruncher",
+    "type": "villain",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "a25064f663774ad5bc6ba1f2496f1877",
+    "name": "Testing Man",
+    "type": "hero",
+    "sidekick": "134f5eec3e9a4f64a72f35e58fcef6ef",
+    "nemesis": "cce57e4dc8b448f7ab127a3971be3cc4",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "ecc93eac9ff6413ebd7144995887f2ae",
+    "name": "IE 6",
+    "type": "villain",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "b24029e96ffb4343bef725aa5a8d4c5b",
+    "name": "Web Standards Woman",
+    "type": "hero",
+    "nemesis": "ecc93eac9ff6413ebd7144995887f2ae",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "d1c43e4d30c6493690c78316a58161e2",
+    "name": "Commander Runtime Error",
+    "type": "villain",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "60bde74d9c104f22a676cfeb94b95946",
+    "name": "Dynamic Types Guy",
+    "type": "hero",
+    "nemesis": "d1c43e4d30c6493690c78316a58161e2",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "cbdf5de1994542ce8fc344d1d7e5b010",
+    "name": "Manpage Man",
+    "type": "sidekick",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "34e69ccb5c7743e7a00022c772c2af46",
+    "name": "The Inscrutable Git CLI",
+    "type": "villain",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "3d7129e02f4645be99e00978645d9199",
+    "name": "Git Girl",
+    "type": "hero",
+    "sidekick": "cbdf5de1994542ce8fc344d1d7e5b010",
+    "nemesis": "34e69ccb5c7743e7a00022c772c2af46",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "d6f138f458134602a69b7f0c6b2877ef",
+    "name": "The Incredible MVP",
+    "type": "sidekick",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "1488903848514344a300f4d6e5c84c0e",
+    "name": "Professor Capital",
+    "type": "villain",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "8a6db75d6cbe46cc86253fca7f9bdb39",
+    "name": "Startup Man",
+    "type": "hero",
+    "sidekick": "d6f138f458134602a69b7f0c6b2877ef",
+    "nemesis": "1488903848514344a300f4d6e5c84c0e",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "16aeb918fa174734b8f9308fea6f1eb4",
+    "name": "Dr. Self-Documented",
+    "type": "villain",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "a60f721a2ac549318e68040a6f91fa8c",
+    "name": "King Comments",
+    "type": "hero",
+    "nemesis": "16aeb918fa174734b8f9308fea6f1eb4",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "f7fb055658844789b345dac38b503579",
+    "name": "Doctor Ops",
+    "type": "villain",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "22af75c7c28544beb8c5d17722ef5219",
+    "name": "Works-On-My-Machine Man",
+    "type": "hero",
+    "nemesis": "f7fb055658844789b345dac38b503579",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "e26b9efb7e8f42bfa42ec7af87a3841d",
+    "name": "Regression Robots",
+    "type": "villain",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "02ef2fc1dc09493492ee7b48c53d02a6",
+    "name": "QA Woman",
+    "type": "hero",
+    "nemesis": "e26b9efb7e8f42bfa42ec7af87a3841d",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "2a8724b75de34c05a09808bdf5c12853",
+    "name": "The Almighty SOAP",
+    "type": "villain",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "5dfad9b378b1414b9a3097d6402fec9f",
+    "name": "RESTman",
+    "type": "hero",
+    "nemesis": "2a8724b75de34c05a09808bdf5c12853",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "d4ea38cc7c9447b69d68c647d3967533",
+    "name": "Timeline Lad",
+    "type": "sidekick",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "f3e7cc833b954878983c0e5a7273b333",
+    "name": "The Feature Creep",
+    "type": "villain",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "50f3095284d3437391dd1e9a7430a5df",
+    "name": "The Project Manager",
+    "type": "hero",
+    "sidekick": "d4ea38cc7c9447b69d68c647d3967533",
+    "nemesis": "f3e7cc833b954878983c0e5a7273b333",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "7551fa0f0ec24db5bae42416dbcb9e3b",
+    "name": "Data CAPtain",
+    "type": "villain",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "c6b95aac3fe14b93857410c03c726520",
+    "name": "The Flash Download",
+    "type": "hero",
+    "nemesis": "7551fa0f0ec24db5bae42416dbcb9e3b",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "fde5cf2fb0e84fcb9b6c0299fb61e02b",
+    "name": "The TABulator",
+    "type": "villian",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "id": "8d79aa72457d4ce9ac870c04ba5c701c",
+    "name": "Space Man",
+    "type": "hero",
+    "nemesis": "fde5cf2fb0e84fcb9b6c0299fb61e02b",
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  }
+]
