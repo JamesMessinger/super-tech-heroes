@@ -6,9 +6,10 @@ require('./environment');
 const _ = require('lodash');
 const uuid = require('uuid');
 const querystring = require('querystring');
-const superTechHeroesAPI = require('../../lib');
 const sampleRequest = require('./request.json');
 const sampleContext = require('./context.json');
+const util = require('../../lib/util');
+const superTechHeroesAPI = require('../../lib');
 
 let apiKey = '';
 
@@ -33,19 +34,13 @@ let apiGateway = module.exports = {
  * @returns {Promise<object>} - The promise is fulfilled with the HTTP response object
  */
 function sendRequest (method, path, data) {
-  return new Promise((resolve, reject) => {
-    let request = createRequest(method, path, data);
-    let context = createContext(request);
+  return Promise.resolve()
+    .then(() => {
+      let request = createRequest(method, path, data);
+      let context = createContext(request);
 
-    superTechHeroesAPI.handler(request, context, (err, response) => {
-      if (err) {
-        reject(err);
-      }
-      else {
-        resolve(response);
-      }
+      return util.promisify(superTechHeroesAPI, 'handler', request, context);
     });
-  });
 }
 
 /**
