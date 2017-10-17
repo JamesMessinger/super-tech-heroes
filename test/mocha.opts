@@ -1,0 +1,5 @@
+--bail
+--async-only
+--timeout 20000
+test/fixtures/*.js
+test/specs/**/*.spec.js
