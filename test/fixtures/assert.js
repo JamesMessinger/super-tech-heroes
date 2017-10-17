@@ -15,20 +15,37 @@ let assert = module.exports = {
   isValidCharacter (character) {
     try {
       expect(character).to.be.an('object');
-      character.should.have.keys('id', 'type', 'name', 'from', 'to', 'links');
 
-      expect(character.id).to.be.a('string').and.match(/^[a-f0-9]{32}$/);
-      expect(character.type).to.be.a('string').and.not.empty;
+      // Requird properties
+      character.should.include.keys('name', 'type', 'links');
+
+      // All possible properties
+      Object.keys(character).should.satisfy(subsetOf(['name', 'type', 'powers', 'weakness', 'bio', 'links']));
+
       expect(character.name).to.be.a('string').and.not.empty;
+      expect(character.type).to.be.a('string').and.oneOf(['hero', 'sidekick', 'villain']);
 
-      expect(character.to).to.be.a('number').above(1600).and.below(3000);
-      expect(character.from).to.be.a('number').above(1600).and.below(3000);
-      character.from.should.be.at.most(character.to);
+      if (character.powers !== undefined) {
+        expect(character.powers).to.be.an('array').with.length.above(0);
+        character.powers.forEach(power => expect(power).to.be.a('string').and.not.empty);
+      }
+
+      if (character.weakness !== undefined) {
+        expect(character.weakness).to.be.a('string').and.not.empty;
+      }
+
+      if (character.bio !== undefined) {
+        expect(character.bio).to.be.a('string').and.not.empty;
+      }
 
       expect(character.links).to.be.an('object');
-      character.links.should.have.keys('self');
-      expect(character.links.self).to.be.a('string');
-      character.links.self.should.equal(`http://localhost/characters/${character.id}`);
+      character.links.should.include.keys('self');
+      Object.keys(character.links).should.satisfy(subsetOf(['self', 'sidekick', 'nemesis']));
+
+      _.forEach(character.links, link => {
+        expect(link).to.be.a('string');
+        link.should.match(/^http:\/\/localhost\/characters\/[a-z0-9]+$/);
+      });
 
       return character;
     }
@@ -129,3 +146,12 @@ let assert = module.exports = {
   },
 
 };
+
+/**
+ * Returns a function that tests whether an array contains a subset of the specified values
+ */
+function subsetOf (expected) {
+  return function assertSubset (actual) {
+    return actual.every(item => expected.includes(item));
+  };
+}
