@@ -11,8 +11,8 @@ const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const superTechHeroesAPI = require('../lib');
-const sampleRequest = require('../lib/samples/request.json');
-const sampleContext = require('../lib/samples/context.json');
+const sampleRequest = require('../test/fixtures/api-gateway/request.json');
+const sampleContext = require('../test/fixtures/api-gateway/context.json');
 
 // Serve the website on port 7070
 let website = express();

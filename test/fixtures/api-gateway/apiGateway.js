@@ -7,8 +7,8 @@ const _ = require('lodash');
 const uuid = require('uuid');
 const querystring = require('querystring');
 const superTechHeroesAPI = require('../../lib');
-const sampleRequest = require('../../lib/samples/request.json');
-const sampleContext = require('../../lib/samples/context.json');
+const sampleRequest = require('./request.json');
+const sampleContext = require('./context.json');
 
 let apiKey = '';
 
