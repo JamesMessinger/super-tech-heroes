@@ -4,7 +4,7 @@ const apiGateway = require('../fixtures/api-gateway/apiGateway');
 const testData = require('../fixtures/testData');
 const assert = require('../fixtures/assert');
 
-describe('Create new characters', () => {
+describe.skip('Create new characters', () => {
 
   // Create a unique User ID for each test, so we know we won't conflict with existing characters
   let user;
