@@ -1,15 +1,15 @@
 'use strict';
 
 // NOTE: Environment variables must be set BEFORE loading the API
-require('./environment');
+require('../environment');
 
 const _ = require('lodash');
 const uuid = require('uuid');
 const querystring = require('querystring');
 const sampleRequest = require('./request.json');
 const sampleContext = require('./context.json');
-const util = require('../../lib/util');
-const superTechHeroesAPI = require('../../lib');
+const util = require('../../../lib/util');
+const superTechHeroesAPI = require('../../../lib');
 
 let apiKey = '';
 
