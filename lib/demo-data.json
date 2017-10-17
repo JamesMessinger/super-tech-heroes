@@ -1,0 +1,226 @@
+[
+  {
+    "name": "Testing Man",
+    "sidekick": {
+      "name": "Code Review Boy",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "nemesis": {
+      "name": "Time Cruncher",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "name": "Web Standards Woman",
+    "nemesis": {
+      "name": "IE 6",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "name": "Dynamic Types Guy",
+    "nemesis": {
+      "name": "Commander Runtime Error",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "name": "Git Girl",
+    "sidekick": {
+      "name": "Manpage Man",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "nemesis": {
+      "name": "The Inscrutable Git CLI",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "name": "Startup Man",
+    "sidekick": {
+      "name": "The Incredible MVP",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "nemesis": {
+      "name": "Professor Capital",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "name": "King Comments",
+    "nemesis": {
+      "name": "Dr. Self-Documented",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "name": "Works-On-My-Machine Man",
+    "nemesis": {
+      "name": "Doctor Ops",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "name": "QA Woman",
+    "nemesis": {
+      "name": "Regression Robots",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "name": "RESTman",
+    "nemesis": {
+      "name": "The Almighty SOAP",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "name": "The Project Manager",
+    "sidekick": {
+      "name": "Timeline Lad",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "nemesis": {
+      "name": "The Feature Creep",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "name": "The Flash Download",
+    "nemesis": {
+      "name": "Data CAPtain",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "name": "Space Man",
+    "nemesis": {
+      "name": "The TABulator",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  }
+]

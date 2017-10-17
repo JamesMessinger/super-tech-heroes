@@ -10,14 +10,14 @@ describe('Find characters', () => {
   let user;
   beforeEach(() => user = `${Date.now()}`);
 
-  it.only('returns sample characters for the demo user if no characters exist', () => {
+  it('returns sample characters for the demo user if no characters exist', () => {
     return apiGateway
       .auth('DEMO')
       .get('/characters')
       .then(res => {
         let characters = assert.isSuccessfulResponse(res, 200);
+        characters.should.be.an('array').with.lengthOf(13);
         characters.forEach(assert.isValidCharacter);
-        assert.matchesTestData(characters, testData.sampleCharacters);
       });
   });
 
