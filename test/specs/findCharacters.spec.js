@@ -16,7 +16,7 @@ describe('Find characters', () => {
       .get('/characters')
       .then(res => {
         let characters = assert.isSuccessfulResponse(res, 200);
-        characters.should.be.an('array').with.lengthOf(13);
+        characters.should.be.an('array').with.lengthOf(28);
         characters.forEach(assert.isValidCharacter);
       });
   });
@@ -32,30 +32,26 @@ describe('Find characters', () => {
   });
 
   it("returns all of the user's characters", () => {
-    let testCharacters = [
-      { name: 'Full House', type: 'TV Shows', from: 1987, to: 1994 },
-      { name: 'Full House', type: 'TV Shows', from: 2016, to: 2017 },
-    ];
+    let spiderman = { name: 'Spider Man', type: 'hero' };
+    let batman = { name: 'Bat Man', type: 'hero' };
 
-    return testData.create(user, testCharacters)
+    return testData.create(user, [spiderman, batman])
       .then(() => apiGateway.auth(user).get('/characters'))
       .then(res => {
         let characters = assert.isSuccessfulResponse(res, 200);
         characters.should.be.an('array').with.lengthOf(2);
         characters.forEach(assert.isValidCharacter);
-        assert.matchesTestData(characters, testCharacters);
+        assert.matchesTestData(characters, [spiderman, batman]);
       });
   });
 
   it('returns an empty array if no characters match the criteria', () => {
-    let testCharacters = [
-      { name: 'TV Dinners', type: 'Food', from: 1954, to: 1961 },
-      { name: 'My Little Pony', type: 'Toys', from: 1983, to: 1992 },
-      { name: 'Vinyl Records', type: 'Music', from: 1984, to: 1985 },
-    ];
+    let superman = { name: 'Superman', type: 'hero' };
+    let batman = { name: 'Batman', type: 'hero' };
+    let joker = { name: 'Joker', type: 'villain' };
 
-    return testData.create(user, testCharacters)
-      .then(() => apiGateway.auth(user).get('/characters?type=Fashion'))
+    return testData.create(user, [superman, batman, joker])
+      .then(() => apiGateway.auth(user).get('/characters?type=sidekick'))
       .then(res => {
         let characters = assert.isSuccessfulResponse(res, 200);
         characters.should.be.an('array').with.lengthOf(0);
@@ -63,74 +59,50 @@ describe('Find characters', () => {
   });
 
   it('returns only the characters match the name criteria', () => {
-    let testCharacters = [
-      { name: 'My Little Pony', type: 'Toys', from: 1983, to: 1992 },
-      { name: 'Arrested Development', type: 'TV Shows', from: 2003, to: 2006 },
-      { name: 'Arrested Development', type: 'TV Shows', from: 2013, to: 2013 },
-      { name: 'My Little Pony', type: 'Toys', from: 2010, to: 2014 },
-    ];
+    let superman = { name: 'Superman', type: 'hero' };
+    let batman = { name: 'Batman', type: 'hero' };
+    let hulk = { name: 'The Incredible Hulk', type: 'hero' };
+    let wonderWoman = { name: 'Wonder Woman', type: 'hero' };
 
-    return testData.create(user, testCharacters)
-      .then(() => apiGateway.auth(user).get('/characters?name=Arrested%20Development'))
+    return testData.create(user, [superman, batman, hulk, wonderWoman])
+      .then(() => apiGateway.auth(user).get('/characters?name=man'))
       .then(res => {
         let characters = assert.isSuccessfulResponse(res, 200);
-        characters.should.be.an('array').with.lengthOf(2);
+        characters.should.be.an('array').with.lengthOf(3);
         characters.forEach(assert.isValidCharacter);
-        assert.matchesTestData(characters, [testCharacters[1], testCharacters[2]]);
+        assert.matchesTestData(characters, [superman, batman, wonderWoman]);
       });
   });
 
   it('returns only the characters match the type criteria', () => {
-    let testCharacters = [
-      { name: 'My Little Pony', type: 'Toys', from: 1983, to: 1992 },
-      { name: 'Arrested Development', type: 'TV Shows', from: 2003, to: 2006 },
-      { name: 'Arrested Development', type: 'TV Shows', from: 2013, to: 2013 },
-      { name: 'My Little Pony', type: 'Toys', from: 2010, to: 2014 },
-    ];
+    let batman = { name: 'Batman', type: 'hero' };
+    let robin = { name: 'Robin', type: 'sidekick' };
+    let joker = { name: 'Joker', type: 'villain' };
+    let hulk = { name: 'The Incredible Hulk', type: 'hero' };
 
-    return testData.create(user, testCharacters)
-      .then(() => apiGateway.auth(user).get('/characters?type=Toys'))
+    return testData.create(user, [batman, robin, joker, hulk])
+      .then(() => apiGateway.auth(user).get('/characters?type=hero'))
       .then(res => {
         let characters = assert.isSuccessfulResponse(res, 200);
         characters.should.be.an('array').with.lengthOf(2);
         characters.forEach(assert.isValidCharacter);
-        assert.matchesTestData(characters, [testCharacters[0], testCharacters[3]]);
-      });
-  });
-
-  it('returns only the characters match the year criteria', () => {
-    let testCharacters = [
-      { name: 'My Little Pony', type: 'Toys', from: 1983, to: 1992 },
-      { name: 'Full House', type: 'TV Shows', from: 1987, to: 1994 },
-      { name: 'Full House', type: 'TV Shows', from: 2016, to: 2017 },
-      { name: 'My Little Pony', type: 'Toys', from: 2010, to: 2014 },
-    ];
-
-    return testData.create(user, testCharacters)
-      .then(() => apiGateway.auth(user).get('/characters?year=1990'))
-      .then(res => {
-        let characters = assert.isSuccessfulResponse(res, 200);
-        characters.should.be.an('array').with.lengthOf(2);
-        characters.forEach(assert.isValidCharacter);
-        assert.matchesTestData(characters, [testCharacters[0], testCharacters[1]]);
+        assert.matchesTestData(characters, [batman, hulk]);
       });
   });
 
   it('returns only the characters match both criteria', () => {
-    let testCharacters = [
-      { name: 'My Little Pony', type: 'Toys', from: 1983, to: 1992 },
-      { name: 'Full House', type: 'TV Shows', from: 1987, to: 1994 },
-      { name: 'Full House', type: 'TV Shows', from: 2016, to: 2017 },
-      { name: 'My Little Pony', type: 'Toys', from: 2010, to: 2014 },
-    ];
+    let batman = { name: 'Batman', type: 'hero' };
+    let robin = { name: 'Robin', type: 'sidekick' };
+    let joker = { name: 'Joker', type: 'villain' };
+    let hulk = { name: 'The Incredible Hulk', type: 'hero' };
 
-    return testData.create(user, testCharacters)
-      .then(() => apiGateway.auth(user).get('/characters?year=1990&type=TV%20Shows'))
+    return testData.create(user, [batman, robin, joker, hulk])
+      .then(() => apiGateway.auth(user).get('/characters?name=k&type=villain'))
       .then(res => {
         let characters = assert.isSuccessfulResponse(res, 200);
         characters.should.be.an('array').with.lengthOf(1);
         characters.forEach(assert.isValidCharacter);
-        assert.matchesTestData(characters, [testCharacters[1]]);
+        assert.matchesTestData(characters, [joker]);
       });
   });
 

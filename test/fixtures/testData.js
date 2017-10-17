@@ -1,6 +1,8 @@
 'use strict';
 
+const _ = require('lodash');
 const characterStore = require('../../lib/characterStore');
+const sampleRequest = require('./api-gateway/request.json');
 
 module.exports = {
   /**
@@ -13,8 +15,13 @@ module.exports = {
    */
   create (user, characters) {
     return Promise.all(characters.map(character => {
-      return characterStore.create(user, character)
-        .then(updatedCharacter => Object.assign(character, updatedCharacter.toResource()));
+      return characterStore.createHierarchy(user, character)
+        .then(updatedCharacter => {
+          let request = _.cloneDeep(sampleRequest);
+          request.headers.Host = 'localhost';
+
+          Object.assign(character, updatedCharacter.toResource(request));
+        });
     }));
   },
 };
