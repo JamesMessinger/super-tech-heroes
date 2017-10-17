@@ -1,0 +1,27 @@
+# AppVeyor Config
+# http://www.appveyor.com/docs/lang/nodejs-iojs
+
+environment:
+  matrix:
+    # AWS Lambda runtime version
+    - nodejs_version: "6.10"
+
+skip_tags: true
+
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm install
+
+test_script:
+  # Output useful info for debugging.
+  - node --version
+  - npm --version
+
+  # Run linter
+  - npm run lint
+
+  # Run tests
+  - npm test
+
+# Don't run MSBuild
+build: off
