@@ -208,9 +208,25 @@
     "bio": "todo"
   },
   {
-    "name": "Space Man",
+    "name": "The Fantastic Four Spaces",
     "nemesis": {
-      "name": "The TABulator",
+      "name": "The Terrible Tab",
+      "powers": [
+        "todo"
+      ],
+      "weakness": "todo",
+      "bio": "todo"
+    },
+    "powers": [
+      "todo"
+    ],
+    "weakness": "todo",
+    "bio": "todo"
+  },
+  {
+    "name": "Mister Emacs",
+    "nemesis": {
+      "name": "Invader VIM",
       "powers": [
         "todo"
       ],
