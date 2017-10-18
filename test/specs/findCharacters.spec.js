@@ -106,4 +106,24 @@ describe('Find characters', () => {
       });
   });
 
+  it('searches top-level and related characters', () => {
+    let robin = { name: 'Robin', type: 'sidekick' };
+    let joker = { name: 'Joker', type: 'villain' };
+    let batman = { name: 'Batman', type: 'hero', sidekick: robin, nemesis: joker };
+
+    return testData.create(user, [batman])
+      .then(() => apiGateway.auth(user).get('/characters?name=b'))
+      .then(res => {
+        let characters = assert.isSuccessfulResponse(res, 200);
+        characters.should.be.an('array').with.lengthOf(2);
+        characters.forEach(assert.isValidCharacter);
+
+        // Make sure Batman has links to BOTH Robin and Joker, even though Joker was not returned
+        let batmanResponse = characters.find(character => character.name === 'Batman');
+        batmanResponse.links.should.have.keys('self', 'sidekick', 'nemesis');
+        batmanResponse.links.sidekick.should.equal('http://localhost/characters/robin');
+        batmanResponse.links.nemesis.should.equal('http://localhost/characters/joker');
+      });
+  });
+
 });
