@@ -16,8 +16,11 @@ describe('Find characters', () => {
       .get('/characters')
       .then(res => {
         let characters = assert.isSuccessfulResponse(res, 200);
-        characters.should.be.an('array').with.lengthOf(28);
+        characters.should.be.an('array').with.lengthOf(30);
         characters.forEach(assert.isValidCharacter);
+        characters.should.satisfy(list => list.find(character => character.name === 'The Fantastic Four Spaces'));
+        characters.should.satisfy(list => list.find(character => character.name === 'The Feature Creep'));
+        characters.should.satisfy(list => list.find(character => character.name === 'The Incredible MVP'));
       });
   });
 
