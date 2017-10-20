@@ -14,13 +14,13 @@ module.exports = {
    * @returns {Promise<Character[]>} - Resolves with the updated source objects
    */
   create (user, characters) {
-    return Promise.all(characters.map(character => {
-      return characterStore.createHierarchy(user, character)
+    return Promise.all(characters.map(hierarchy => {
+      return characterStore.createHierarchy({ user, hierarchy })
         .then(updatedCharacter => {
           let request = _.cloneDeep(sampleRequest);
           request.headers.Host = 'localhost';
 
-          Object.assign(character, updatedCharacter.toResource(request));
+          Object.assign(hierarchy, updatedCharacter.toResource(request));
         });
     }));
   },
