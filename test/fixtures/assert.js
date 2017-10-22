@@ -24,20 +24,10 @@ let assert = module.exports = {
 
       expect(character.name).to.be.a('string').and.not.empty;
       expect(character.type).to.be.a('string').and.oneOf(['hero', 'sidekick', 'villain']);
-
-      if (character.powers !== undefined) {
-        expect(character.powers).to.be.an('array').with.length.above(0);
-        character.powers.forEach(power => expect(power).to.be.a('string').and.not.empty);
-      }
-
-      if (character.weakness !== undefined) {
-        expect(character.weakness).to.be.a('string').and.not.empty;
-      }
-
-      if (character.bio !== undefined) {
-        expect(character.bio).to.be.a('string').and.not.empty;
-      }
-
+      expect(character.powers).to.be.an('array');
+      character.powers.forEach(power => expect(power).to.be.a('string').and.not.empty);
+      expect(character.weakness).to.be.a('string');
+      expect(character.bio).to.be.a('string');
       expect(character.links).to.be.an('object');
       character.links.should.include.keys('self');
       Object.keys(character.links).should.satisfy(subsetOf(['self', 'sidekick', 'nemesis']));
