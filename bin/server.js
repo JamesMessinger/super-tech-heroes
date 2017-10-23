@@ -25,7 +25,7 @@ api.use(cors());
 api.use(bodyParser.json());
 api.use(mockApiGateway);
 api.listen(8080, () => {
-  console.log('The Super Tech Heroes API is now running at http://localhost:8080')
+  console.log('The Super Tech Heroes API is now running at http://localhost:8080');
 
   if (process.env.AWS_DYNAMODB_ENDPOINT) {
     console.log(`The Super Tech Heroes database is now running at ${process.env.AWS_DYNAMODB_ENDPOINT}/shell`);
