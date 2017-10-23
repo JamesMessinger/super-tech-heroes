@@ -1,0 +1,154 @@
+swagger: "2.0"
+info:
+  version: "API_VERSION"
+  title: "API_NAME"
+  description: "API_DESCRIPTION"
+
+paths:
+  /:
+    get:
+      summary: Get API info
+      description: >
+        This endpoint returns general API info, such as the version number, description, and relevant links.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Returns API info
+          schema:
+            $ref: "#/definitions/APIInfo"
+
+  /characters:
+    get:
+      summary: Find characters
+      description: >
+        This endpoint returns all characters by default, or you can filter by `name` and `type` via query parameters.
+      parameters:
+        - name: name
+          in: query
+          type: string
+          description: >
+            Filters the results by character name. This is a wildcard search, so `?name=man` will reeturn "Superman",
+            "Batman", and "Wonder Woman".
+        - name: type
+          in: query
+          type: string
+          enum:
+            $ref: "#/definitions/CharacterType/enum"
+          description: >
+            Filters the results by character type (i.e. "hero", "sidekick", or "villain").
+      produces:
+        - application/json
+      responses:
+        200:
+          description: >
+            Returns all characters that matched the filter criteria. If there are no matching characters, then the
+            response is an empty array.
+          schema:
+            $ref: "#/definitions/ArrayOfCharacters"
+        400:
+          description: >
+            Something is wrong with the request. For example, the `type` query parameter is not a valid character type.
+          schema:
+            $ref: "#/definitions/Error"
+
+    post:
+      summary: Creates a new character
+      description: >
+        This endpoint creates a new character. For heroes, you can also create the sidekick and/or nemesis at the same time
+        by setting the `sidekick` and/or `nemesis` properties to objects rather than strings.
+      consumes:
+        - application/json
+      parameters:
+        - name: character
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/CharacterHierarchy"
+      responses:
+        201:
+          description: The character was created successfully
+          schema:
+            $ref: "#/definitions/Character"
+        400:
+          description: Something is wrong with the request, such as invalid character data.
+          schema:
+            $ref: "#/definitions/Error"
+        409:
+          description: There is already an existing character with the same (or very similar) name.
+          schema:
+            $ref: "#/definitions/Error"
+
+definitions:
+  APIInfo:
+    type: object
+    required:
+      - name
+      - version
+      - description
+      - links
+    additionalProperties: false
+    properties:
+      name:
+        $ref: "#/definitions/NonEmptyString"
+      version:
+        $ref: "#/definitions/NonEmptyString"
+      description: >
+        $ref: "#/definitions/NonEmptyString"
+      links:
+        type: object
+        required:
+          - characters
+          - www
+          - schema
+          - docs
+        additionalProperties: false
+        properties:
+          characters:
+            $ref: "#/definitions/URL"
+          www:
+            $ref: "#/definitions/URL"
+          schema:
+            $ref: "#/definitions/URL"
+          docs:
+            $ref: "#/definitions/URL"
+
+  CharacterHierarchy:
+    type: object
+    additionalProperties: false
+
+  Character:
+    type: object
+    additionalProperties: false
+
+  ArrayOfCharacters:
+    type: array
+    items:
+      $ref: "#/definitions/Character"
+
+  CharacterType:
+    type: string
+    enum:
+      - hero
+      - sidekick
+      - villain
+
+  NonEmptyString:
+    type: string
+    minLength: 1
+
+  URL:
+    type: string
+    minLength: 1
+
+  Error:
+    type: object
+    required:
+      - error
+      - message
+    additionalProperties: false
+    properties:
+      error:
+        $ref: "#/definitions/NonEmptyString"
+      message:
+        $ref: "#/definitions/NonEmptyString"

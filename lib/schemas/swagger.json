@@ -1,0 +1,195 @@
+{
+  "info": {
+    "version": "API_VERSION",
+    "description": "API_DESCRIPTION",
+    "title": "API_NAME"
+  },
+  "paths": {
+    "/characters": {
+      "post": {
+        "description": "This endpoint creates a new character. For heroes, you can also create the sidekick and/or nemesis at the same time by setting the `sidekick` and/or `nemesis` properties to objects rather than strings.\n",
+        "summary": "Creates a new character",
+        "responses": {
+          "400": {
+            "description": "Something is wrong with the request, such as invalid character data.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "201": {
+            "description": "The character was created successfully",
+            "schema": {
+              "$ref": "#/definitions/Character"
+            }
+          },
+          "409": {
+            "description": "There is already an existing character with the same (or very similar) name.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "required": true,
+            "in": "body",
+            "name": "character",
+            "schema": {
+              "$ref": "#/definitions/CharacterHierarchy"
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "get": {
+        "description": "This endpoint returns all characters by default, or you can filter by `name` and `type` via query parameters.\n",
+        "summary": "Find characters",
+        "responses": {
+          "200": {
+            "description": "Returns all characters that matched the filter criteria. If there are no matching characters, then the response is an empty array.\n",
+            "schema": {
+              "$ref": "#/definitions/ArrayOfCharacters"
+            }
+          },
+          "400": {
+            "description": "Something is wrong with the request. For example, the `type` query parameter is not a valid character type.\n",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "query",
+            "type": "string",
+            "description": "Filters the results by character name. This is a wildcard search, so `?name=man` will reeturn \"Superman\", \"Batman\", and \"Wonder Woman\".\n",
+            "name": "name"
+          },
+          {
+            "enum": {
+              "$ref": "#/definitions/CharacterType/enum"
+            },
+            "type": "string",
+            "description": "Filters the results by character type (i.e. \"hero\", \"sidekick\", or \"villain\").\n",
+            "in": "query",
+            "name": "type"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ]
+      }
+    },
+    "/": {
+      "get": {
+        "description": "This endpoint returns general API info, such as the version number, description, and relevant links.\n",
+        "summary": "Get API info",
+        "responses": {
+          "200": {
+            "description": "Returns API info",
+            "schema": {
+              "$ref": "#/definitions/APIInfo"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "swagger": "2.0",
+  "definitions": {
+    "URL": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "Character": {
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "NonEmptyString": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "CharacterType": {
+      "enum": [
+        "hero",
+        "sidekick",
+        "villain"
+      ],
+      "type": "string"
+    },
+    "APIInfo": {
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version",
+        "description",
+        "links"
+      ],
+      "type": "object",
+      "properties": {
+        "version": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "name": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "links": {
+          "additionalProperties": false,
+          "required": [
+            "characters",
+            "www",
+            "schema",
+            "docs"
+          ],
+          "type": "object",
+          "properties": {
+            "docs": {
+              "$ref": "#/definitions/URL"
+            },
+            "www": {
+              "$ref": "#/definitions/URL"
+            },
+            "characters": {
+              "$ref": "#/definitions/URL"
+            },
+            "schema": {
+              "$ref": "#/definitions/URL"
+            }
+          }
+        },
+        "description": "$ref: \"#/definitions/NonEmptyString\"\n"
+      }
+    },
+    "CharacterHierarchy": {
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "Error": {
+      "additionalProperties": false,
+      "required": [
+        "error",
+        "message"
+      ],
+      "type": "object",
+      "properties": {
+        "message": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "error": {
+          "$ref": "#/definitions/NonEmptyString"
+        }
+      }
+    },
+    "ArrayOfCharacters": {
+      "items": {
+        "$ref": "#/definitions/Character"
+      },
+      "type": "array"
+    }
+  }
+}
