@@ -10,6 +10,9 @@
 # Stop on first error
 set -o errexit -o nounset -o pipefail
 
+# Re-build schemas
+npm run build
+
 echo
 echo Packaging the code...
 package_file="$(npm run package --silent)"

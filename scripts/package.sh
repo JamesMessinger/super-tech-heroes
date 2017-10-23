@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==================================================================================================
-# This script packages the API ode and dependencies into a .zip file that can be published to AWS Lambda.
+# This script packages the API code and dependencies into a .zip file that can be published to AWS Lambda.
 # It DOES NOT actually publish the package to AWS.
 # ==================================================================================================
 

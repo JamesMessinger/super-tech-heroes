@@ -1,3 +1,217 @@
 {
-  "message": "not yet implemented"
+  "openapi": "3.0.0",
+  "servers": [],
+  "info": {
+    "version": "API_VERSION",
+    "title": "API_NAME",
+    "description": "API_DESCRIPTION"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get API info",
+        "description": "This endpoint returns general API info, such as the version number, description, and relevant links.\n",
+        "responses": {
+          "200": {
+            "description": "Returns API info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/APIInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters": {
+      "get": {
+        "summary": "Find characters",
+        "description": "This endpoint returns all characters by default, or you can filter by `name` and `type` via query parameters.\n",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filters the results by character name. This is a wildcard search, so `?name=man` will reeturn \"Superman\", \"Batman\", and \"Wonder Woman\".\n",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Filters the results by character type (i.e. \"hero\", \"sidekick\", or \"villain\").\n",
+            "schema": {
+              "type": "string",
+              "enum": {
+                "$ref": "#/components/schemas/CharacterType/enum"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns all characters that matched the filter criteria. If there are no matching characters, then the response is an empty array.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArrayOfCharacters"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Something is wrong with the request. For example, the `type` query parameter is not a valid character type.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates a new character",
+        "description": "This endpoint creates a new character. For heroes, you can also create the sidekick and/or nemesis at the same time by setting the `sidekick` and/or `nemesis` properties to objects rather than strings.\n",
+        "responses": {
+          "201": {
+            "description": "The character was created successfully",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Character"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Something is wrong with the request, such as invalid character data.",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "There is already an existing character with the same (or very similar) name.",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CharacterHierarchy"
+              }
+            }
+          },
+          "required": true
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "APIInfo": {
+        "type": "object",
+        "required": [
+          "name",
+          "version",
+          "description",
+          "links"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "$ref": "#/components/schemas/NonEmptyString"
+          },
+          "version": {
+            "$ref": "#/components/schemas/NonEmptyString"
+          },
+          "description": "$ref: \"#/definitions/NonEmptyString\"\n",
+          "links": {
+            "type": "object",
+            "required": [
+              "characters",
+              "www",
+              "schema",
+              "docs"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "characters": {
+                "$ref": "#/components/schemas/URL"
+              },
+              "www": {
+                "$ref": "#/components/schemas/URL"
+              },
+              "schema": {
+                "$ref": "#/components/schemas/URL"
+              },
+              "docs": {
+                "$ref": "#/components/schemas/URL"
+              }
+            }
+          }
+        }
+      },
+      "CharacterHierarchy": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "Character": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "ArrayOfCharacters": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Character"
+        }
+      },
+      "CharacterType": {
+        "type": "string",
+        "enum": [
+          "hero",
+          "sidekick",
+          "villain"
+        ]
+      },
+      "NonEmptyString": {
+        "type": "string",
+        "minLength": 1
+      },
+      "URL": {
+        "type": "string",
+        "minLength": 1
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "error",
+          "message"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/NonEmptyString"
+          },
+          "message": {
+            "$ref": "#/components/schemas/NonEmptyString"
+          }
+        }
+      }
+    }
+  }
 }

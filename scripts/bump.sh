@@ -10,6 +10,9 @@
 # Stop on first error
 set -o errexit -o nounset -o pipefail
 
+# Re-build schemas
+npm run build
+
 # Make sure the Git working directory is clean
 ./scripts/ensure-clean-git.sh
 
