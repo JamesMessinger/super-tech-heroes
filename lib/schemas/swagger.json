@@ -112,6 +112,9 @@
             }
           }
         ],
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "201": {
             "description": "The character was created successfully",
@@ -127,6 +130,75 @@
           },
           "409": {
             "description": "There is already an existing character with the same (or very similar) name.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes all characters",
+        "description": "This endpoint deletes **all** characters.  It's mostly just used during testing, to reset state between each test.\n",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "All charactes were deleted",
+            "schema": {
+              "type": "object",
+              "required": [
+                "count",
+                "message"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "count": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "message": {
+                  "$ref": "#/definitions/NonEmptyString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/characters/{slug}": {
+      "get": {
+        "summary": "Get a specific character",
+        "description": "This endpoint returns a specific character, given its slug. The slug is the character's name, lowercased, with all non-alphanumeric characters removed. For example, the slug for \"Wonder Woman\" would be \"wonderwoman\".\n",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "pattern": {
+              "$ref": "#/definitions/CharacterSlug/pattern"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the requested character",
+            "schema": {
+              "$ref": "#/definitions/Character"
+            }
+          },
+          "400": {
+            "description": "Something is wrong with the request, such as invalid character slug.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "There is no character with the specified slug.",
             "schema": {
               "$ref": "#/definitions/Error"
             }
@@ -152,7 +224,9 @@
         "version": {
           "$ref": "#/definitions/NonEmptyString"
         },
-        "description": "$ref: \"#/definitions/NonEmptyString\"\n",
+        "description": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
         "links": {
           "type": "object",
           "required": [
@@ -180,12 +254,118 @@
       }
     },
     "CharacterHierarchy": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/CharacterPartial"
+        },
+        {
+          "properties": {
+            "sidekick": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/CharacterSlug"
+                },
+                {
+                  "$ref": "#/definitions/CharacterPartial"
+                }
+              ]
+            },
+            "nemesis": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/CharacterSlug"
+                },
+                {
+                  "$ref": "#/definitions/CharacterPartial"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "CharacterPartial": {
       "type": "object",
-      "additionalProperties": false
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "type": {
+          "$ref": "#/definitions/CharacterType"
+        },
+        "powers": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/definitions/NonEmptyString"
+          }
+        },
+        "weakness": {
+          "type": "string",
+          "minLength": 0
+        },
+        "bio": {
+          "type": "string",
+          "minLength": 0
+        }
+      }
     },
     "Character": {
       "type": "object",
-      "additionalProperties": false
+      "required": [
+        "name",
+        "type",
+        "powers",
+        "weakness",
+        "bio",
+        "links"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "type": {
+          "$ref": "#/definitions/CharacterType"
+        },
+        "powers": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/definitions/NonEmptyString"
+          }
+        },
+        "weakness": {
+          "type": "string",
+          "minLength": 0
+        },
+        "bio": {
+          "type": "string",
+          "minLength": 0
+        },
+        "links": {
+          "type": "object",
+          "required": [
+            "self"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "self": {
+              "$ref": "#/definitions/URL"
+            },
+            "sidekick": {
+              "$ref": "#/definitions/URL"
+            },
+            "nemesis": {
+              "$ref": "#/definitions/URL"
+            }
+          }
+        }
+      }
     },
     "ArrayOfCharacters": {
       "type": "array",
@@ -201,13 +381,19 @@
         "villain"
       ]
     },
+    "CharacterSlug": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9]+$"
+    },
     "NonEmptyString": {
       "type": "string",
       "minLength": 1
     },
     "URL": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "pattern": "^https?://"
     },
     "Error": {
       "type": "object",

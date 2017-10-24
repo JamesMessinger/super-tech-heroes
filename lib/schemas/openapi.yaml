@@ -112,13 +112,13 @@ paths:
         '201':
           description: The character was created successfully
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Character'
         '400':
           description: 'Something is wrong with the request, such as invalid character data.'
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
         '409':
@@ -126,7 +126,7 @@ paths:
             There is already an existing character with the same (or very
             similar) name.
           content:
-            '*/*':
+            application/json:
               schema:
                 $ref: '#/components/schemas/Error'
       requestBody:
@@ -135,6 +135,63 @@ paths:
             schema:
               $ref: '#/components/schemas/CharacterHierarchy'
         required: true
+    delete:
+      summary: Deletes all characters
+      description: >
+        This endpoint deletes **all** characters.  It's mostly just used during
+        testing, to reset state between each test.
+      responses:
+        '200':
+          description: All charactes were deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - count
+                  - message
+                additionalProperties: false
+                properties:
+                  count:
+                    type: integer
+                    minimum: 0
+                  message:
+                    $ref: '#/components/schemas/NonEmptyString'
+  '/characters/{slug}':
+    get:
+      summary: Get a specific character
+      description: >
+        This endpoint returns a specific character, given its slug. The slug is
+        the character's name, lowercased, with all non-alphanumeric characters
+        removed. For example, the slug for "Wonder Woman" would be
+        "wonderwoman".
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern:
+              $ref: '#/components/schemas/CharacterSlug/pattern'
+      responses:
+        '200':
+          description: Returns the requested character
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Character'
+        '400':
+          description: 'Something is wrong with the request, such as invalid character slug.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: There is no character with the specified slug.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     APIInfo:
@@ -150,8 +207,8 @@ components:
           $ref: '#/components/schemas/NonEmptyString'
         version:
           $ref: '#/components/schemas/NonEmptyString'
-        description: |
-          $ref: "#/definitions/NonEmptyString"
+        description:
+          $ref: '#/components/schemas/NonEmptyString'
         links:
           type: object
           required:
@@ -170,11 +227,77 @@ components:
             docs:
               $ref: '#/components/schemas/URL'
     CharacterHierarchy:
+      allOf:
+        - $ref: '#/components/schemas/CharacterPartial'
+        - properties:
+            sidekick:
+              oneOf:
+                - $ref: '#/components/schemas/CharacterSlug'
+                - $ref: '#/components/schemas/CharacterPartial'
+            nemesis:
+              oneOf:
+                - $ref: '#/components/schemas/CharacterSlug'
+                - $ref: '#/components/schemas/CharacterPartial'
+          type: object
+    CharacterPartial:
       type: object
       additionalProperties: false
+      required:
+        - name
+      properties:
+        name:
+          $ref: '#/components/schemas/NonEmptyString'
+        type:
+          $ref: '#/components/schemas/CharacterType'
+        powers:
+          type: array
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/NonEmptyString'
+        weakness:
+          type: string
+          minLength: 0
+        bio:
+          type: string
+          minLength: 0
     Character:
       type: object
+      required:
+        - name
+        - type
+        - powers
+        - weakness
+        - bio
+        - links
       additionalProperties: false
+      properties:
+        name:
+          $ref: '#/components/schemas/NonEmptyString'
+        type:
+          $ref: '#/components/schemas/CharacterType'
+        powers:
+          type: array
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/NonEmptyString'
+        weakness:
+          type: string
+          minLength: 0
+        bio:
+          type: string
+          minLength: 0
+        links:
+          type: object
+          required:
+            - self
+          additionalProperties: false
+          properties:
+            self:
+              $ref: '#/components/schemas/URL'
+            sidekick:
+              $ref: '#/components/schemas/URL'
+            nemesis:
+              $ref: '#/components/schemas/URL'
     ArrayOfCharacters:
       type: array
       items:
@@ -185,12 +308,17 @@ components:
         - hero
         - sidekick
         - villain
+    CharacterSlug:
+      type: string
+      minLength: 1
+      pattern: '^[a-z0-9]+$'
     NonEmptyString:
       type: string
       minLength: 1
     URL:
       type: string
       minLength: 1
+      pattern: '^https?://'
     Error:
       type: object
       required:
