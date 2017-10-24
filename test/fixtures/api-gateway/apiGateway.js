@@ -39,7 +39,7 @@ function sendRequest (method, path, data) {
       let request = createRequest(method, path, data);
       let context = createContext(request);
 
-      return util.promisify(superTechHeroesAPI, 'handler', request, context);
+      return util.promisify(superTechHeroesAPI.handler)(request, context);
     });
 }
 
