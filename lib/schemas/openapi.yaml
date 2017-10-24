@@ -105,7 +105,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
     post:
       summary: Creates a new character
       description: >
@@ -124,7 +124,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
         '409':
           description: >-
             There is already an existing character with the same (or very
@@ -132,7 +132,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
       requestBody:
         content:
           application/json:
@@ -187,13 +187,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
         '404':
           description: There is no character with the specified slug.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
     put:
       summary: Updates a character
       description: >
@@ -212,7 +212,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
         '409':
           description: >-
             There is already an existing character with the same (or very
@@ -220,7 +220,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/ErrorResponse'
       requestBody:
         content:
           application/json:
@@ -373,11 +373,7 @@ components:
             nemesis:
               type: string
               minLength: 1
-    URL:
-      type: string
-      minLength: 1
-      pattern: '^https?://'
-    Error:
+    ErrorResponse:
       type: object
       required:
         - error

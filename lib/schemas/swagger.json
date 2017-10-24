@@ -96,7 +96,7 @@
           "400": {
             "description": "Something is wrong with the request. For example, the `type` query parameter is not a valid character type.\n",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "#/definitions/ErrorResponse"
             }
           }
         }
@@ -130,13 +130,13 @@
           "400": {
             "description": "Something is wrong with the request, such as invalid character data.",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "#/definitions/ErrorResponse"
             }
           },
           "409": {
             "description": "There is already an existing character with the same (or very similar) name.",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "#/definitions/ErrorResponse"
             }
           }
         }
@@ -196,13 +196,13 @@
           "400": {
             "description": "Something is wrong with the request, such as invalid character slug.",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "#/definitions/ErrorResponse"
             }
           },
           "404": {
             "description": "There is no character with the specified slug.",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "#/definitions/ErrorResponse"
             }
           }
         }
@@ -236,13 +236,13 @@
           "400": {
             "description": "Something is wrong with the request, such as invalid character data.",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "#/definitions/ErrorResponse"
             }
           },
           "409": {
             "description": "There is already an existing character with the same (or very similar) name.",
             "schema": {
-              "$ref": "#/definitions/Error"
+              "$ref": "#/definitions/ErrorResponse"
             }
           }
         }
@@ -447,12 +447,7 @@
         }
       }
     },
-    "URL": {
-      "type": "string",
-      "minLength": 1,
-      "pattern": "^https?://"
-    },
-    "Error": {
+    "ErrorResponse": {
       "type": "object",
       "required": [
         "error",
