@@ -254,42 +254,11 @@
       }
     },
     "CharacterHierarchy": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/CharacterPartial"
-        },
-        {
-          "properties": {
-            "sidekick": {
-              "oneOf": [
-                {
-                  "$ref": "#/definitions/CharacterSlug"
-                },
-                {
-                  "$ref": "#/definitions/CharacterPartial"
-                }
-              ]
-            },
-            "nemesis": {
-              "oneOf": [
-                {
-                  "$ref": "#/definitions/CharacterSlug"
-                },
-                {
-                  "$ref": "#/definitions/CharacterPartial"
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    "CharacterPartial": {
       "type": "object",
-      "additionalProperties": false,
       "required": [
         "name"
       ],
+      "additionalProperties": false,
       "properties": {
         "name": {
           "$ref": "#/definitions/NonEmptyString"
@@ -311,6 +280,12 @@
         "bio": {
           "type": "string",
           "minLength": 0
+        },
+        "sidekick": {
+          "type": "object"
+        },
+        "nemesis": {
+          "type": "object"
         }
       }
     },

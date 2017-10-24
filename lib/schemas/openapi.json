@@ -301,43 +301,11 @@
         }
       },
       "CharacterHierarchy": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/CharacterPartial"
-          },
-          {
-            "properties": {
-              "sidekick": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/CharacterSlug"
-                  },
-                  {
-                    "$ref": "#/components/schemas/CharacterPartial"
-                  }
-                ]
-              },
-              "nemesis": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/CharacterSlug"
-                  },
-                  {
-                    "$ref": "#/components/schemas/CharacterPartial"
-                  }
-                ]
-              }
-            },
-            "type": "object"
-          }
-        ]
-      },
-      "CharacterPartial": {
         "type": "object",
-        "additionalProperties": false,
         "required": [
           "name"
         ],
+        "additionalProperties": false,
         "properties": {
           "name": {
             "$ref": "#/components/schemas/NonEmptyString"
@@ -359,6 +327,12 @@
           "bio": {
             "type": "string",
             "minLength": 0
+          },
+          "sidekick": {
+            "type": "object"
+          },
+          "nemesis": {
+            "type": "object"
           }
         }
       },
