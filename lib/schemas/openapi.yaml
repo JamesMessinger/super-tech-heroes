@@ -95,7 +95,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ArrayOfCharacters'
+                type: array
+                items:
+                  $ref: '#/components/schemas/CharacterResponse'
         '400':
           description: >
             Something is wrong with the request. For example, the `type` query
@@ -116,7 +118,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Character'
+                $ref: '#/components/schemas/CharacterResponse'
         '400':
           description: 'Something is wrong with the request, such as invalid character data.'
           content:
@@ -159,6 +161,13 @@ paths:
                   message:
                     type: string
   '/characters/{slug}':
+    parameters:
+      - name: slug
+        in: path
+        required: true
+        schema:
+          type: string
+          pattern: '^[a-z0-9]+$'
     get:
       summary: Get a specific character
       description: >
@@ -166,20 +175,13 @@ paths:
         the character's name, lowercased, with all non-alphanumeric characters
         removed. For example, the slug for "Wonder Woman" would be
         "wonderwoman".
-      parameters:
-        - name: slug
-          in: path
-          required: true
-          schema:
-            type: string
-            pattern: '^[a-z0-9]+$'
       responses:
         '200':
           description: Returns the requested character
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Character'
+                $ref: '#/components/schemas/CharacterResponse'
         '400':
           description: 'Something is wrong with the request, such as invalid character slug.'
           content:
@@ -192,6 +194,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    put:
+      summary: Updates a character
+      description: >
+        This endpoint updates an existing character. Unlike the `POST
+        /characters` endpoint, you _cannot_ update multiple characters at a
+        time.
+      responses:
+        '201':
+          description: The character was successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CharacterResponse'
+        '400':
+          description: 'Something is wrong with the request, such as invalid character data.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: >-
+            There is already an existing character with the same (or very
+            similar) name.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CharacterUpdate'
+        required: true
 components:
   schemas:
     APIInfo:
@@ -257,7 +292,41 @@ components:
           type: object
         nemesis:
           type: object
-    Character:
+    CharacterUpdate:
+      type: object
+      required:
+        - name
+        - type
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          enum:
+            - hero
+            - sidekick
+            - villain
+        powers:
+          type: array
+          minItems: 0
+          items:
+            type: string
+            minLength: 1
+        weakness:
+          type: string
+          minLength: 0
+        bio:
+          type: string
+          minLength: 0
+        sidekick:
+          type: string
+          minLength: 0
+        nemesis:
+          type: string
+          minLength: 0
+    CharacterResponse:
       type: object
       required:
         - name
@@ -304,10 +373,6 @@ components:
             nemesis:
               type: string
               minLength: 1
-    ArrayOfCharacters:
-      type: array
-      items:
-        $ref: '#/components/schemas/Character'
     URL:
       type: string
       minLength: 1

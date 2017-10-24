@@ -80,7 +80,9 @@ paths:
             Returns all characters that matched the filter criteria. If there are no matching characters, then the
             response is an empty array.
           schema:
-            $ref: "#/definitions/ArrayOfCharacters"
+            type: array
+            items:
+              $ref: "#/definitions/CharacterResponse"
         400:
           description: >
             Something is wrong with the request. For example, the `type` query parameter is not a valid character type.
@@ -106,7 +108,7 @@ paths:
         201:
           description: The character was created successfully
           schema:
-            $ref: "#/definitions/Character"
+            $ref: "#/definitions/CharacterResponse"
         400:
           description: Something is wrong with the request, such as invalid character data.
           schema:
@@ -138,30 +140,60 @@ paths:
                 type: string
 
   /characters/{slug}:
+    parameters:
+      - name: slug
+        in: path
+        required: true
+        type: string
+        pattern: "^[a-z0-9]+$"
+
     get:
       summary: Get a specific character
       description: >
         This endpoint returns a specific character, given its slug. The slug is the character's name, lowercased, with all
         non-alphanumeric characters removed. For example, the slug for "Wonder Woman" would be "wonderwoman".
-      parameters:
-        - name: slug
-          in: path
-          required: true
-          type: string
-          pattern: "^[a-z0-9]+$"
       produces:
         - application/json
       responses:
         200:
           description: Returns the requested character
           schema:
-            $ref: "#/definitions/Character"
+            $ref: "#/definitions/CharacterResponse"
         400:
           description: Something is wrong with the request, such as invalid character slug.
           schema:
             $ref: "#/definitions/Error"
         404:
           description: There is no character with the specified slug.
+          schema:
+            $ref: "#/definitions/Error"
+
+    put:
+      summary: Updates a character
+      description: >
+        This endpoint updates an existing character. Unlike the `POST /characters` endpoint, you _cannot_ update multiple
+        characters at a time.
+      consumes:
+        - application/json
+      parameters:
+        - name: character
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/CharacterUpdate"
+      produces:
+        - application/json
+      responses:
+        201:
+          description: The character was successfully updated
+          schema:
+            $ref: "#/definitions/CharacterResponse"
+        400:
+          description: Something is wrong with the request, such as invalid character data.
+          schema:
+            $ref: "#/definitions/Error"
+        409:
+          description: There is already an existing character with the same (or very similar) name.
           schema:
             $ref: "#/definitions/Error"
 
@@ -231,7 +263,42 @@ definitions:
       nemesis:
         type: object
 
-  Character:
+  CharacterUpdate:
+    type: object
+    required:
+      - name
+      - type
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+        minLength: 1
+      type:
+        type: string
+        enum:
+          - hero
+          - sidekick
+          - villain
+      powers:
+        type: array
+        minItems: 0
+        items:
+          type: string
+          minLength: 1
+      weakness:
+        type: string
+        minLength: 0
+      bio:
+        type: string
+        minLength: 0
+      sidekick:
+        type: string
+        minLength: 0
+      nemesis:
+        type: string
+        minLength: 0
+
+  CharacterResponse:
     type: object
     required:
       - name
@@ -278,11 +345,6 @@ definitions:
           nemesis:
             type: string
             minLength: 1
-
-  ArrayOfCharacters:
-    type: array
-    items:
-      $ref: "#/definitions/Character"
 
   URL:
     type: string

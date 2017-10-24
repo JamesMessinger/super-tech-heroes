@@ -109,7 +109,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ArrayOfCharacters"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CharacterResponse"
+                  }
                 }
               }
             }
@@ -135,7 +138,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Character"
+                  "$ref": "#/components/schemas/CharacterResponse"
                 }
               }
             }
@@ -203,27 +206,27 @@
       }
     },
     "/characters/{slug}": {
+      "parameters": [
+        {
+          "name": "slug",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+$"
+          }
+        }
+      ],
       "get": {
         "summary": "Get a specific character",
         "description": "This endpoint returns a specific character, given its slug. The slug is the character's name, lowercased, with all non-alphanumeric characters removed. For example, the slug for \"Wonder Woman\" would be \"wonderwoman\".\n",
-        "parameters": [
-          {
-            "name": "slug",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "pattern": "^[a-z0-9]+$"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "Returns the requested character",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Character"
+                  "$ref": "#/components/schemas/CharacterResponse"
                 }
               }
             }
@@ -248,6 +251,52 @@
               }
             }
           }
+        }
+      },
+      "put": {
+        "summary": "Updates a character",
+        "description": "This endpoint updates an existing character. Unlike the `POST /characters` endpoint, you _cannot_ update multiple characters at a time.\n",
+        "responses": {
+          "201": {
+            "description": "The character was successfully updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CharacterResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Something is wrong with the request, such as invalid character data.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "There is already an existing character with the same (or very similar) name.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CharacterUpdate"
+              }
+            }
+          },
+          "required": true
         }
       }
     }
@@ -342,7 +391,53 @@
           }
         }
       },
-      "Character": {
+      "CharacterUpdate": {
+        "type": "object",
+        "required": [
+          "name",
+          "type"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "hero",
+              "sidekick",
+              "villain"
+            ]
+          },
+          "powers": {
+            "type": "array",
+            "minItems": 0,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "weakness": {
+            "type": "string",
+            "minLength": 0
+          },
+          "bio": {
+            "type": "string",
+            "minLength": 0
+          },
+          "sidekick": {
+            "type": "string",
+            "minLength": 0
+          },
+          "nemesis": {
+            "type": "string",
+            "minLength": 0
+          }
+        }
+      },
+      "CharacterResponse": {
         "type": "object",
         "required": [
           "name",
@@ -403,12 +498,6 @@
               }
             }
           }
-        }
-      },
-      "ArrayOfCharacters": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Character"
         }
       },
       "URL": {
