@@ -72,9 +72,11 @@
             "name": "type",
             "in": "query",
             "type": "string",
-            "enum": {
-              "$ref": "#/definitions/CharacterType/enum"
-            },
+            "enum": [
+              "hero",
+              "sidekick",
+              "villain"
+            ],
             "description": "Filters the results by character type (i.e. \"hero\", \"sidekick\", or \"villain\").\n"
           }
         ],
@@ -154,11 +156,10 @@
               "additionalProperties": false,
               "properties": {
                 "count": {
-                  "type": "integer",
-                  "minimum": 0
+                  "type": "integer"
                 },
                 "message": {
-                  "$ref": "#/definitions/NonEmptyString"
+                  "type": "string"
                 }
               }
             }
@@ -176,9 +177,7 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "pattern": {
-              "$ref": "#/definitions/CharacterSlug/pattern"
-            }
+            "pattern": "^[a-z0-9]+$"
           }
         ],
         "produces": [
@@ -219,13 +218,13 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "$ref": "#/definitions/NonEmptyString"
+          "type": "string"
         },
         "version": {
-          "$ref": "#/definitions/NonEmptyString"
+          "type": "string"
         },
         "description": {
-          "$ref": "#/definitions/NonEmptyString"
+          "type": "string"
         },
         "links": {
           "type": "object",
@@ -238,16 +237,16 @@
           "additionalProperties": false,
           "properties": {
             "characters": {
-              "$ref": "#/definitions/URL"
+              "type": "string"
             },
             "www": {
-              "$ref": "#/definitions/URL"
+              "type": "string"
             },
             "schema": {
-              "$ref": "#/definitions/URL"
+              "type": "string"
             },
             "docs": {
-              "$ref": "#/definitions/URL"
+              "type": "string"
             }
           }
         }
@@ -261,16 +260,23 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "$ref": "#/definitions/NonEmptyString"
+          "type": "string",
+          "minLength": 1
         },
         "type": {
-          "$ref": "#/definitions/CharacterType"
+          "type": "string",
+          "enum": [
+            "hero",
+            "sidekick",
+            "villain"
+          ]
         },
         "powers": {
           "type": "array",
           "minItems": 0,
           "items": {
-            "$ref": "#/definitions/NonEmptyString"
+            "type": "string",
+            "minLength": 1
           }
         },
         "weakness": {
@@ -302,16 +308,23 @@
       "additionalProperties": false,
       "properties": {
         "name": {
-          "$ref": "#/definitions/NonEmptyString"
+          "type": "string",
+          "minLength": 1
         },
         "type": {
-          "$ref": "#/definitions/CharacterType"
+          "type": "string",
+          "enum": [
+            "hero",
+            "sidekick",
+            "villain"
+          ]
         },
         "powers": {
           "type": "array",
           "minItems": 0,
           "items": {
-            "$ref": "#/definitions/NonEmptyString"
+            "type": "string",
+            "minLength": 1
           }
         },
         "weakness": {
@@ -330,13 +343,16 @@
           "additionalProperties": false,
           "properties": {
             "self": {
-              "$ref": "#/definitions/URL"
+              "type": "string",
+              "minLength": 1
             },
             "sidekick": {
-              "$ref": "#/definitions/URL"
+              "type": "string",
+              "minLength": 1
             },
             "nemesis": {
-              "$ref": "#/definitions/URL"
+              "type": "string",
+              "minLength": 1
             }
           }
         }
@@ -347,23 +363,6 @@
       "items": {
         "$ref": "#/definitions/Character"
       }
-    },
-    "CharacterType": {
-      "type": "string",
-      "enum": [
-        "hero",
-        "sidekick",
-        "villain"
-      ]
-    },
-    "CharacterSlug": {
-      "type": "string",
-      "minLength": 1,
-      "pattern": "^[a-z0-9]+$"
-    },
-    "NonEmptyString": {
-      "type": "string",
-      "minLength": 1
     },
     "URL": {
       "type": "string",
@@ -379,10 +378,12 @@
       "additionalProperties": false,
       "properties": {
         "error": {
-          "$ref": "#/definitions/NonEmptyString"
+          "type": "string",
+          "minLength": 1
         },
         "message": {
-          "$ref": "#/definitions/NonEmptyString"
+          "type": "string",
+          "minLength": 1
         }
       }
     }

@@ -84,7 +84,9 @@ paths:
           schema:
             type: string
             enum:
-              $ref: '#/components/schemas/CharacterType/enum'
+              - hero
+              - sidekick
+              - villain
       responses:
         '200':
           description: >
@@ -154,9 +156,8 @@ paths:
                 properties:
                   count:
                     type: integer
-                    minimum: 0
                   message:
-                    $ref: '#/components/schemas/NonEmptyString'
+                    type: string
   '/characters/{slug}':
     get:
       summary: Get a specific character
@@ -171,8 +172,7 @@ paths:
           required: true
           schema:
             type: string
-            pattern:
-              $ref: '#/components/schemas/CharacterSlug/pattern'
+            pattern: '^[a-z0-9]+$'
       responses:
         '200':
           description: Returns the requested character
@@ -204,11 +204,11 @@ components:
       additionalProperties: false
       properties:
         name:
-          $ref: '#/components/schemas/NonEmptyString'
+          type: string
         version:
-          $ref: '#/components/schemas/NonEmptyString'
+          type: string
         description:
-          $ref: '#/components/schemas/NonEmptyString'
+          type: string
         links:
           type: object
           required:
@@ -219,13 +219,13 @@ components:
           additionalProperties: false
           properties:
             characters:
-              $ref: '#/components/schemas/URL'
+              type: string
             www:
-              $ref: '#/components/schemas/URL'
+              type: string
             schema:
-              $ref: '#/components/schemas/URL'
+              type: string
             docs:
-              $ref: '#/components/schemas/URL'
+              type: string
     CharacterHierarchy:
       type: object
       required:
@@ -233,14 +233,20 @@ components:
       additionalProperties: false
       properties:
         name:
-          $ref: '#/components/schemas/NonEmptyString'
+          type: string
+          minLength: 1
         type:
-          $ref: '#/components/schemas/CharacterType'
+          type: string
+          enum:
+            - hero
+            - sidekick
+            - villain
         powers:
           type: array
           minItems: 0
           items:
-            $ref: '#/components/schemas/NonEmptyString'
+            type: string
+            minLength: 1
         weakness:
           type: string
           minLength: 0
@@ -263,14 +269,20 @@ components:
       additionalProperties: false
       properties:
         name:
-          $ref: '#/components/schemas/NonEmptyString'
+          type: string
+          minLength: 1
         type:
-          $ref: '#/components/schemas/CharacterType'
+          type: string
+          enum:
+            - hero
+            - sidekick
+            - villain
         powers:
           type: array
           minItems: 0
           items:
-            $ref: '#/components/schemas/NonEmptyString'
+            type: string
+            minLength: 1
         weakness:
           type: string
           minLength: 0
@@ -284,28 +296,18 @@ components:
           additionalProperties: false
           properties:
             self:
-              $ref: '#/components/schemas/URL'
+              type: string
+              minLength: 1
             sidekick:
-              $ref: '#/components/schemas/URL'
+              type: string
+              minLength: 1
             nemesis:
-              $ref: '#/components/schemas/URL'
+              type: string
+              minLength: 1
     ArrayOfCharacters:
       type: array
       items:
         $ref: '#/components/schemas/Character'
-    CharacterType:
-      type: string
-      enum:
-        - hero
-        - sidekick
-        - villain
-    CharacterSlug:
-      type: string
-      minLength: 1
-      pattern: '^[a-z0-9]+$'
-    NonEmptyString:
-      type: string
-      minLength: 1
     URL:
       type: string
       minLength: 1
@@ -318,7 +320,9 @@ components:
       additionalProperties: false
       properties:
         error:
-          $ref: '#/components/schemas/NonEmptyString'
+          type: string
+          minLength: 1
         message:
-          $ref: '#/components/schemas/NonEmptyString'
+          type: string
+          minLength: 1
 

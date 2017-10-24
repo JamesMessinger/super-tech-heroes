@@ -95,9 +95,11 @@
             "description": "Filters the results by character type (i.e. \"hero\", \"sidekick\", or \"villain\").\n",
             "schema": {
               "type": "string",
-              "enum": {
-                "$ref": "#/components/schemas/CharacterType/enum"
-              }
+              "enum": [
+                "hero",
+                "sidekick",
+                "villain"
+              ]
             }
           }
         ],
@@ -187,11 +189,10 @@
                   "additionalProperties": false,
                   "properties": {
                     "count": {
-                      "type": "integer",
-                      "minimum": 0
+                      "type": "integer"
                     },
                     "message": {
-                      "$ref": "#/components/schemas/NonEmptyString"
+                      "type": "string"
                     }
                   }
                 }
@@ -212,9 +213,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "pattern": {
-                "$ref": "#/components/schemas/CharacterSlug/pattern"
-              }
+              "pattern": "^[a-z0-9]+$"
             }
           }
         ],
@@ -266,13 +265,13 @@
         "additionalProperties": false,
         "properties": {
           "name": {
-            "$ref": "#/components/schemas/NonEmptyString"
+            "type": "string"
           },
           "version": {
-            "$ref": "#/components/schemas/NonEmptyString"
+            "type": "string"
           },
           "description": {
-            "$ref": "#/components/schemas/NonEmptyString"
+            "type": "string"
           },
           "links": {
             "type": "object",
@@ -285,16 +284,16 @@
             "additionalProperties": false,
             "properties": {
               "characters": {
-                "$ref": "#/components/schemas/URL"
+                "type": "string"
               },
               "www": {
-                "$ref": "#/components/schemas/URL"
+                "type": "string"
               },
               "schema": {
-                "$ref": "#/components/schemas/URL"
+                "type": "string"
               },
               "docs": {
-                "$ref": "#/components/schemas/URL"
+                "type": "string"
               }
             }
           }
@@ -308,16 +307,23 @@
         "additionalProperties": false,
         "properties": {
           "name": {
-            "$ref": "#/components/schemas/NonEmptyString"
+            "type": "string",
+            "minLength": 1
           },
           "type": {
-            "$ref": "#/components/schemas/CharacterType"
+            "type": "string",
+            "enum": [
+              "hero",
+              "sidekick",
+              "villain"
+            ]
           },
           "powers": {
             "type": "array",
             "minItems": 0,
             "items": {
-              "$ref": "#/components/schemas/NonEmptyString"
+              "type": "string",
+              "minLength": 1
             }
           },
           "weakness": {
@@ -349,16 +355,23 @@
         "additionalProperties": false,
         "properties": {
           "name": {
-            "$ref": "#/components/schemas/NonEmptyString"
+            "type": "string",
+            "minLength": 1
           },
           "type": {
-            "$ref": "#/components/schemas/CharacterType"
+            "type": "string",
+            "enum": [
+              "hero",
+              "sidekick",
+              "villain"
+            ]
           },
           "powers": {
             "type": "array",
             "minItems": 0,
             "items": {
-              "$ref": "#/components/schemas/NonEmptyString"
+              "type": "string",
+              "minLength": 1
             }
           },
           "weakness": {
@@ -377,13 +390,16 @@
             "additionalProperties": false,
             "properties": {
               "self": {
-                "$ref": "#/components/schemas/URL"
+                "type": "string",
+                "minLength": 1
               },
               "sidekick": {
-                "$ref": "#/components/schemas/URL"
+                "type": "string",
+                "minLength": 1
               },
               "nemesis": {
-                "$ref": "#/components/schemas/URL"
+                "type": "string",
+                "minLength": 1
               }
             }
           }
@@ -394,23 +410,6 @@
         "items": {
           "$ref": "#/components/schemas/Character"
         }
-      },
-      "CharacterType": {
-        "type": "string",
-        "enum": [
-          "hero",
-          "sidekick",
-          "villain"
-        ]
-      },
-      "CharacterSlug": {
-        "type": "string",
-        "minLength": 1,
-        "pattern": "^[a-z0-9]+$"
-      },
-      "NonEmptyString": {
-        "type": "string",
-        "minLength": 1
       },
       "URL": {
         "type": "string",
@@ -426,10 +425,12 @@
         "additionalProperties": false,
         "properties": {
           "error": {
-            "$ref": "#/components/schemas/NonEmptyString"
+            "type": "string",
+            "minLength": 1
           },
           "message": {
-            "$ref": "#/components/schemas/NonEmptyString"
+            "type": "string",
+            "minLength": 1
           }
         }
       }

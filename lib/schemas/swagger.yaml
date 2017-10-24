@@ -67,7 +67,9 @@ paths:
           in: query
           type: string
           enum:
-            $ref: "#/definitions/CharacterType/enum"
+            - hero
+            - sidekick
+            - villain
           description: >
             Filters the results by character type (i.e. "hero", "sidekick", or "villain").
       produces:
@@ -132,9 +134,8 @@ paths:
             properties:
               count:
                 type: integer
-                minimum: 0
               message:
-                $ref: "#/definitions/NonEmptyString"
+                type: string
 
   /characters/{slug}:
     get:
@@ -147,8 +148,7 @@ paths:
           in: path
           required: true
           type: string
-          pattern:
-            $ref: "#/definitions/CharacterSlug/pattern"
+          pattern: "^[a-z0-9]+$"
       produces:
         - application/json
       responses:
@@ -176,11 +176,11 @@ definitions:
     additionalProperties: false
     properties:
       name:
-        $ref: "#/definitions/NonEmptyString"
+        type: string
       version:
-        $ref: "#/definitions/NonEmptyString"
+        type: string
       description:
-        $ref: "#/definitions/NonEmptyString"
+        type: string
       links:
         type: object
         required:
@@ -191,13 +191,13 @@ definitions:
         additionalProperties: false
         properties:
           characters:
-            $ref: "#/definitions/URL"
+            type: string
           www:
-            $ref: "#/definitions/URL"
+            type: string
           schema:
-            $ref: "#/definitions/URL"
+            type: string
           docs:
-            $ref: "#/definitions/URL"
+            type: string
 
   CharacterHierarchy:
     type: object
@@ -206,14 +206,20 @@ definitions:
     additionalProperties: false
     properties:
       name:
-        $ref: "#/definitions/NonEmptyString"
+        type: string
+        minLength: 1
       type:
-        $ref: "#/definitions/CharacterType"
+        type: string
+        enum:
+          - hero
+          - sidekick
+          - villain
       powers:
         type: array
         minItems: 0
         items:
-          $ref: "#/definitions/NonEmptyString"
+          type: string
+          minLength: 1
       weakness:
         type: string
         minLength: 0
@@ -237,14 +243,20 @@ definitions:
     additionalProperties: false
     properties:
       name:
-        $ref: "#/definitions/NonEmptyString"
+        type: string
+        minLength: 1
       type:
-        $ref: "#/definitions/CharacterType"
+        type: string
+        enum:
+          - hero
+          - sidekick
+          - villain
       powers:
         type: array
         minItems: 0
         items:
-          $ref: "#/definitions/NonEmptyString"
+          type: string
+          minLength: 1
       weakness:
         type: string
         minLength: 0
@@ -258,32 +270,19 @@ definitions:
         additionalProperties: false
         properties:
           self:
-            $ref: "#/definitions/URL"
+            type: string
+            minLength: 1
           sidekick:
-            $ref: "#/definitions/URL"
+            type: string
+            minLength: 1
           nemesis:
-            $ref: "#/definitions/URL"
+            type: string
+            minLength: 1
 
   ArrayOfCharacters:
     type: array
     items:
       $ref: "#/definitions/Character"
-
-  CharacterType:
-    type: string
-    enum:
-      - hero
-      - sidekick
-      - villain
-
-  CharacterSlug:
-    type: string
-    minLength: 1
-    pattern: "^[a-z0-9]+$"
-
-  NonEmptyString:
-    type: string
-    minLength: 1
 
   URL:
     type: string
@@ -298,6 +297,8 @@ definitions:
     additionalProperties: false
     properties:
       error:
-        $ref: "#/definitions/NonEmptyString"
+        type: string
+        minLength: 1
       message:
-        $ref: "#/definitions/NonEmptyString"
+        type: string
+        minLength: 1
