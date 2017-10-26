@@ -1,15 +1,15 @@
 'use strict';
 
 // NOTE: Environment variables must be set BEFORE loading the API
-require('../environment');
+require('./environment');
 
 const _ = require('lodash');
 const uuid = require('uuid');
 const querystring = require('querystring');
-const sampleRequest = require('./request.json');
-const sampleContext = require('./context.json');
-const util = require('../../../lib/util');
-const superTechHeroesAPI = require('../../../lib');
+const requestTemplate = require('../../bin/request-template.json');
+const contextTemplate = require('../../bin/context-template.json');
+const util = require('../../lib/util');
+const superTechHeroesAPI = require('../../lib');
 
 let apiKey = '';
 
@@ -55,7 +55,7 @@ function createRequest (method, path, data) {
   let query;
   [path, query] = path.split('?');
 
-  let request = _.cloneDeep(sampleRequest);
+  let request = _.cloneDeep(requestTemplate);
 
   request.path = path;
   request.httpMethod = method;
@@ -86,7 +86,7 @@ function createRequest (method, path, data) {
  * @returns {object}
  */
 function createContext (apiGatewayRequest) {
-  let context = _.cloneDeep(sampleContext);
+  let context = _.cloneDeep(contextTemplate);
 
   context.invokeid = apiGatewayRequest.requestContext.requestId;
   context.awsRequestId = apiGatewayRequest.requestContext.requestId;

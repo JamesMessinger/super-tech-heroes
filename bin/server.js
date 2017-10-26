@@ -11,8 +11,8 @@ const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const superTechHeroesAPI = require('../lib');
-const sampleRequest = require('../test/fixtures/api-gateway/request.json');
-const sampleContext = require('../test/fixtures/api-gateway/context.json');
+const requestTemplate = require('./request-template.json');
+const contextTemplate = require('./context-template.json');
 
 // Serve the website on port 7070
 let website = express();
@@ -27,8 +27,10 @@ api.use(mockApiGateway);
 api.listen(8080, () => {
   console.log('The Super Tech Heroes API is now running at http://localhost:8080');
 
-  if (process.env.AWS_DYNAMODB_ENDPOINT) {
-    console.log(`The Super Tech Heroes database is now running at ${process.env.AWS_DYNAMODB_ENDPOINT}/shell`);
+  let host = process.env.AWS_DYNAMODB_HOST;
+  let port = process.env.AWS_DYNAMODB_PORT;
+  if (host && port) {
+    console.log(`The Super Tech Heroes database is now running at http://${host}:${port}/shell`);
   }
 });
 
@@ -91,7 +93,7 @@ function mockApiGateway (req, res) {
  * @returns {object}
  */
 function createRequest (httpRequest) {
-  let apiGatewayRequest = _.cloneDeep(sampleRequest);
+  let apiGatewayRequest = _.cloneDeep(requestTemplate);
 
   apiGatewayRequest.path = httpRequest.path;
   apiGatewayRequest.httpMethod = httpRequest.method.toUpperCase();
@@ -119,7 +121,7 @@ function createRequest (httpRequest) {
  * @returns {object}
  */
 function createContext (apiGatewayRequest) {
-  let context = _.cloneDeep(sampleContext);
+  let context = _.cloneDeep(contextTemplate);
 
   context.invokeid = apiGatewayRequest.requestContext.requestId;
   context.awsRequestId = apiGatewayRequest.requestContext.requestId;

@@ -1,6 +1,6 @@
 'use strict';
 
-const apiGateway = require('../fixtures/api-gateway/apiGateway');
+const apiGateway = require('../fixtures/apiGateway');
 const testData = require('../fixtures/testData');
 const assert = require('../fixtures/assert');
 

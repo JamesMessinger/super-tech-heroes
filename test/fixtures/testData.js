@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 const characterStore = require('../../lib/characterStore');
-const sampleRequest = require('./api-gateway/request.json');
+const requestTemplate = require('../../bin/request-template.json');
 
 module.exports = {
   /**
@@ -17,7 +17,7 @@ module.exports = {
     return Promise.all(characters.map(hierarchy => {
       return characterStore.createHierarchy({ user, hierarchy })
         .then(updatedCharacter => {
-          let request = _.cloneDeep(sampleRequest);
+          let request = _.cloneDeep(requestTemplate);
           request.headers.Host = 'localhost';
 
           Object.assign(hierarchy, updatedCharacter.toResource(request));
