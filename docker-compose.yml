@@ -1,0 +1,33 @@
+# ==================================================================================================
+# This Docker Compose file runs the Super Tech Heroes HTTP server and a local instance of AWS DynamoDB.
+# This allows the Super Tech Heroes API and website to work completely offline.
+#
+# You can run this docker composition using the following CLI command:
+#
+#     docker-compose up
+#
+# And then you can access the Super Tech Heroes API at http://localhost:8080,
+# and the Super Tech Heroes website at http://localhost:7070
+# ==================================================================================================
+
+version: "3"
+services:
+  dynamodb:
+    image: dwmkerr/dynamodb
+    ports:
+      - 9090:8000   # DynamoDB
+
+  super-tech-heroes:
+    image: bigstickcarpet/super-tech-heroes
+    environment:
+      SUPER_TECH_HEROES_TABLE_NAME: SuperTechHeroes.Characters
+      AWS_DYNAMODB_HOST: dynamodb
+      AWS_DYNAMODB_PORT: 9090
+
+      # No need to use real AWS credentials, since we're connecting to a local DynamoDB instance
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-DUMMY}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-DUMMY}
+      AWS_REGION: ${AWS_REGION:-us-east-1}
+    ports:
+      - 7070:7070   # Website
+      - 8080:8080   # REST API
