@@ -6,7 +6,8 @@
 # ==================================================================================================
 
 # Use our local DynamoDB server, rather than AWS
-export AWS_DYNAMODB_ENDPOINT="http://localhost:9090"
+export AWS_DYNAMODB_HOST="localhost"
+export AWS_DYNAMODB_PORT="9090"
 
 # Check if the docker container is already running
 running_container="$(docker ps | grep dwmkerr/dynamodb)"
