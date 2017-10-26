@@ -1,15 +1,22 @@
 #!/usr/bin/env bash
 # ==================================================================================================
-# This script does a full release of the API and website to production. It runs linters and tests
-# first, then deploys the latest code, bumps the version number in AWS Lambda, package.json, and
-# Git, and updates the "Prod" alias.
+# This script does a full release of the API and website to production. Including:
+#
+#   - Re-builds everything
+#   - Lints the code
+#   - Runs tests
+#   - Deploys the code to AWS Lambda
+#   - Bumps the version number
+#   - Commits and pushes to Git
+#   - Updates the "Prod" alias
+#   - Publishes a new Docker image
 # ==================================================================================================
 
 # Stop on first error
 set -o errexit -o nounset -o pipefail
 
 # Re-build schemas
-npm run build
+./scripts/build.sh
 
 # Make sure the Git working directory is clean
 ./scripts/ensure-clean-git.sh
@@ -44,7 +51,8 @@ npm test --silent
 npm run bump --silent
 
 # Get the new version number from package.json
-lambda_version=$(node -p "/^\d+\.\d+\.(\d+)$/.exec(require('./package.json').version)[1]")
+npm_version=$(node -p "require('./package.json').version")
+lambda_version=$(node -p "/^\d+\.\d+\.(\d+)$/.exec('${npm_version}')[1]")
 
 echo
 echo Aliasing v${lambda_version} as Prod...

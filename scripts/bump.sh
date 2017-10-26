@@ -3,15 +3,16 @@
 # This script publishes a new version of the API and website. It bumps the version number in
 # package.json, Git, and AWS Lambda.
 #
-# NOTE: This script DOES NOT run any linters or tests beforehand, and it DOES NOT update the "Prod"
-#       version of the Lambda alias or API Gateway stage.
+# Because a new AWS Lambda version number is created, the "$LATEST" and "Dev" aliases are automatically
+# updated, since they always point to the latest version.
+# The "Prod" alias is NOT updated by this script.
 # ==================================================================================================
 
 # Stop on first error
 set -o errexit -o nounset -o pipefail
 
 # Re-build schemas
-npm run build
+./scripts/build.sh
 
 # Make sure the Git working directory is clean
 ./scripts/ensure-clean-git.sh

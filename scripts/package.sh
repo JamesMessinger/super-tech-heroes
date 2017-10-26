@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ==================================================================================================
 # This script packages the API code and dependencies into a .zip file that can be published to AWS Lambda.
-# It DOES NOT actually publish the package to AWS.
+# It doesn't lint or test the code first, nor does it bump any version numbers or commit anything to Git.
 # ==================================================================================================
 
 # Stop on first error
