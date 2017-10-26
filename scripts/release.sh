@@ -66,5 +66,8 @@ json="$(
 # echo
 # echo "${json}"
 
+# Publish to DockerHub
+./scripts/docker-publish.sh
+
 echo
 echo All Done!
