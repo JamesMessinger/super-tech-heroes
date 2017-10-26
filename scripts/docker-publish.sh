@@ -11,7 +11,6 @@ set -o errexit -o nounset -o pipefail
 name=$(node -p "require('./package.json').name")
 version=$(node -p "require('./package.json').version")
 
-echo
 echo Building Docker image...
 build_output="$(
   docker image build \
@@ -19,7 +18,6 @@ build_output="$(
     --tag bigstickcarpet/super-tech-heroes:latest .
 )"
 
-echo
 echo Publishing v${version} to Docker...
 push_version_output="$(
   docker image push bigstickcarpet/super-tech-heroes:${version}
