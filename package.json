@@ -40,16 +40,12 @@
     "release": "scripts/release.sh"
   },
   "devDependencies": {
-    "body-parser": "^1.18.2",
     "chai": "^4.1.2",
     "codacy-coverage": "^2.0.3",
-    "cors": "^2.8.4",
     "coveralls": "^3.0.0",
     "eslint": "^4.8.0",
     "eslint-config-modular": "^4.1.0",
-    "express": "^4.16.2",
     "istanbul": "^0.4.5",
-    "lodash": "^4.17.4",
     "mocha": "^4.0.1",
     "npm-check": "^5.4.5",
     "swagger2openapi": "^2.9.2",
@@ -58,6 +54,10 @@
   "dependencies": {
     "accept": "^3.0.1",
     "aws-sdk": "^2.140.0",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4",
     "serialize-error": "^2.1.0",
     "uuid": "^3.1.0"
   },
