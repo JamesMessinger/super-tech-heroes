@@ -37,7 +37,7 @@
     "powers": [
       "Backward Compatibility"
     ],
-    "weakness": "todo",
+    "weakness": "Safari",
     "bio": ""
   },
   {
@@ -45,17 +45,17 @@
     "nemesis": {
       "name": "Commander Runtime Error",
       "powers": [
-        "todo"
+        "Moore's Law"
       ],
-      "weakness": "todo",
-      "bio": "todo"
+      "weakness": "Formal Verification",
+      "bio": "The only things that are certain in life are death, taxes, and runtime errors."
     },
     "powers": [
       "todo"
     ],
     "weakness": "todo",
     "bio": "Dynamic Types Guy can be whatever you want him to be, just be careful what you wish for."
-  },
+    },
   {
     "name": "Git Girl",
     "sidekick": {
@@ -223,13 +223,15 @@
     "nemesis": {
       "name": "The Terrible Tab",
       "powers": [
-        "todo"
+        "objectively superior", 
+        "less is more"
       ],
       "weakness": "todo",
       "bio": "todo"
     },
     "powers": [
-      "todo"
+      "objectively superior",
+      "more is less"
     ],
     "weakness": "todo",
     "bio": "todo"
@@ -241,8 +243,8 @@
       "powers": [
         "todo"
       ],
-      "weakness": "todo",
-      "bio": "todo"
+      "weakness": "",
+      "bio": ""
     },
     "powers": [
       "todo"
