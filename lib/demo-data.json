@@ -1,30 +1,35 @@
 [
   {
     "name": "Testing Man",
+    "powers": [
+      ""
+    ],
+    "weakness": "",
+    "bio": "",
     "sidekick": {
       "name": "Code Review Boy",
       "powers": [
-        "todo"
+        ""
       ],
-      "weakness": "todo",
+      "weakness": "",
       "bio": "After his parent process was killed in a tragic code coverage accident Testing Man has dedicated his life to preventing regressions and fighting the scourge of feature creep that threaten his beloved application."
     },
     "nemesis": {
       "name": "Time Cruncher",
       "powers": [
-        "todo"
+        ""
       ],
-      "weakness": "todo",
+      "weakness": "",
       "bio": "Since the Dawn of UTC the Time Cruncher has meticulously thwarted Testing Man with arbitrary deadlines and binding contractual delivery dates."
-    },
-    "powers": [
-      "todo"
-    ],
-    "weakness": "todo",
-    "bio": "todo"
+    }
   },
   {
     "name": "Web Standards Woman",
+    "powers": [
+      "Backward Compatibility"
+    ],
+    "weakness": "Safari",
+    "bio": "",
     "nemesis": {
       "name": "IE 6",
       "powers": [
@@ -33,15 +38,15 @@
       ],
       "weakness": "ES4+",
       "bio": "Concentrated evil that only runs on Windows XP, the mere threat of support is enough to chill the heart of any web developer. That Which Shall Not Be Named, lurks, in the backlog...waiting."
-    },
-    "powers": [
-      "Backward Compatibility"
-    ],
-    "weakness": "Safari",
-    "bio": ""
+    }
   },
   {
     "name": "Dynamic Types Guy",
+    "powers": [
+      ""
+    ],
+    "weakness": "",
+    "bio": "Dynamic Types Guy can be whatever you want him to be, just be careful what you wish for.",
     "nemesis": {
       "name": "Commander Runtime Error",
       "powers": [
@@ -49,22 +54,22 @@
       ],
       "weakness": "Formal Verification",
       "bio": "The only things that are certain in life are death, taxes, and runtime errors."
-    },
-    "powers": [
-      "todo"
-    ],
-    "weakness": "todo",
-    "bio": "Dynamic Types Guy can be whatever you want him to be, just be careful what you wish for."
-    },
+    }
+  },
   {
     "name": "Git Girl",
+    "powers": [
+      ""
+    ],
+    "weakness": "",
+    "bio": "",
     "sidekick": {
       "name": "Manpage Man",
       "powers": [
-        "todo"
+        ""
       ],
-      "weakness": "todo",
-      "bio": "todo"
+      "weakness": "",
+      "bio": ""
     },
     "nemesis": {
       "name": "The Inscrutable Git CLI",
@@ -72,184 +77,177 @@
         "The Git CLI"
       ],
       "weakness": "The Git CLI",
-      "bio": "todo"
-    },
-    "powers": [
-      "todo"
-    ],
-    "weakness": "todo",
-    "bio": "todo"
+      "bio": ""
+    }
   },
   {
     "name": "Startup Man",
+    "powers": [
+      "Disruption",
+      "Making the world a better place",
+      "The cloud",
+      "Blockchain",
+      "Virtual Reality",
+      "Machine Learning",
+      "Artificial Intelligence"
+    ],
+    "weakness": "The elevator pitch",
+    "bio": "",
     "sidekick": {
       "name": "The Incredible MVP",
       "powers": [
-        "Justification",
-        "Non-viability"
+        "Potential"
       ],
-      "weakness": "todo",
-      "bio": "Just good enough to go out on a date but not enough to bring home to meet your parents. The Incredible MVP is always the star for the moment, good for a few dates, but ultimately comes up short against the more attractive and stable Version 2.0"
+      "weakness": "Non-viability",
+      "bio": "An okay sidekick, but not quite superhero material.  So much potential though!"
     },
     "nemesis": {
       "name": "Professor Capital",
       "powers": [
         "$$$$"
       ],
-      "weakness": "todo",
+      "weakness": "Bubbles",
       "bio": "Money can't buy happiness, but it can buy you runway."
-    },
-    "powers": [
-      "Disruption",
-      "Blockchain",
-      "Making the world a better place",
-      "Clouds",
-      "VR/AR",
-      "Machine Learning",
-      "AI"
-    ],
-    "weakness": "todo",
-    "bio": "todo"
+    }
   },
   {
     "name": "King Comments",
+    "powers": [
+      "Hungarian Notation"
+    ],
+    "weakness": "Can tell you how, but not why",
+    "bio": "",
     "nemesis": {
       "name": "Dr. Self-Documented",
       "powers": [
-        "Hungarian Notation"
       ],
-      "weakness": "Can tell you how, but not why",
+      "weakness": "",
       "bio": "Unknown."
-    },
-    "powers": [
-      "todo"
-    ],
-    "weakness": "todo",
-    "bio": "todo"
+    }
   },
   {
     "name": "Works-On-My-Machine Man",
-    "nemesis": {
-      "name": "Doctor Ops",
-      "powers": [
-        "Firewall access",
-        "Your corporate browser history"
-      ],
-      "weakness": "todo",
-      "bio": "Your best friend and worst enemy, just don't ask them to do a deployment at 4pm on a Friday."
-    },
     "powers": [
       "Shoulder Shrugs",
       "Blank Stare",
       "Turning it on and off again"
     ],
     "weakness": "",
-    "bio": "todo"
+    "bio": "",
+    "nemesis": {
+      "name": "Doctor Ops",
+      "powers": [
+        "Firewall access",
+        "All the passwords"
+      ],
+      "weakness": "Friday deployments",
+      "bio": "Don't make him angry. He knows where your bugs are hidden."
+    }
   },
   {
     "name": "QA Woman",
-    "nemesis": {
-      "name": "Regression Robots",
-      "powers": [
-        "todo"
-      ],
-      "weakness": "todo",
-      "bio": ""
-    },
-    "powers": [
-      "todo"
-    ],
-    "weakness": "todo",
-    "bio": "todo"
-  },
-  {
-    "name": "RESTman",
-    "nemesis": {
-      "name": "The Almighty SOAP",
-      "powers": [
-        "todo"
-      ],
-      "weakness": "todo",
-      "bio": "todo"
-    },
     "powers": [
       ""
     ],
     "weakness": "",
-    "bio": "Off PUTting at first, RESTman GETs the job done by meeting his challenges HEAD-on predictably and logically. Only DELETEing his foes when it's the only OPTION"
+    "bio": "",
+    "nemesis": {
+      "name": "Regression Robots",
+      "powers": [
+        ""
+      ],
+      "weakness": "",
+      "bio": ""
+    }
+  },
+  {
+    "name": "RESTman",
+    "powers": [
+      ""
+    ],
+    "weakness": "",
+    "bio": "Off PUTting at first, RESTman GETs the job done by meeting his challenges HEAD-on predictably and logically. Only DELETEing his foes when it's the only OPTION",
+    "nemesis": {
+      "name": "The Almighty SOAP",
+      "powers": [
+        ""
+      ],
+      "weakness": "",
+      "bio": ""
+    }
   },
   {
     "name": "The Project Manager",
+    "powers": [
+      ""
+    ],
+    "weakness": "",
+    "bio": "Forged in the Crucible of Collaboration, the Project Manager seeks to bring harmony to the endless strife between Sales, Engineering, and the Executive. The Hero this company deserves and needs.",
     "sidekick": {
       "name": "Timeline Lad",
       "powers": [
-        "todo"
-      ],
-      "weakness": "todo",
-      "bio": "todo"
-    },
-    "nemesis": {
-      "name": "The Feature Creep",
-      "powers": [
-        "todo"
-      ],
-      "weakness": "todo",
-      "bio": "todo"
-    },
-    "powers": [
-      "todo"
-    ],
-    "weakness": "todo",
-    "bio": "Forged in the Crucible of Collaboration, the Project Manager seeks to bring harmony to the endless strife between Sales, Engineering, and the Executive. The Hero this company deserves and needs."
-  },
-  {
-    "name": "The Flash Download",
-    "nemesis": {
-      "name": "Data CAPtain",
-      "powers": [
-        "todo"
-      ],
-      "weakness": "todo",
-      "bio": "todo"
-    },
-    "powers": [
-      "todo"
-    ],
-    "weakness": "todo",
-    "bio": "todo"
-  },
-  {
-    "name": "The Fantastic Four Spaces",
-    "nemesis": {
-      "name": "The Terrible Tab",
-      "powers": [
-        "objectively superior", 
-        "less is more"
-      ],
-      "weakness": "todo",
-      "bio": "todo"
-    },
-    "powers": [
-      "objectively superior",
-      "more is less"
-    ],
-    "weakness": "todo",
-    "bio": "todo"
-  },
-  {
-    "name": "Mister Emacs",
-    "nemesis": {
-      "name": "Invader VIM",
-      "powers": [
-        "todo"
+        ""
       ],
       "weakness": "",
       "bio": ""
     },
+    "nemesis": {
+      "name": "The Feature Creep",
+      "powers": [
+        ""
+      ],
+      "weakness": "",
+      "bio": ""
+    }
+  },
+  {
+    "name": "The Flash Download",
     "powers": [
-      "todo"
+      ""
     ],
-    "weakness": "todo",
-    "bio": "todo"
+    "weakness": "",
+    "bio": "",
+    "nemesis": {
+      "name": "Data CAPtain",
+      "powers": [
+        ""
+      ],
+      "weakness": "",
+      "bio": ""
+    }
+  },
+  {
+    "name": "The Fantastic Four Spaces",
+    "powers": [
+      "Being objectively superior",
+      "More is better"
+    ],
+    "weakness": "",
+    "bio": "",
+    "nemesis": {
+      "name": "The Terrible Tab",
+      "powers": [
+        "Being objectively superior",
+        "Less is more"
+      ],
+      "weakness": "",
+      "bio": ""
+    }
+  },
+  {
+    "name": "Mister Emacs",
+    "powers": [
+      ""
+    ],
+    "weakness": "",
+    "bio": "",
+    "nemesis": {
+      "name": "Invader VIM",
+      "powers": [
+        ""
+      ],
+      "weakness": "",
+      "bio": ""
+    }
   }
 ]
