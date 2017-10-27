@@ -12,6 +12,7 @@
 
 version: "3"
 services:
+  # TODO: Need to create the DynamoDB schema on startup
   dynamodb:
     image: dwmkerr/dynamodb
     ports:
