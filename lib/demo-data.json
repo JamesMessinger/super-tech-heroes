@@ -2,14 +2,12 @@
   {
     "name": "Testing Man",
     "powers": [
-      ""
     ],
     "weakness": "",
     "bio": "",
     "sidekick": {
       "name": "Code Review Boy",
       "powers": [
-        ""
       ],
       "weakness": "",
       "bio": "After his parent process was killed in a tragic code coverage accident Testing Man has dedicated his life to preventing regressions and fighting the scourge of feature creep that threaten his beloved application."
@@ -17,7 +15,6 @@
     "nemesis": {
       "name": "Time Cruncher",
       "powers": [
-        ""
       ],
       "weakness": "",
       "bio": "Since the Dawn of UTC the Time Cruncher has meticulously thwarted Testing Man with arbitrary deadlines and binding contractual delivery dates."
@@ -33,17 +30,15 @@
     "nemesis": {
       "name": "IE 6",
       "powers": [
-        "Legacy Support",
-        "Active X"
+        "ActiveX"
       ],
-      "weakness": "ES4+",
-      "bio": "Concentrated evil that only runs on Windows XP, the mere threat of support is enough to chill the heart of any web developer. That Which Shall Not Be Named, lurks, in the backlog...waiting."
+      "weakness": "Web standards",
+      "bio": "Concentrated evil that only runs on Windows XP, the mere threat of support is enough to chill the heart of any web developer. That Which Shall Not Be Named lurks in the backlog... waiting."
     }
   },
   {
     "name": "Dynamic Types Guy",
     "powers": [
-      ""
     ],
     "weakness": "",
     "bio": "Dynamic Types Guy can be whatever you want him to be, just be careful what you wish for.",
@@ -59,14 +54,12 @@
   {
     "name": "Git Girl",
     "powers": [
-      ""
     ],
     "weakness": "",
     "bio": "",
     "sidekick": {
       "name": "Manpage Man",
       "powers": [
-        ""
       ],
       "weakness": "",
       "bio": ""
@@ -147,14 +140,12 @@
   {
     "name": "QA Woman",
     "powers": [
-      ""
     ],
     "weakness": "",
     "bio": "",
     "nemesis": {
       "name": "Regression Robots",
       "powers": [
-        ""
       ],
       "weakness": "",
       "bio": ""
@@ -163,14 +154,12 @@
   {
     "name": "RESTman",
     "powers": [
-      ""
     ],
     "weakness": "",
     "bio": "Off PUTting at first, RESTman GETs the job done by meeting his challenges HEAD-on predictably and logically. Only DELETEing his foes when it's the only OPTION",
     "nemesis": {
       "name": "The Almighty SOAP",
       "powers": [
-        ""
       ],
       "weakness": "",
       "bio": ""
@@ -179,14 +168,12 @@
   {
     "name": "The Project Manager",
     "powers": [
-      ""
     ],
     "weakness": "",
     "bio": "Forged in the Crucible of Collaboration, the Project Manager seeks to bring harmony to the endless strife between Sales, Engineering, and the Executive. The Hero this company deserves and needs.",
     "sidekick": {
       "name": "Timeline Lad",
       "powers": [
-        ""
       ],
       "weakness": "",
       "bio": ""
@@ -194,7 +181,6 @@
     "nemesis": {
       "name": "The Feature Creep",
       "powers": [
-        ""
       ],
       "weakness": "",
       "bio": ""
@@ -203,14 +189,12 @@
   {
     "name": "The Flash Download",
     "powers": [
-      ""
     ],
     "weakness": "",
     "bio": "",
     "nemesis": {
       "name": "Data CAPtain",
       "powers": [
-        ""
       ],
       "weakness": "",
       "bio": ""
@@ -237,14 +221,12 @@
   {
     "name": "Mister Emacs",
     "powers": [
-      ""
     ],
     "weakness": "",
     "bio": "",
     "nemesis": {
       "name": "Invader VIM",
       "powers": [
-        ""
       ],
       "weakness": "",
       "bio": ""
