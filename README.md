@@ -11,7 +11,7 @@ Super Tech Heroes is a list of technology- and software-themed superheroes and v
 
 - [Website](http://heroes.bigstickcarpet.com)
 - [Docker image](https://hub.docker.com/r/bigstickcarpet/super-tech-heroes/)
-- [REST API](https://documenter.getpostman.com/view/220187/super-tech-heroes-api/XXXXXXX) ([documentation](https://documenter.getpostman.com/view/220187/super-tech-heroes-api/XXXXXXX))
+- [REST API](https://api.heroes.bigstickcarpet.com) ([documentation](https://documenter.getpostman.com/view/220187/super-tech-heroes-api/XXXXXXX))
 
 
 Work In Progress
