@@ -55,6 +55,10 @@ npm_version=$(node -p "require('./package.json').version")
 lambda_version=$(node -p "/^\d+\.\d+\.(\d+)$/.exec('${npm_version}')[1]")
 
 echo
+echo Publishing v${npm_version} to npm...
+npm publish
+
+echo
 echo Aliasing v${lambda_version} as Prod...
 json="$(
   aws lambda update-alias \

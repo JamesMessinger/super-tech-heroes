@@ -1,7 +1,6 @@
 {
   "name": "super-tech-heroes",
   "version": "1.0.14",
-  "private": true,
   "description": "A REST API for technology-themed superheroes",
   "keywords": [
     "rest",
@@ -22,6 +21,7 @@
   "main": "lib/index.js",
   "bin": "bin/server.js",
   "files": [
+    "bin",
     "lib"
   ],
   "scripts": {
