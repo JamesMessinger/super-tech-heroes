@@ -1,6 +1,6 @@
 {
   "name": "super-tech-heroes",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "A REST API for technology-themed superheroes",
   "keywords": [
     "rest",
