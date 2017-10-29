@@ -17,6 +17,7 @@ WORKDIR /var/super-tech-heroes
 COPY bin bin
 COPY lib lib
 COPY docs docs
+COPY schemas schemas
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 
