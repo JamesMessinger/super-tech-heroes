@@ -10,6 +10,8 @@ paths:
       summary: Get API info
       description: >
         This endpoint returns general API info, such as the version number, description, and relevant links.
+      security:
+        - apiKey: []
       produces:
         - application/json
       responses:
@@ -24,6 +26,8 @@ paths:
       description: >
         This endpoint returns the API definition schema. By default, the response is in OpenAPI v3.0 JSON format, but you
         can specify your desired format via the `Accept` header or an `accept` query parameter.
+      security:
+        - apiKey: []
       parameters:
         - name: Accept
           in: header
@@ -56,6 +60,8 @@ paths:
       summary: Find characters
       description: >
         This endpoint returns all characters by default, or you can filter by `name` and `type` via query parameters.
+      security:
+        - apiKey: []
       parameters:
         - name: name
           in: query
@@ -94,6 +100,8 @@ paths:
       description: >
         This endpoint creates a new character. For heroes, you can also create the sidekick and/or nemesis at the same time
         by setting the `sidekick` and/or `nemesis` properties to objects rather than strings.
+      security:
+        - apiKey: []
       consumes:
         - application/json
       parameters:
@@ -122,6 +130,8 @@ paths:
       summary: Deletes all characters
       description: >
         This endpoint deletes **all** characters.  It's mostly just used during testing, to reset state between each test.
+      security:
+        - apiKey: []
       produces:
         - application/json
       responses:
@@ -152,6 +162,8 @@ paths:
       description: >
         This endpoint returns a specific character, given its slug. The slug is the character's name, lowercased, with all
         non-alphanumeric characters removed. For example, the slug for "Wonder Woman" would be "wonderwoman".
+      security:
+        - apiKey: []
       produces:
         - application/json
       responses:
@@ -173,6 +185,8 @@ paths:
       description: >
         This endpoint updates an existing character. Unlike the `POST /characters` endpoint, you _cannot_ update multiple
         characters at a time.
+      produces:
+        - application/json
       consumes:
         - application/json
       parameters:
@@ -181,8 +195,8 @@ paths:
           required: true
           schema:
             $ref: "#/definitions/CharacterUpdate"
-      produces:
-        - application/json
+      security:
+        - apiKey: []
       responses:
         201:
           description: The character was successfully updated
@@ -196,6 +210,16 @@ paths:
           description: There is already an existing character with the same (or very similar) name.
           schema:
             $ref: "#/definitions/ErrorResponse"
+
+securityDefinitions:
+  apiKey:
+    type: apiKey
+    in: header
+    name: X-API-Key
+    description: >
+      Because this API is meant for demo and training purposes, it doesn't have very strict authentication requirements. You can set the `X-API-Key` header to any alphanumeric value. As long as it's a unique value, you won't have any conflicts with anyone else who's also calling the API.
+
+      Any API calls that _don't_ include an `X-API-Key` header will default to the "DEMO" account, which means that conflicts are very likely.
 
 definitions:
   APIInfo:

@@ -11,6 +11,11 @@
       "get": {
         "summary": "Get API info",
         "description": "This endpoint returns general API info, such as the version number, description, and relevant links.\n",
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Returns API info",
@@ -29,6 +34,11 @@
       "get": {
         "summary": "Get API definition schema",
         "description": "This endpoint returns the API definition schema. By default, the response is in OpenAPI v3.0 JSON format, but you can specify your desired format via the `Accept` header or an `accept` query parameter.\n",
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
         "parameters": [
           {
             "name": "Accept",
@@ -80,6 +90,11 @@
       "get": {
         "summary": "Find characters",
         "description": "This endpoint returns all characters by default, or you can filter by `name` and `type` via query parameters.\n",
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
         "parameters": [
           {
             "name": "name",
@@ -132,6 +147,11 @@
       "post": {
         "summary": "Creates a new character",
         "description": "This endpoint creates a new character. For heroes, you can also create the sidekick and/or nemesis at the same time by setting the `sidekick` and/or `nemesis` properties to objects rather than strings.\n",
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
         "responses": {
           "201": {
             "description": "The character was created successfully",
@@ -178,6 +198,11 @@
       "delete": {
         "summary": "Deletes all characters",
         "description": "This endpoint deletes **all** characters.  It's mostly just used during testing, to reset state between each test.\n",
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "All charactes were deleted",
@@ -220,6 +245,11 @@
       "get": {
         "summary": "Get a specific character",
         "description": "This endpoint returns a specific character, given its slug. The slug is the character's name, lowercased, with all non-alphanumeric characters removed. For example, the slug for \"Wonder Woman\" would be \"wonderwoman\".\n",
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Returns the requested character",
@@ -256,6 +286,11 @@
       "put": {
         "summary": "Updates a character",
         "description": "This endpoint updates an existing character. Unlike the `POST /characters` endpoint, you _cannot_ update multiple characters at a time.\n",
+        "security": [
+          {
+            "apiKey": []
+          }
+        ],
         "responses": {
           "201": {
             "description": "The character was successfully updated",
@@ -517,6 +552,14 @@
             "minLength": 1
           }
         }
+      }
+    },
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "Because this API is meant for demo and training purposes, it doesn't have very strict authentication requirements. You can set the `X-API-Key` header to any alphanumeric value. As long as it's a unique value, you won't have any conflicts with anyone else who's also calling the API.\nAny API calls that _don't_ include an `X-API-Key` header will default to the \"DEMO\" account, which means that conflicts are very likely.\n"
       }
     }
   }
