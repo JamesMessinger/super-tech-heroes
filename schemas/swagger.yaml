@@ -22,7 +22,7 @@ paths:
 
   /schema:
     get:
-      summary: Get API definition schema
+      summary: Get API definition
       description: >
         This endpoint returns the API definition schema. By default, the response is in OpenAPI v3.0 JSON format, but you
         can specify your desired format via the `Accept` header or an `accept` query parameter.
@@ -34,9 +34,8 @@ paths:
           type: string
           description: >
             You can request a specific OpenAPI version and format. The default is `application/openapi+json;version=3.0`,
-            which returns a OpenAPI v3.0 definition, in JSON format.  You can request either OpenAPI v2.0 (fka Swagger)
-            or v3.0, in either JSON or YAML format. For example, to request OpenAPI v2.0 in YAML format, you would set
-            the `Accept` header to `application/openapi+yaml;version=2.0`.
+            which returns a OpenAPI v3.0 definition, in JSON format.  You can request another format instead. For example,
+            to request Swagger v2.0 in YAML format, you would set the `Accept` header to `application/openapi+yaml;version=2.0`.
         - name: accept
           in: query
           type: string
@@ -49,6 +48,7 @@ paths:
         - application/openapi+yaml;version=3.0
         - application/openapi+json;version=2.0
         - application/openapi+yaml;version=2.0
+        - application/postman+json;version=2.0
       responses:
         200:
           description: Returns the API schema in the requested format
@@ -96,7 +96,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
 
     post:
-      summary: Creates a new character
+      summary: Create a new character
       description: >
         This endpoint creates a new character. For heroes, you can also create the sidekick and/or nemesis at the same time
         by setting the `sidekick` and/or `nemesis` properties to objects rather than strings.
@@ -127,7 +127,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
 
     delete:
-      summary: Deletes all characters
+      summary: Delete all characters
       description: >
         This endpoint deletes **all** characters.  It's mostly just used during testing, to reset state between each test.
       security:
@@ -181,7 +181,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
 
     put:
-      summary: Updates a character
+      summary: Update a character
       description: >
         This endpoint updates an existing character. Unlike the `POST /characters` endpoint, you _cannot_ update multiple
         characters at a time.

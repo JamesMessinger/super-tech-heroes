@@ -22,7 +22,8 @@
   "bin": "bin/server.js",
   "files": [
     "bin",
-    "lib"
+    "lib",
+    "schemas"
   ],
   "scripts": {
     "lint": "eslint bin lib test docs/js/super-tech-heroes.js --fix",

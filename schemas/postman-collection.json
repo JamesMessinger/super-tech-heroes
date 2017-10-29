@@ -1,0 +1,964 @@
+{
+	"info": {
+		"name": "Super Tech Heroes API",
+		"_postman_id": "86192280-46ee-0454-d4bd-fde88928ca3c",
+		"description": "This API is manages a directory of technology-themed superheroes, sidekicks, and villains.  It's a really simple REST API that I mostly use for demos and [training](http://apitesting.bigstickcarpet.com/).\n\n# Authentication\nBecause this API is meant for demo and training purposes, it doesn't have very strict authentication requirements. You can set the `X-API-Key` header to any alphanumeric value. As long as it's a unique value, you won't have any conflicts with anyone else who's also calling the API.\n\n> **WARNING:** Any API calls that _don't_ include an `X-API-Key` header will default to the \"DEMO\" account, which means that conflicts are very likely.\n\n# Data structure\nThere's really only one data type in this API: `character`, which is a person whose `type` is either `hero`, `sidekick`, or `villain`.  Characters have a name, a short bio, a list of powers, and a weakness.\n\n### Related characters\nHeroes can have a `sidekick` and/or a `nemesis`, which are simply references to other characters.  Only heroes can have sidekicks and nemesis. You'll get an error if you try to assign a sidekick or nemesis to a non-hero character.  You'll also get an error if you try to assign a villain as a sidekick.\n\n> **TIP:** See [the OpenAPI definition](https://api.heroes.bigstickcarpet.com/schema) for detailed schemas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-API-Key",
+						"value": "{{API_KEY}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{API_ROOT}}",
+					"host": [
+						"{{API_ROOT}}"
+					]
+				},
+				"description": "This endpoint returns general API info, such as the version number, description, and relevant links.\n"
+			},
+			"response": [
+				{
+					"id": "263c97ef-4250-41c9-afc9-d3f86242f201",
+					"name": "Get API info",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{API_ROOT}}",
+							"host": [
+								"{{API_ROOT}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "368",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 29 Oct 2017 00:58:16 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 6681f37801f4edfd8e476d3db594d0ab.cloudfront.net (CloudFront)",
+							"name": "Via",
+							"description": "Informs the client of proxies through which the response was sent."
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "PM0ekvGHK__0QncHVfzilJ3-fvsJaKnM26zYWcY0MihnNSkcIoglhQ==",
+							"name": "X-Amz-Cf-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "sampled=0;root=1-59f527a8-43b10e5e816eee5d4dc49dbe",
+							"name": "X-Amzn-Trace-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront",
+							"name": "X-Cache",
+							"description": "Custom header"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "3f427f4a-bc44-11e7-8b55-25e91457c211",
+							"name": "x-amzn-RequestId",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"responseTime": 568,
+					"body": "{\"name\":\"Super Tech Heroes API\",\"version\":\"1.0.17\",\"description\":\"A REST API for technology-themed superheroes\",\"links\":{\"characters\":\"https://api.heroes.bigstickcarpet.com/characters\",\"www\":\"http://heroes.bigstickcarpet.com\",\"schema\":\"https://api.heroes.bigstickcarpet.com/schema\",\"docs\":\"https://documenter.getpostman.com/view/220187/super-tech-heroes-api/77cf6KB\"}}"
+				}
+			]
+		},
+		{
+			"name": "API definition",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/openapi+json;version=3.0"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{API_ROOT}}/schema",
+					"host": [
+						"{{API_ROOT}}"
+					],
+					"path": [
+						"schema"
+					]
+				},
+				"description": "This endpoint returns the API definition in one of several popular formats, such as Swagger 2.0, OpenAPI 3.0, and Postman Collection 2.0.\n\n### Response Format\nBy default, the response is in **OpenAPI v3.0 JSON** format, but you can optionally specify your desired format via the `Accept` header.  Any of the following MIME types are supported:\n\n|`Accept` header | Response format\n|:---------------|:-------------------------------------\n|`application/json` `application/openapi+json;version=3.0`| [OpenAPI v3.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md), in JSON format\n|`text/yaml` `application/openapi+yaml;version=3.0`| [OpenAPI v3.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md) in YAML format\n|`application/swagger+json` `application/openapi+json;version=2.0`| [OpenAPI v2.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) in JSON format\n|`application/swagger+yaml` `application/openapi+yaml;version=2.0` | [OpenAPI v2.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) in YAML format\n|`application/postman+json;version=2.0` | [Postman Collection v2.0](https://schema.getpostman.com/json/collection/v2.0.0/docs/index.html) in JSON format\n\n> **TIP:** You can set an `accept` query parameter rather than setting the `Accept` header if you prefer. This makes it easy to link to a specific format. For example [`https://api.heroes.bigstickcarpet.com/schema?accept=application/openapi+yaml;version=2.0`](https://api.heroes.bigstickcarpet.com/schema?accept=application/openapi+yaml;version=2.0)"
+			},
+			"response": [
+				{
+					"id": "edecfdc1-1477-4994-953c-2edf4b3a33c0",
+					"name": "OpenAPI 3.0 definition",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/openapi+json;version=3.0",
+								"disabled": false
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{API_ROOT}}/schema",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"schema"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "16296",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/openapi+json;version=3.0",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 29 Oct 2017 01:14:39 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 30133b786ec5b68f6563963b6ae45028.cloudfront.net (CloudFront)",
+							"name": "Via",
+							"description": "Informs the client of proxies through which the response was sent."
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "XXctvT4DRdYAiVkLweIIVUtXqPUKQANFRUmJ9MQpUIVCJBfr6lQ4Rg==",
+							"name": "X-Amz-Cf-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "sampled=0;root=1-59f52b7e-2499e26635e3eed990c28984",
+							"name": "X-Amzn-Trace-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront",
+							"name": "X-Cache",
+							"description": "Custom header"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "88be87ec-bc46-11e7-86db-6be09e596972",
+							"name": "x-amzn-RequestId",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"responseTime": 542,
+					"body": "{\n  \"openapi\": \"3.0.0\",\n  \"servers\": [],\n  \"info\": {\n    \"version\": \"1.0.17\",\n    \"title\": \"super-tech-heroes\",\n    \"description\": \"A REST API for technology-themed superheroes\"\n  },\n  \"paths\": {\n    \"/\": {\n      \"get\": {\n        \"summary\": \"Get API info\",\n        \"description\": \"This endpoint returns general API info, such as the version number, description, and relevant links.\\n\",\n        \"security\": [\n          {\n            \"apiKey\": []\n          }\n        ],\n        \"responses\": {\n          \"200\": {\n            \"description\": \"Returns API info\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/APIInfo\"\n                }\n              }\n            }\n          }\n        }\n      }\n    },\n    \"/schema\": {\n      \"get\": {\n        \"summary\": \"Get API definition schema\",\n        \"description\": \"This endpoint returns the API definition schema. By default, the response is in OpenAPI v3.0 JSON format, but you can specify your desired format via the `Accept` header or an `accept` query parameter.\\n\",\n        \"security\": [\n          {\n            \"apiKey\": []\n          }\n        ],\n        \"parameters\": [\n          {\n            \"name\": \"Accept\",\n            \"in\": \"header\",\n            \"description\": \"You can request a specific OpenAPI version and format. The default is `application/openapi+json;version=3.0`, which returns a OpenAPI v3.0 definition, in JSON format.  You can request either OpenAPI v2.0 (fka Swagger) or v3.0, in either JSON or YAML format. For example, to request OpenAPI v2.0 in YAML format, you would set the `Accept` header to `application/openapi+yaml;version=2.0`.\\n\",\n            \"schema\": {\n              \"type\": \"string\"\n            }\n          },\n          {\n            \"name\": \"accept\",\n            \"in\": \"query\",\n            \"description\": \"You can override the `Accept` header using the `accept` query parameter. This parameter takes the same format as the `Accept` header. For example, to request OpenAPI v2.0 in YAML format, the querystring would be `?accept=application/openapi+yaml;version=2.0`.\\n\",\n            \"schema\": {\n              \"type\": \"string\"\n            }\n          }\n        ],\n        \"responses\": {\n          \"200\": {\n            \"description\": \"Returns the API schema in the requested format\",\n            \"content\": {\n              \"application/openapi+json;version=3.0\": {\n                \"schema\": {\n                  \"type\": \"string\"\n                }\n              },\n              \"application/openapi+yaml;version=3.0\": {\n                \"schema\": {\n                  \"type\": \"string\"\n                }\n              },\n              \"application/openapi+json;version=2.0\": {\n                \"schema\": {\n                  \"type\": \"string\"\n                }\n              },\n              \"application/openapi+yaml;version=2.0\": {\n                \"schema\": {\n                  \"type\": \"string\"\n                }\n              }\n            }\n          }\n        }\n      }\n    },\n    \"/characters\": {\n      \"get\": {\n        \"summary\": \"Find characters\",\n        \"description\": \"This endpoint returns all characters by default, or you can filter by `name` and `type` via query parameters.\\n\",\n        \"security\": [\n          {\n            \"apiKey\": []\n          }\n        ],\n        \"parameters\": [\n          {\n            \"name\": \"name\",\n            \"in\": \"query\",\n            \"description\": \"Filters the results by character name. This is a wildcard search, so `?name=man` will reeturn \\\"Superman\\\", \\\"Batman\\\", and \\\"Wonder Woman\\\".\\n\",\n            \"schema\": {\n              \"type\": \"string\"\n            }\n          },\n          {\n            \"name\": \"type\",\n            \"in\": \"query\",\n            \"description\": \"Filters the results by character type (i.e. \\\"hero\\\", \\\"sidekick\\\", or \\\"villain\\\").\\n\",\n            \"schema\": {\n              \"type\": \"string\",\n              \"enum\": [\n                \"hero\",\n                \"sidekick\",\n                \"villain\"\n              ]\n            }\n          }\n        ],\n        \"responses\": {\n          \"200\": {\n            \"description\": \"Returns all characters that matched the filter criteria. If there are no matching characters, then the response is an empty array.\\n\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"type\": \"array\",\n                  \"items\": {\n                    \"$ref\": \"#/components/schemas/CharacterResponse\"\n                  }\n                }\n              }\n            }\n          },\n          \"400\": {\n            \"description\": \"Something is wrong with the request. For example, the `type` query parameter is not a valid character type.\\n\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/ErrorResponse\"\n                }\n              }\n            }\n          }\n        }\n      },\n      \"post\": {\n        \"summary\": \"Creates a new character\",\n        \"description\": \"This endpoint creates a new character. For heroes, you can also create the sidekick and/or nemesis at the same time by setting the `sidekick` and/or `nemesis` properties to objects rather than strings.\\n\",\n        \"security\": [\n          {\n            \"apiKey\": []\n          }\n        ],\n        \"responses\": {\n          \"201\": {\n            \"description\": \"The character was created successfully\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/CharacterResponse\"\n                }\n              }\n            }\n          },\n          \"400\": {\n            \"description\": \"Something is wrong with the request, such as invalid character data.\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/ErrorResponse\"\n                }\n              }\n            }\n          },\n          \"409\": {\n            \"description\": \"There is already an existing character with the same (or very similar) name.\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/ErrorResponse\"\n                }\n              }\n            }\n          }\n        },\n        \"requestBody\": {\n          \"content\": {\n            \"application/json\": {\n              \"schema\": {\n                \"$ref\": \"#/components/schemas/CharacterHierarchy\"\n              }\n            }\n          },\n          \"required\": true\n        }\n      },\n      \"delete\": {\n        \"summary\": \"Deletes all characters\",\n        \"description\": \"This endpoint deletes **all** characters.  It's mostly just used during testing, to reset state between each test.\\n\",\n        \"security\": [\n          {\n            \"apiKey\": []\n          }\n        ],\n        \"responses\": {\n          \"200\": {\n            \"description\": \"All charactes were deleted\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"type\": \"object\",\n                  \"required\": [\n                    \"count\",\n                    \"message\"\n                  ],\n                  \"additionalProperties\": false,\n                  \"properties\": {\n                    \"count\": {\n                      \"type\": \"integer\"\n                    },\n                    \"message\": {\n                      \"type\": \"string\"\n                    }\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    },\n    \"/characters/{slug}\": {\n      \"parameters\": [\n        {\n          \"name\": \"slug\",\n          \"in\": \"path\",\n          \"required\": true,\n          \"schema\": {\n            \"type\": \"string\",\n            \"pattern\": \"^[a-z0-9]+$\"\n          }\n        }\n      ],\n      \"get\": {\n        \"summary\": \"Get a specific character\",\n        \"description\": \"This endpoint returns a specific character, given its slug. The slug is the character's name, lowercased, with all non-alphanumeric characters removed. For example, the slug for \\\"Wonder Woman\\\" would be \\\"wonderwoman\\\".\\n\",\n        \"security\": [\n          {\n            \"apiKey\": []\n          }\n        ],\n        \"responses\": {\n          \"200\": {\n            \"description\": \"Returns the requested character\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/CharacterResponse\"\n                }\n              }\n            }\n          },\n          \"400\": {\n            \"description\": \"Something is wrong with the request, such as invalid character slug.\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/ErrorResponse\"\n                }\n              }\n            }\n          },\n          \"404\": {\n            \"description\": \"There is no character with the specified slug.\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/ErrorResponse\"\n                }\n              }\n            }\n          }\n        }\n      },\n      \"put\": {\n        \"summary\": \"Updates a character\",\n        \"description\": \"This endpoint updates an existing character. Unlike the `POST /characters` endpoint, you _cannot_ update multiple characters at a time.\\n\",\n        \"security\": [\n          {\n            \"apiKey\": []\n          }\n        ],\n        \"responses\": {\n          \"201\": {\n            \"description\": \"The character was successfully updated\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/CharacterResponse\"\n                }\n              }\n            }\n          },\n          \"400\": {\n            \"description\": \"Something is wrong with the request, such as invalid character data.\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/ErrorResponse\"\n                }\n              }\n            }\n          },\n          \"409\": {\n            \"description\": \"There is already an existing character with the same (or very similar) name.\",\n            \"content\": {\n              \"application/json\": {\n                \"schema\": {\n                  \"$ref\": \"#/components/schemas/ErrorResponse\"\n                }\n              }\n            }\n          }\n        },\n        \"requestBody\": {\n          \"content\": {\n            \"application/json\": {\n              \"schema\": {\n                \"$ref\": \"#/components/schemas/CharacterUpdate\"\n              }\n            }\n          },\n          \"required\": true\n        }\n      }\n    }\n  },\n  \"components\": {\n    \"schemas\": {\n      \"APIInfo\": {\n        \"type\": \"object\",\n        \"required\": [\n          \"name\",\n          \"version\",\n          \"description\",\n          \"links\"\n        ],\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"name\": {\n            \"type\": \"string\"\n          },\n          \"version\": {\n            \"type\": \"string\"\n          },\n          \"description\": {\n            \"type\": \"string\"\n          },\n          \"links\": {\n            \"type\": \"object\",\n            \"required\": [\n              \"characters\",\n              \"www\",\n              \"schema\",\n              \"docs\"\n            ],\n            \"additionalProperties\": false,\n            \"properties\": {\n              \"characters\": {\n                \"type\": \"string\"\n              },\n              \"www\": {\n                \"type\": \"string\"\n              },\n              \"schema\": {\n                \"type\": \"string\"\n              },\n              \"docs\": {\n                \"type\": \"string\"\n              }\n            }\n          }\n        }\n      },\n      \"CharacterHierarchy\": {\n        \"type\": \"object\",\n        \"required\": [\n          \"name\"\n        ],\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"name\": {\n            \"type\": \"string\",\n            \"minLength\": 1\n          },\n          \"type\": {\n            \"type\": \"string\",\n            \"enum\": [\n              \"hero\",\n              \"sidekick\",\n              \"villain\"\n            ]\n          },\n          \"powers\": {\n            \"type\": \"array\",\n            \"minItems\": 0,\n            \"items\": {\n              \"type\": \"string\",\n              \"minLength\": 1\n            }\n          },\n          \"weakness\": {\n            \"type\": \"string\",\n            \"minLength\": 0\n          },\n          \"bio\": {\n            \"type\": \"string\",\n            \"minLength\": 0\n          },\n          \"sidekick\": {\n            \"type\": \"object\"\n          },\n          \"nemesis\": {\n            \"type\": \"object\"\n          }\n        }\n      },\n      \"CharacterUpdate\": {\n        \"type\": \"object\",\n        \"required\": [\n          \"name\",\n          \"type\"\n        ],\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"name\": {\n            \"type\": \"string\",\n            \"minLength\": 1\n          },\n          \"type\": {\n            \"type\": \"string\",\n            \"enum\": [\n              \"hero\",\n              \"sidekick\",\n              \"villain\"\n            ]\n          },\n          \"powers\": {\n            \"type\": \"array\",\n            \"minItems\": 0,\n            \"items\": {\n              \"type\": \"string\",\n              \"minLength\": 1\n            }\n          },\n          \"weakness\": {\n            \"type\": \"string\",\n            \"minLength\": 0\n          },\n          \"bio\": {\n            \"type\": \"string\",\n            \"minLength\": 0\n          },\n          \"sidekick\": {\n            \"type\": \"string\",\n            \"minLength\": 0\n          },\n          \"nemesis\": {\n            \"type\": \"string\",\n            \"minLength\": 0\n          }\n        }\n      },\n      \"CharacterResponse\": {\n        \"type\": \"object\",\n        \"required\": [\n          \"name\",\n          \"type\",\n          \"powers\",\n          \"weakness\",\n          \"bio\",\n          \"links\"\n        ],\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"name\": {\n            \"type\": \"string\",\n            \"minLength\": 1\n          },\n          \"type\": {\n            \"type\": \"string\",\n            \"enum\": [\n              \"hero\",\n              \"sidekick\",\n              \"villain\"\n            ]\n          },\n          \"powers\": {\n            \"type\": \"array\",\n            \"minItems\": 0,\n            \"items\": {\n              \"type\": \"string\",\n              \"minLength\": 1\n            }\n          },\n          \"weakness\": {\n            \"type\": \"string\",\n            \"minLength\": 0\n          },\n          \"bio\": {\n            \"type\": \"string\",\n            \"minLength\": 0\n          },\n          \"links\": {\n            \"type\": \"object\",\n            \"required\": [\n              \"self\"\n            ],\n            \"additionalProperties\": false,\n            \"properties\": {\n              \"self\": {\n                \"type\": \"string\",\n                \"minLength\": 1\n              },\n              \"sidekick\": {\n                \"type\": \"string\",\n                \"minLength\": 1\n              },\n              \"nemesis\": {\n                \"type\": \"string\",\n                \"minLength\": 1\n              }\n            }\n          }\n        }\n      },\n      \"ErrorResponse\": {\n        \"type\": \"object\",\n        \"required\": [\n          \"error\",\n          \"message\"\n        ],\n        \"additionalProperties\": false,\n        \"properties\": {\n          \"error\": {\n            \"type\": \"string\",\n            \"minLength\": 1\n          },\n          \"message\": {\n            \"type\": \"string\",\n            \"minLength\": 1\n          }\n        }\n      }\n    },\n    \"securitySchemes\": {\n      \"apiKey\": {\n        \"type\": \"apiKey\",\n        \"in\": \"header\",\n        \"name\": \"X-API-Key\",\n        \"description\": \"Because this API is meant for demo and training purposes, it doesn't have very strict authentication requirements. You can set the `X-API-Key` header to any alphanumeric value. As long as it's a unique value, you won't have any conflicts with anyone else who's also calling the API.\\nAny API calls that _don't_ include an `X-API-Key` header will default to the \\\"DEMO\\\" account, which means that conflicts are very likely.\\n\"\n      }\n    }\n  }\n}\n"
+				}
+			]
+		},
+		{
+			"name": "Get all characters",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-API-Key",
+						"value": "{{API_KEY}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{API_ROOT}}/characters",
+					"host": [
+						"{{API_ROOT}}"
+					],
+					"path": [
+						"characters"
+					]
+				},
+				"description": "This endpoint returns all characters, sorted by name.  This includes all heroes, sidekicks, and villains."
+			},
+			"response": [
+				{
+					"id": "64ca95df-5bd8-4bec-879c-04755251bce1",
+					"name": "Get all characters",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{API_ROOT}}/characters",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "643",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 29 Oct 2017 01:16:41 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 30133b786ec5b68f6563963b6ae45028.cloudfront.net (CloudFront)",
+							"name": "Via",
+							"description": "Informs the client of proxies through which the response was sent."
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "eHg07Vlk84k3n4gGk3COQi_fSfHHNml4KTFRpO9IkOKEjCviEbRRyw==",
+							"name": "X-Amz-Cf-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "sampled=0;root=1-59f52bf5-25a2449f9443afa634c0b56c",
+							"name": "X-Amzn-Trace-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront",
+							"name": "X-Cache",
+							"description": "Custom header"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "cfbcf842-bc46-11e7-bef9-33cfcc865b6e",
+							"name": "x-amzn-RequestId",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"responseTime": 4159,
+					"body": "[{\"name\":\"Professor Capital\",\"type\":\"villain\",\"powers\":[],\"weakness\":\"\",\"bio\":\"\",\"links\":{\"self\":\"https://api.heroes.bigstickcarpet.com/characters/professorcapital\"}},{\"name\":\"Startup Man\",\"type\":\"hero\",\"powers\":[],\"weakness\":\"\",\"bio\":\"\",\"links\":{\"self\":\"https://api.heroes.bigstickcarpet.com/characters/startupman\",\"sidekick\":\"https://api.heroes.bigstickcarpet.com/characters/theincrediblemvp\",\"nemesis\":\"https://api.heroes.bigstickcarpet.com/characters/professorcapital\"}},{\"name\":\"The Incredible MVP\",\"type\":\"sidekick\",\"powers\":[],\"weakness\":\"\",\"bio\":\"\",\"links\":{\"self\":\"https://api.heroes.bigstickcarpet.com/characters/theincrediblemvp\"}}]"
+				}
+			]
+		},
+		{
+			"name": "Search for characters",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-API-Key",
+						"value": "{{API_KEY}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{API_ROOT}}/characters?name={{NAME}}&type={{TYPE}}",
+					"host": [
+						"{{API_ROOT}}"
+					],
+					"path": [
+						"characters"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "{{NAME}}",
+							"equals": true,
+							"description": "The `type` parameter must be `hero`, `sidekick`, or `villain`.  Only characters of the specified type will be returned."
+						},
+						{
+							"key": "type",
+							"value": "{{TYPE}}",
+							"equals": true,
+							"description": "The `name` parameter is case-insensitive and supports substring matches.  For example, `?name=man` will match Super Man, Batman, and Wonder Woman."
+						}
+					]
+				},
+				"description": "You can filter the list of characters by `name` and/or `type` via query parameters.  If you specify both criteria, then only characters that match _both_ will be returned."
+			},
+			"response": []
+		},
+		{
+			"name": "Get a specific character",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-API-Key",
+						"value": "{{API_KEY}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{API_ROOT}}/characters/{{SLUG}}",
+					"host": [
+						"{{API_ROOT}}"
+					],
+					"path": [
+						"characters",
+						"{{SLUG}}"
+					]
+				},
+				"description": "This endpoint returns a specific character, given its slug. The slug is the character's name, lowercased, with all non-alphanumeric characters removed. For example, the slug for \"Wonder Woman\" would be \"wonderwoman\".\n"
+			},
+			"response": [
+				{
+					"id": "abc2789f-e30f-4bf4-85e5-2c545f99c1fe",
+					"name": "Get a specific character",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{API_ROOT}}/characters/{{SLUG}}",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"characters",
+								"{{SLUG}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "354",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 29 Oct 2017 01:41:15 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Location",
+							"value": "https://api.heroes.bigstickcarpet.com/characters/supercoder",
+							"name": "Location",
+							"description": "Used in redirection, or when a new resource has been created."
+						},
+						{
+							"key": "Via",
+							"value": "1.1 db75847fab4e709c030dc822692c0e78.cloudfront.net (CloudFront)",
+							"name": "Via",
+							"description": "Informs the client of proxies through which the response was sent."
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "DMny8Ldyc_ZSwlolMTksxGg3lEN8YJ0ZUKP9K521e59YZeDDSkK45A==",
+							"name": "X-Amz-Cf-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "sampled=0;root=1-59f531bb-7c94e43dbf221e4e935af950",
+							"name": "X-Amzn-Trace-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront",
+							"name": "X-Cache",
+							"description": "Custom header"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "408cf2af-bc4a-11e7-a938-4bb55f836b55",
+							"name": "x-amzn-RequestId",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"responseTime": 445,
+					"body": "{\"name\":\"Super Coder\",\"type\":\"hero\",\"powers\":[\"10-xing\",\"Caffeine\"],\"weakness\":\"Imposter syndrome\",\"bio\":\"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\"links\":{\"self\":\"https://api.heroes.bigstickcarpet.com/characters/supercoder\",\"sidekick\":\"https://api.heroes.bigstickcarpet.com/characters/stackoverflow\"}}"
+				}
+			]
+		},
+		{
+			"name": "Create a new character",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-API-Key",
+						"value": "{{API_KEY}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{API_ROOT}}/characters",
+					"host": [
+						"{{API_ROOT}}"
+					],
+					"path": [
+						"characters"
+					]
+				},
+				"description": "This endpoint creates a new character. The following properties are allowed:\n\n|Property       |Type       |Required?  |Description\n|:--------------|:----------|:----------|:-----------------------\n|`name`         |`string`   |yes        |The character's name. You'll get a `409 (Conflict)` error if the name is not unique.\n|`type`         |`string`   |no         |Must be `hero`, `sidekick`, or `villain`. Defaults to `hero`.\n|`powers`       |`array` of `string`|no |An array of the character's super powers\n|`weakness`     |`string`   |no         |The character's weakness\n|`bio`          |`string`   |no         |A little background information about the character\n\nIn addition to the properties listed above, heroes can also have a `sidekick` and/or `nemesis`. The `sidekick` and `nemesis` properties can either a be the URL of an existing character (e.g. `http://api.heroes.bigstickcarpet.com/characters/codereviewboy`) or a nested character object. If you specify nested characters, then they will also be created in addition to the hero.\n\n> **WARNING:**  You'll get a `400 (Bad Request)` error if you try to assign a sidekick or nemesis to a character that's not a hero."
+			},
+			"response": [
+				{
+					"id": "acd56b15-077d-4f76-a013-86ece3154298",
+					"name": "Create a new character",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Super Coder\",\n\t\"powers\": [\n\t\t\"10-xing\",\n\t\t\"Caffeine\"\n\t],\n\t\"weakness\": \"Imposter syndrome\",\n\t\"bio\": \"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\n\t\"sidekick\": {\n\t\t\"name\": \"Stack Overflow\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/characters",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "354",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 29 Oct 2017 01:39:16 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Location",
+							"value": "https://api.heroes.bigstickcarpet.com/characters/supercoder",
+							"name": "Location",
+							"description": "Used in redirection, or when a new resource has been created."
+						},
+						{
+							"key": "Via",
+							"value": "1.1 db75847fab4e709c030dc822692c0e78.cloudfront.net (CloudFront)",
+							"name": "Via",
+							"description": "Informs the client of proxies through which the response was sent."
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "icTIEJBOFIcvHCx0t0hLoJdMNB3TUd0L0ru37IFBU7VBAMhKU5NSnQ==",
+							"name": "X-Amz-Cf-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "sampled=0;root=1-59f53143-166bd2026152aa070ce12aa2",
+							"name": "X-Amzn-Trace-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront",
+							"name": "X-Cache",
+							"description": "Custom header"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "f93a9515-bc49-11e7-88b1-fb6f89b7df17",
+							"name": "x-amzn-RequestId",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"responseTime": 902,
+					"body": "{\"name\":\"Super Coder\",\"type\":\"hero\",\"powers\":[\"10-xing\",\"Caffeine\"],\"weakness\":\"Imposter syndrome\",\"bio\":\"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\"links\":{\"self\":\"https://api.heroes.bigstickcarpet.com/characters/supercoder\",\"sidekick\":\"https://api.heroes.bigstickcarpet.com/characters/stackoverflow\"}}"
+				}
+			]
+		},
+		{
+			"name": "Update a character",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-API-Key",
+						"value": "{{API_KEY}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{API_ROOT}}/characters/{{SLUG}}",
+					"host": [
+						"{{API_ROOT}}"
+					],
+					"path": [
+						"characters",
+						"{{SLUG}}"
+					]
+				},
+				"description": "This endpoint updates an existing character. The allowed properties are the same as the `POST /characters` endpoint. \n\n> **NOTE:** You _cannot_ update nested characters (i.e. sidekick or nemesis) at the same time as the top-level hero. You must update each character separately"
+			},
+			"response": [
+				{
+					"id": "69cfaec5-c05e-44d3-ba3d-c87784c13d94",
+					"name": "Update a character",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Super Coder\",\n    \"type\": \"hero\",\n    \"powers\": [\n        \"10-xing\",\n        \"Caffeine\"\n    ],\n    \"weakness\": \"Imposter syndrome\",\n    \"bio\": \"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\n    \"sidekick\": \"https://api.heroes.bigstickcarpet.com/characters/stackoverflow\"\n}"
+						},
+						"url": {
+							"raw": "{{API_ROOT}}/characters/{{SLUG}}",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"characters",
+								"{{SLUG}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "354",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 29 Oct 2017 01:44:42 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Location",
+							"value": "https://api.heroes.bigstickcarpet.com/characters/supercoder",
+							"name": "Location",
+							"description": "Used in redirection, or when a new resource has been created."
+						},
+						{
+							"key": "Via",
+							"value": "1.1 45fb37f23f8c197bc04619b2c1f97347.cloudfront.net (CloudFront)",
+							"name": "Via",
+							"description": "Informs the client of proxies through which the response was sent."
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "4kpYWl9Ub5xsi5Rl4FCa5NOeXgp-zCPswa7sVEyiq84qJkWFZL8gNQ==",
+							"name": "X-Amz-Cf-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "sampled=0;root=1-59f53289-af2b750da7fd5676279a6942",
+							"name": "X-Amzn-Trace-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront",
+							"name": "X-Cache",
+							"description": "Custom header"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "bb6612b5-bc4a-11e7-833b-0b6e1979d829",
+							"name": "x-amzn-RequestId",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"responseTime": 801,
+					"body": "{\"name\":\"Super Coder\",\"type\":\"hero\",\"powers\":[\"10-xing\",\"Caffeine\"],\"weakness\":\"Imposter syndrome\",\"bio\":\"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\"links\":{\"self\":\"https://api.heroes.bigstickcarpet.com/characters/supercoder\",\"sidekick\":\"https://api.heroes.bigstickcarpet.com/characters/stackoverflow\"}}"
+				}
+			]
+		},
+		{
+			"name": "Delete all characters",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "X-API-Key",
+						"value": "{{API_KEY}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{API_ROOT}}/characters",
+					"host": [
+						"{{API_ROOT}}"
+					],
+					"path": [
+						"characters"
+					]
+				},
+				"description": "This endpoint deletes **all** of your characters.  It's mostly just used during testing, to reset state between each test."
+			},
+			"response": [
+				{
+					"id": "eaa11552-137a-4447-86f5-d224cbd143ec",
+					"name": "Delete all characters",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "{{API_KEY}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{API_ROOT}}/characters",
+							"host": [
+								"{{API_ROOT}}"
+							],
+							"path": [
+								"characters"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "49",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 29 Oct 2017 01:45:47 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 45fb37f23f8c197bc04619b2c1f97347.cloudfront.net (CloudFront)",
+							"name": "Via",
+							"description": "Informs the client of proxies through which the response was sent."
+						},
+						{
+							"key": "X-Amz-Cf-Id",
+							"value": "S1dhq-dB-l__lAfP4kO6t2cFC1cmO7QESt5hlyDjR0o3uXgEOhTl9Q==",
+							"name": "X-Amz-Cf-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Amzn-Trace-Id",
+							"value": "sampled=0;root=1-59f532ca-1e48808eb91304a77c2e6575",
+							"name": "X-Amzn-Trace-Id",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Cache",
+							"value": "Miss from cloudfront",
+							"name": "X-Cache",
+							"description": "Custom header"
+						},
+						{
+							"key": "x-amzn-RequestId",
+							"value": "e2578e0d-bc4a-11e7-9f57-8d843b12730c",
+							"name": "x-amzn-RequestId",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"responseTime": 513,
+					"body": "{\"count\":5,\"message\":\"5 characters were deleted\"}"
+				}
+			]
+		}
+	]
+}
