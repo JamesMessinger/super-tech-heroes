@@ -7,11 +7,11 @@ Super Tech Heroes
 [![Coverage Status](https://coveralls.io/repos/BigstickCarpet/super-tech-heroes/badge.svg?branch=master&service=github)](https://coveralls.io/r/BigstickCarpet/super-tech-heroes)
 [![Codacy Score](https://api.codacy.com/project/badge/Grade/801b3bea7fab4c2f83c228014020a9ba)](https://www.codacy.com/public/jamesmessinger/super-tech-heroes)
 
-Super Tech Heroes is a list of technology- and software-themed superheroes and villains, which I use for demos and [training](https://github.com/BigstickCarpet/super-powered-api-testing). It demonstrates various aspects of web development, API development, and testing.
+Super Tech Heroes is a list of technology- and software-themed superheroes and villains, which I use for demos and [training](http://apitesting.bigstickcarpet.com/). It demonstrates various aspects of web development, API development, and testing.
 
 - [Website](http://heroes.bigstickcarpet.com)
 - [Docker image](https://hub.docker.com/r/bigstickcarpet/super-tech-heroes/)
-- [REST API](https://api.heroes.bigstickcarpet.com) ([documentation](https://documenter.getpostman.com/view/220187/super-tech-heroes-api/XXXXXXX))
+- [REST API](https://api.heroes.bigstickcarpet.com) ([documentation](https://documenter.getpostman.com/view/220187/super-tech-heroes-api/77cf6KB))
 
 
 Work In Progress
