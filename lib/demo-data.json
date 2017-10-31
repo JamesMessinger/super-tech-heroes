@@ -108,13 +108,13 @@
     "powers": [
       "Hungarian Notation"
     ],
-    "weakness": "Can tell you how, but not why",
+    "weakness": "",
     "bio": "",
     "nemesis": {
       "name": "Dr. Self-Documented",
       "powers": [
       ],
-      "weakness": "",
+      "weakness": "Can tell you how, but not why",
       "bio": "Unknown."
     }
   },
