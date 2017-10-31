@@ -89,6 +89,9 @@ ul.character-list > li {
 
 ul.character-list > li.loading {
   display: block;
+  width: 90%;
+  max-width: 900px;
+  margin: 10px auto;
   text-align: center;
 }
 
