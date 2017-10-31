@@ -31,7 +31,7 @@
       "Backward Compatibility"
     ],
     "weakness": "Safari",
-    "bio": "On the ancient island of the Standardistas, Web Standards Woman uphalds the values of truth, justice, and the W3C.",
+    "bio": "From the ancient island of the Standardistas, Web Standards Woman upholds the values of truth, justice, and the W3C.",
     "nemesis": {
       "name": "IE 6",
       "powers": [
@@ -204,8 +204,9 @@
     "nemesis": {
       "name": "The Feature Creep",
       "powers": [
+        "that one convenient feature"
       ],
-      "weakness": "",
+      "weakness": "Well-written product specs",
       "bio": ""
     }
   },
@@ -232,28 +233,31 @@
       "More is better"
     ],
     "weakness": "Nested code",
-    "bio": "",
+    "bio": "When four spaces combine, they become ... a tab? No! The best number of spaces!",
     "nemesis": {
       "name": "The Terrible Tab",
       "powers": [
         "Being objectively superior",
         "Less is more"
       ],
-      "weakness": "",
-      "bio": ""
+      "weakness": "inconsistent screen rendering",
+      "bio": "The Terrible Tab's motto 'Type what you mean, not what you see.' But it comes at a terrible price ..."
     }
   },
   {
     "name": "Mister Emacs",
     "powers": [
+      "shortcuts",
+      "lisp"
     ],
     "weakness": "The Learning Curve",
-    "bio": "",
+    "bio": "Who needs an operating system?",
     "nemesis": {
       "name": "Invader VIM",
       "powers": [
+        "modal editing"
       ],
-      "weakness": "",
+      "weakness": ":q",
       "bio": ""
     }
   }
