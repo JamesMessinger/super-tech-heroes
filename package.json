@@ -54,11 +54,11 @@
     "eslint-plugin-react": "^7.4.0",
     "istanbul": "^0.4.5",
     "mocha": "^4.0.1",
-    "npm-check": "^5.4.5",
+    "npm-check": "^5.5.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "simplifyify": "^3.2.4",
-    "swagger2openapi": "^2.9.2",
+    "swagger2openapi": "^2.10.0",
     "yamljs": "^0.3.0"
   },
   "dependencies": {
