@@ -7,14 +7,14 @@
       "Load testing"
     ],
     "weakness": "Happy paths",
-    "bio": "",
+    "bio": "After his parent process was killed in a tragic code coverage accident Testing Man has dedicated his life to preventing regressions and fighting the scourge of feature creep that threaten his beloved application.",
     "sidekick": {
       "name": "Code Review Boy",
       "powers": [
         "Diff libraries"
       ],
-      "weakness": "",
-      "bio": "After his parent process was killed in a tragic code coverage accident Testing Man has dedicated his life to preventing regressions and fighting the scourge of feature creep that threaten his beloved application."
+      "weakness": "Leaky Abstractions",
+      "bio": "Adopted by Testing Man from the circus, Code Review Boy faithfully helps Testing Man fight bugs and code smells."
     },
     "nemesis": {
       "name": "Time Cruncher",
@@ -31,7 +31,7 @@
       "Backward Compatibility"
     ],
     "weakness": "Safari",
-    "bio": "",
+    "bio": "On the ancient island of the Standardistas, Web Standards Woman uphalds the values of truth, justice, and the W3C.",
     "nemesis": {
       "name": "IE 6",
       "powers": [
@@ -63,21 +63,23 @@
       "Distributed Version Control"
     ],
     "weakness": "Merge Conflicts",
-    "bio": "",
+    "bio": "Forged in the fires of Linux development, Git Girl is the master of commits!",
     "sidekick": {
       "name": "Manpage Man",
       "powers": [
+        "command flags"
       ],
-      "weakness": "",
+      "weakness": "out of date docs",
       "bio": ""
     },
     "nemesis": {
       "name": "The Inscrutable Git CLI",
       "powers": [
-        "The Git CLI"
+        "The Git CLI",
+        "Technical correctness"
       ],
       "weakness": "The Git CLI",
-      "bio": ""
+      "bio": "GUIs are for the weak."
     }
   },
   {
@@ -210,14 +212,16 @@
   {
     "name": "The Flash Download",
     "powers": [
+      "symmetric connections"
     ],
     "weakness": "Comcast",
     "bio": "",
     "nemesis": {
       "name": "Data CAPtain",
       "powers": [
+        "Data Caps"
       ],
-      "weakness": "",
+      "weakness": "Torrents",
       "bio": ""
     }
   },
