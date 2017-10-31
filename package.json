@@ -26,7 +26,7 @@
     "schemas"
   ],
   "scripts": {
-    "lint": "eslint bin lib test docs/js/super-tech-heroes.js --fix",
+    "lint": "eslint bin lib test docs/js/src --fix",
     "build": "scripts/build.sh",
     "test": "mocha",
     "test:offline": ". scripts/dynamodb-local.sh && npm test",
@@ -41,14 +41,23 @@
     "release": "scripts/release.sh"
   },
   "devDependencies": {
+    "axios": "^0.17.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.1.2",
     "codacy-coverage": "^2.0.3",
     "coveralls": "^3.0.0",
     "eslint": "^4.10.0",
     "eslint-config-modular": "^4.1.0",
+    "eslint-plugin-react": "^7.4.0",
     "istanbul": "^0.4.5",
     "mocha": "^4.0.1",
     "npm-check": "^5.4.5",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "simplifyify": "^3.2.4",
     "swagger2openapi": "^2.9.2",
     "yamljs": "^0.3.0"
   },

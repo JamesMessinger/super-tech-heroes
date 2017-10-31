@@ -1,0 +1,248 @@
+/* ==========================================================================
+  Global Styles
+  ========================================================================== */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13pt;
+  font-weight: 300;
+  line-height: 1.65;
+  background: #697ec2 linear-gradient(105deg, #6e84c7, #426be4);
+}
+
+img.logo {
+  display: block;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+  Error bar
+  ========================================================================== */
+.error-message {
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  background-color: #d51313;
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+}
+
+/* ==========================================================================
+  Character List
+  ========================================================================== */
+ul.unstyled {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.character-list {
+  display: block;
+  text-align: center;
+}
+
+ul.character-list > li {
+  display: inline-block;
+  margin: 8px;
+  color: #3d3e41;
+  border: white solid 4px;
+  border-radius: 10px;
+  background: #cfd5ed linear-gradient(95deg, #cfd5ed, #eaecf7);
+  text-align: left;
+}
+
+ul.character-list > li.loading {
+  display: block;
+  text-align: center;
+}
+
+ul.related-characters {
+  position: relative;
+  width: 440px;
+  height: 250px;
+  overflow: hidden;
+  font-size: 10pt;
+}
+
+ul.related-characters > li.not-empty {
+  cursor: pointer;
+}
+
+ul.related-characters > li.not-empty:hover {
+  background-color: #eaecf7;
+}
+
+ul.related-characters > li.hero {
+  display: block;
+}
+
+ul.related-characters > li.hero img.avatar {
+  float: left;
+  margin: 10px;
+  height: 120px;
+  width: 120px;
+  border: #3d3e41 solid 2px;
+}
+
+ul.related-characters > li.hero .info {
+  padding: 10px 10px 0 140px;
+}
+
+ul.related-characters > li.hero .name {
+  font-weight: bold;
+  font-size: 16pt;
+}
+
+ul.related-characters > li.hero .powers:before {
+  display: block;
+  content: 'Powers:';
+  font-weight: bold;
+}
+
+ul.related-characters > li.hero .weakness:before {
+  display: block;
+  content: 'Weakness:';
+  font-weight: bold;
+}
+
+ul.related-characters > li.hero .powers,
+ul.related-characters > li.hero .weakness {
+  max-height: 3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+ul.related-characters > li.sidekick,
+ul.related-characters > li.nemesis {
+  width: 49%;
+  padding: 10px;
+}
+
+ul.related-characters > li.sidekick {
+  float: left;
+  clear: both;
+}
+
+ul.related-characters > li.nemesis {
+  float: right;
+}
+
+ul.related-characters > li.sidekick:before,
+ul.related-characters > li.nemesis:before {
+  display: block;
+  font-weight: bold;
+}
+
+ul.related-characters > li.sidekick:before {
+  content: 'Sidekick:';
+}
+
+ul.related-characters > li.nemesis:before {
+  content: 'Nemesis:';
+}
+
+ul.related-characters > li.sidekick img.avatar,
+ul.related-characters > li.nemesis img.avatar {
+  float: left;
+  height: 60px;
+  width: 60px;
+  margin-right: 10px;
+}
+
+ul.related-characters > li.sidekick img.avatar {
+  border: #2e58d3 solid 2px;
+}
+
+ul.related-characters > li.nemesis img.avatar {
+  border: #e41111 solid 2px;
+}
+
+ul.related-characters > li.empty {
+  color: #b1b0b0;
+}
+
+ul.related-characters > li.empty img.avatar {
+  border: #b1b0b0 solid 2px;
+}
+
+
+/* ==========================================================================
+  Helper classes
+  ========================================================================== */
+/*
+ * Hide visually and from screen readers
+ */
+.hidden {
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap; /* 1 */
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  clip-path: none;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+  white-space: inherit;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before,
+.clearfix:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+.clearfix:after {
+  clear: both;
+}

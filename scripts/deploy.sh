@@ -8,7 +8,7 @@
 # Stop on first error
 set -o errexit -o nounset -o pipefail
 
-# Re-build schemas
+# Re-build
 ./scripts/build.sh
 
 echo
