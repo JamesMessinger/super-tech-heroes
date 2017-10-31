@@ -5,5 +5,5 @@ import App from './App';
 // Mount the app into the DOM
 ReactDOM.render(
   <App />,
-  document.getElementById('root')
+  document.getElementById('app')
 );

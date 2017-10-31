@@ -400,7 +400,7 @@ var _App2 = _interopRequireDefault(_App);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Mount the app into the DOM
-_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('root'));
+_reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('app'));
 },{"./App":1,"react":62,"react-dom":59}],5:[function(require,module,exports){
 'use strict';
 
