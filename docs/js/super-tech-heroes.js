@@ -229,7 +229,7 @@ function CharacterDetails(props) {
       _react2.default.createElement(
         'div',
         { className: 'bio' },
-        character.bio || 'none other info'
+        character.bio || 'no bio :('
       )
     );
   } catch (error) {

@@ -29,7 +29,7 @@ export default function CharacterDetails (props) {
             </li>
           </ul>
         </div>
-        <div className="bio">{ character.bio || 'none other info' }</div>
+        <div className="bio">{ character.bio || 'no bio :(' }</div>
       </article>
     );
   }
