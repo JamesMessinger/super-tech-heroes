@@ -46,7 +46,7 @@
     "powers": [
       "JIT Compilation"
     ],
-    "weakness": "",
+    "weakness": "{} + [] === 0",
     "bio": "Dynamic Types Guy can be whatever you want him to be, just be careful what you wish for.",
     "nemesis": {
       "name": "Commander Runtime Error",
@@ -70,7 +70,7 @@
         "command flags"
       ],
       "weakness": "out of date docs",
-      "bio": ""
+      "bio": "When you don't know what a tool can do, Manpage Man is there for you!"
     },
     "nemesis": {
       "name": "The Inscrutable Git CLI",
@@ -117,11 +117,12 @@
     "powers": [
       "Hungarian Notation"
     ],
-    "weakness": "",
+    "weakness": "FIXME",
     "bio": "",
     "nemesis": {
       "name": "Dr. Self-Documented",
       "powers": [
+        "'The code speaks for itself.'"
       ],
       "weakness": "Can tell you how, but not why",
       "bio": "Unknown."
@@ -134,8 +135,8 @@
       "Blank Stare",
       "Turning it on and off again"
     ],
-    "weakness": "",
-    "bio": "",
+    "weakness": "deployments",
+    "bio": "When the gold standard is your own box, you can do anything ... on your own box.",
     "nemesis": {
       "name": "Doctor Ops",
       "powers": [
