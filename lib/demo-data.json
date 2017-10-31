@@ -44,6 +44,7 @@
   {
     "name": "Dynamic Types Guy",
     "powers": [
+      "JIT Compilation"
     ],
     "weakness": "",
     "bio": "Dynamic Types Guy can be whatever you want him to be, just be careful what you wish for.",
@@ -155,8 +156,10 @@
     "nemesis": {
       "name": "Regression Robots",
       "powers": [
+        "Stealth",
+        "Surprise"
       ],
-      "weakness": "",
+      "weakness": "Unit Tests",
       "bio": ""
     }
   },
@@ -224,7 +227,7 @@
       "Being objectively superior",
       "More is better"
     ],
-    "weakness": "",
+    "weakness": "Nested code",
     "bio": "",
     "nemesis": {
       "name": "The Terrible Tab",
