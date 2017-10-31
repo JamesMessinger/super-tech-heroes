@@ -23,10 +23,6 @@ var _CharacterList = require('./CharacterList');
 
 var _CharacterList2 = _interopRequireDefault(_CharacterList);
 
-var _EditCharacter = require('./EditCharacter');
-
-var _EditCharacter2 = _interopRequireDefault(_EditCharacter);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -98,7 +94,7 @@ var App = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      return [_react2.default.createElement(ErrorMessage, { key: '1', error: this.state.error }), _react2.default.createElement(_CharacterList2.default, _extends({ key: '2' }, this.state)), _react2.default.createElement(_EditCharacter2.default, _extends({ key: '3' }, this.state))];
+      return [_react2.default.createElement(ErrorMessage, { key: '1', error: this.state.error }), _react2.default.createElement(_CharacterList2.default, _extends({ key: '2' }, this.state))];
     }
 
     /**
@@ -166,7 +162,82 @@ function ErrorMessage(_ref) {
     error
   ) : null;
 }
-},{"./CharacterList":2,"./EditCharacter":3,"./util":5,"axios":6,"react":62}],2:[function(require,module,exports){
+},{"./CharacterList":3,"./util":5,"axios":6,"react":62}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = CharacterDetails;
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _util = require('./util');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Renders the detailed view of the currently-selected character
+ */
+function CharacterDetails(props) {
+  try {
+    var character = props.character;
+
+    // Get the character's slug (e.g. "wonderwoman")
+
+    var slug = (0, _util.getSlug)(character.links.self);
+
+    return _react2.default.createElement(
+      'article',
+      { className: 'character-details' },
+      _react2.default.createElement('img', { className: 'avatar', src: 'img/avatars/' + slug + '.gif' }),
+      _react2.default.createElement(
+        'div',
+        { className: 'info' },
+        _react2.default.createElement(
+          'h1',
+          { className: 'name' },
+          character.name
+        ),
+        _react2.default.createElement(
+          'ul',
+          { className: 'powers' },
+          character.powers.length === 0 ? _react2.default.createElement(
+            'li',
+            { className: 'power none' },
+            'none'
+          ) : character.powers.map(function (power) {
+            return _react2.default.createElement(
+              'li',
+              { key: power, className: 'power' },
+              power
+            );
+          })
+        ),
+        _react2.default.createElement(
+          'ul',
+          { className: 'weakness' },
+          _react2.default.createElement(
+            'li',
+            { className: character.weakness ? '' : 'none' },
+            character.weakness || 'none'
+          )
+        )
+      ),
+      _react2.default.createElement(
+        'div',
+        { className: 'bio' },
+        character.bio || 'none other info'
+      )
+    );
+  } catch (error) {
+    props.errorHandler(error);
+    return null;
+  }
+}
+},{"./util":5,"react":62}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -180,6 +251,10 @@ exports.default = CharacterList;
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _CharacterDetails = require('./CharacterDetails');
+
+var _CharacterDetails2 = _interopRequireDefault(_CharacterDetails);
 
 var _util = require('./util');
 
@@ -246,7 +321,7 @@ function RelatedCharacters(props) {
       { className: 'unstyled related-characters' },
       _react2.default.createElement(
         'li',
-        { className: 'hero not-empty', title: hero.bio, onClick: function onClick() {
+        { className: 'character hero not-empty', onClick: function onClick() {
             return selectCharacter(hero);
           } },
         _react2.default.createElement('img', { className: 'avatar', src: 'img/avatars/' + slug + '.gif' }),
@@ -268,7 +343,8 @@ function RelatedCharacters(props) {
             { className: 'weakness' },
             hero.weakness || 'none'
           )
-        )
+        ),
+        _react2.default.createElement(_CharacterDetails2.default, _extends({ character: hero }, props))
       ),
       _react2.default.createElement(RelatedCharacter, _extends({ type: 'sidekick', character: sidekick }, props)),
       _react2.default.createElement(RelatedCharacter, _extends({ type: 'nemesis', character: nemesis }, props))
@@ -293,98 +369,20 @@ function RelatedCharacter(props) {
     return true;
   };
   var name = character ? character.name : 'none';
-  var bio = character ? character.bio : '';
 
   return _react2.default.createElement(
     'li',
-    { className: type + ' ' + (character ? 'not-empty' : 'empty'), title: bio, onClick: clickHandler },
+    { className: 'character ' + type + ' ' + (character ? 'not-empty' : 'empty'), onClick: clickHandler },
     _react2.default.createElement('img', { className: 'avatar', src: 'img/avatars/' + slug + '.gif' }),
     _react2.default.createElement(
       'div',
       { className: 'name' },
       name
-    )
+    ),
+    character && _react2.default.createElement(_CharacterDetails2.default, _extends({ character: character }, props))
   );
 }
-},{"./util":5,"react":62}],3:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = EditCharacter;
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _util = require('./util');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * Renders the edit forms for the currently-selected character(s)
- */
-function EditCharacter(props) {
-  try {
-    var selectedCharacter = props.selectedCharacter;
-
-
-    if (!selectedCharacter) {
-      return null;
-    }
-
-    // Get the character's slug (e.g. "wonderwoman")
-    var slug = (0, _util.getSlug)(selectedCharacter.links.self);
-
-    return _react2.default.createElement(
-      'article',
-      { className: 'character-modal' },
-      _react2.default.createElement(
-        'header',
-        { className: 'character-modal-header' },
-        _react2.default.createElement(
-          'h1',
-          { className: 'name' },
-          selectedCharacter.name
-        )
-      ),
-      _react2.default.createElement(
-        'div',
-        { className: 'character-modal-body' },
-        _react2.default.createElement('img', { className: 'avatar', src: 'img/avatars/' + slug + '.gif' }),
-        _react2.default.createElement(
-          'div',
-          { className: 'info' },
-          _react2.default.createElement(
-            'div',
-            { className: 'name' },
-            selectedCharacter.name
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'powers' },
-            hero.powers.length === 0 ? 'none' : hero.powers.join(', ')
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'weakness' },
-            selectedCharacter.weakness || 'none'
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'bio' },
-            selectedCharacter.bio || 'none'
-          )
-        )
-      )
-    );
-  } catch (error) {
-    props.errorHandler(error);
-    return null;
-  }
-}
-},{"./util":5,"react":62}],4:[function(require,module,exports){
+},{"./CharacterDetails":2,"./util":5,"react":62}],4:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');

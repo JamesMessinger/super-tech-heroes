@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 import { getQueryParam } from './util';
 import CharacterList from './CharacterList';
-import EditCharacter from './EditCharacter';
 
 /**
  * The entire Super Tech Heroes app
@@ -57,8 +56,7 @@ export default class App extends React.Component {
   render () {
     return [
       <ErrorMessage key="1" error={this.state.error} />,
-      <CharacterList key="2" { ...this.state } />,
-      <EditCharacter key="3" { ...this.state } />
+      <CharacterList key="2" { ...this.state } />
     ];
   }
 

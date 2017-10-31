@@ -1,4 +1,5 @@
 import React from 'react';
+import CharacterDetails from './CharacterDetails';
 import { findByUrl, getSlug } from './util';
 
 /**
@@ -47,7 +48,7 @@ function RelatedCharacters (props) {
   return (
     <li>
       <ul className="unstyled related-characters">
-        <li className="hero not-empty" title={ hero.bio } onClick={ () => selectCharacter(hero) }>
+        <li className="character hero not-empty" onClick={ () => selectCharacter(hero) }>
           <img className="avatar" src={ `img/avatars/${slug}.gif` } />
           <div className="info">
             <div className="name">{ hero.name }</div>
@@ -62,6 +63,7 @@ function RelatedCharacters (props) {
             </div>
             <div className="weakness">{ hero.weakness || 'none' }</div>
           </div>
+          <CharacterDetails character={ hero } { ...props } />
         </li>
         <RelatedCharacter type="sidekick" character={ sidekick } { ...props } />
         <RelatedCharacter type="nemesis" character={ nemesis } { ...props } />
@@ -80,12 +82,12 @@ function RelatedCharacter (props) {
   let slug = character ? getSlug(character.links.self) : 'anonymous';
   let clickHandler = character ? () => selectCharacter(character) : () => true;
   let name = character ? character.name : 'none';
-  let bio = character ? character.bio : '';
 
   return (
-    <li className={ `${type} ${character ? 'not-empty' : 'empty'}` } title={ bio } onClick={ clickHandler }>
+    <li className={ `character ${type} ${character ? 'not-empty' : 'empty'}` } onClick={ clickHandler }>
       <img className="avatar" src={ `img/avatars/${slug}.gif` } />
       <div className="name">{ name }</div>
+      { character && <CharacterDetails character={ character } { ...props } /> }
     </li>
   );
 }

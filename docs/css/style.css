@@ -81,7 +81,7 @@ ul.related-characters > li.hero {
   display: block;
 }
 
-ul.related-characters > li.hero img.avatar {
+ul.related-characters > li.hero > img.avatar {
   float: left;
   margin: 10px;
   height: 120px;
@@ -89,29 +89,29 @@ ul.related-characters > li.hero img.avatar {
   border: #3d3e41 solid 2px;
 }
 
-ul.related-characters > li.hero .info {
+ul.related-characters > li.hero > .info {
   padding: 10px 10px 0 140px;
 }
 
-ul.related-characters > li.hero .name {
+ul.related-characters > li.hero > .info > .name {
   font-weight: bold;
   font-size: 16pt;
 }
 
-ul.related-characters > li.hero .powers:before {
+ul.related-characters > li.hero > .info > .powers:before {
   display: block;
   content: 'Powers:';
   font-weight: bold;
 }
 
-ul.related-characters > li.hero .weakness:before {
+ul.related-characters > li.hero > .info > .weakness:before {
   display: block;
   content: 'Weakness:';
   font-weight: bold;
 }
 
-ul.related-characters > li.hero .powers,
-ul.related-characters > li.hero .weakness {
+ul.related-characters > li.hero > .info > .powers,
+ul.related-characters > li.hero > .info > .weakness {
   max-height: 3em;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -146,19 +146,19 @@ ul.related-characters > li.nemesis:before {
   content: 'Nemesis:';
 }
 
-ul.related-characters > li.sidekick img.avatar,
-ul.related-characters > li.nemesis img.avatar {
+ul.related-characters > li.sidekick > img.avatar,
+ul.related-characters > li.nemesis > img.avatar {
   float: left;
   height: 60px;
   width: 60px;
   margin-right: 10px;
 }
 
-ul.related-characters > li.sidekick img.avatar {
+ul.related-characters > li.sidekick > img.avatar {
   border: #2e58d3 solid 2px;
 }
 
-ul.related-characters > li.nemesis img.avatar {
+ul.related-characters > li.nemesis > img.avatar {
   border: #e41111 solid 2px;
 }
 
@@ -166,83 +166,89 @@ ul.related-characters > li.empty {
   color: #b1b0b0;
 }
 
-ul.related-characters > li.empty img.avatar {
+ul.related-characters > li.empty > img.avatar {
   border: #b1b0b0 solid 2px;
 }
 
-
 /* ==========================================================================
-  Helper classes
+  Character Details
   ========================================================================== */
-/*
- * Hide visually and from screen readers
- */
-.hidden {
-  display: none !important;
+li.character > .character-details {
+  display: none;
 }
 
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
-.visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
+li.character:hover > .character-details {
+  display: block;
+}
+
+.character-details {
+  position: fixed;
+  top: 15px;
+  left: 10px;
+  width: 550px;
+  height: 350px;
+  z-index: 1;
+  margin: 8px;
+  color: #3d3e41;
+  border: #000 solid 4px;
+  border-radius: 10px;
+  background: #fff linear-gradient(95deg, #fff, #cfd5ed);
+  text-align: left;
   overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap; /* 1 */
 }
 
-/*
- * Extends the .visuallyhidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-  clip: auto;
-  clip-path: none;
-  height: auto;
+.character-details > img.avatar {
+  float: left;
+  margin: 10px;
+  height: 200px;
+  width: 200px;
+  border: #3d3e41 solid 2px;
+}
+
+.character-details > .info {
+  padding: 10px 10px 0 220px;
+}
+
+.character-details > .info > .name {
+  font-weight: bold;
+  font-size: 20pt;
   margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto;
-  white-space: inherit;
 }
 
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-.invisible {
-  visibility: hidden;
+.character-details > .info > .powers,
+.character-details > .info > .weakness {
+  margin: 0;
+  padding: 0;
 }
 
-/*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-.clearfix:before,
-.clearfix:after {
-  content: " "; /* 1 */
-  display: table; /* 2 */
+.character-details > .info > .powers > li,
+.character-details > .info > .weakness > li {
+  margin-left: 20px;
 }
 
-.clearfix:after {
+.character-details > .info > .powers:before {
+  display: block;
+  content: 'Powers:';
+  font-weight: bold;
+}
+
+.character-details > .info > .weakness:before {
+  display: block;
+  content: 'Weakness:';
+  font-weight: bold;
+}
+
+.character-details > .bio:before {
+  display: block;
+  content: 'Biography:';
+  font-weight: bold;
+}
+
+.character-details > .bio {
+  display: block;
   clear: both;
+  padding: 0 10px;
+  max-height: 100px;
+  overflow: auto;
+  font-size: larger;
 }
