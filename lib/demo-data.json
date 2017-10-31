@@ -2,12 +2,16 @@
   {
     "name": "Testing Man",
     "powers": [
+      "Unit Tests",
+      "E2E",
+      "Load testing"
     ],
-    "weakness": "",
+    "weakness": "Happy paths",
     "bio": "",
     "sidekick": {
       "name": "Code Review Boy",
       "powers": [
+        "Diff libraries"
       ],
       "weakness": "",
       "bio": "After his parent process was killed in a tragic code coverage accident Testing Man has dedicated his life to preventing regressions and fighting the scourge of feature creep that threaten his beloved application."
@@ -15,8 +19,9 @@
     "nemesis": {
       "name": "Time Cruncher",
       "powers": [
+        "It's already Thursday?"
       ],
-      "weakness": "",
+      "weakness": "Rolling deadlines",
       "bio": "Since the Dawn of UTC the Time Cruncher has meticulously thwarted Testing Man with arbitrary deadlines and binding contractual delivery dates."
     }
   },
@@ -54,8 +59,9 @@
   {
     "name": "Git Girl",
     "powers": [
+      "Distributed Version Control"
     ],
-    "weakness": "",
+    "weakness": "Merge Conflicts",
     "bio": "",
     "sidekick": {
       "name": "Manpage Man",
@@ -140,8 +146,11 @@
   {
     "name": "QA Woman",
     "powers": [
+      "Selenium",
+      "Continuous Integration",
+      "Random keyboard typing"
     ],
-    "weakness": "",
+    "weakness": "Users",
     "bio": "",
     "nemesis": {
       "name": "Regression Robots",
@@ -154,26 +163,35 @@
   {
     "name": "RESTman",
     "powers": [
+      "Performance",
+      "Scalability",
+      "Simplicity"
     ],
     "weakness": "",
     "bio": "Off PUTting at first, RESTman GETs the job done by meeting his challenges HEAD-on predictably and logically. Only DELETEing his foes when it's the only OPTION",
     "nemesis": {
       "name": "The Almighty SOAP",
       "powers": [
+        "Extensibility",
+        "Neutrality",
+        "Independence"
       ],
-      "weakness": "",
+      "weakness": "XML",
       "bio": ""
     }
   },
   {
     "name": "The Project Manager",
     "powers": [
+      "Agile Points",
+      "Kanban Board"
     ],
     "weakness": "",
     "bio": "Forged in the Crucible of Collaboration, the Project Manager seeks to bring harmony to the endless strife between Sales, Engineering, and the Executive. The Hero this company deserves and needs.",
     "sidekick": {
       "name": "Timeline Lad",
       "powers": [
+        "Estimates"
       ],
       "weakness": "",
       "bio": ""
@@ -190,7 +208,7 @@
     "name": "The Flash Download",
     "powers": [
     ],
-    "weakness": "",
+    "weakness": "Comcast",
     "bio": "",
     "nemesis": {
       "name": "Data CAPtain",
@@ -222,7 +240,7 @@
     "name": "Mister Emacs",
     "powers": [
     ],
-    "weakness": "",
+    "weakness": "The Learning Curve",
     "bio": "",
     "nemesis": {
       "name": "Invader VIM",
