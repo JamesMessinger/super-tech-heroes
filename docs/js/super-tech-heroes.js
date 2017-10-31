@@ -246,7 +246,7 @@ function RelatedCharacters(props) {
       { className: 'unstyled related-characters' },
       _react2.default.createElement(
         'li',
-        { className: 'hero not-empty', onClick: function onClick() {
+        { className: 'hero not-empty', title: hero.bio, onClick: function onClick() {
             return selectCharacter(hero);
           } },
         _react2.default.createElement('img', { className: 'avatar', src: 'img/avatars/' + slug + '.gif' }),
@@ -293,10 +293,11 @@ function RelatedCharacter(props) {
     return true;
   };
   var name = character ? character.name : 'none';
+  var bio = character ? character.bio : '';
 
   return _react2.default.createElement(
     'li',
-    { className: type + ' ' + (character ? 'not-empty' : 'empty'), onClick: clickHandler },
+    { className: type + ' ' + (character ? 'not-empty' : 'empty'), title: bio, onClick: clickHandler },
     _react2.default.createElement('img', { className: 'avatar', src: 'img/avatars/' + slug + '.gif' }),
     _react2.default.createElement(
       'div',

@@ -47,7 +47,7 @@ function RelatedCharacters (props) {
   return (
     <li>
       <ul className="unstyled related-characters">
-        <li className="hero not-empty" onClick={ () => selectCharacter(hero) }>
+        <li className="hero not-empty" title={ hero.bio } onClick={ () => selectCharacter(hero) }>
           <img className="avatar" src={ `img/avatars/${slug}.gif` } />
           <div className="info">
             <div className="name">{ hero.name }</div>
@@ -80,9 +80,10 @@ function RelatedCharacter (props) {
   let slug = character ? getSlug(character.links.self) : 'anonymous';
   let clickHandler = character ? () => selectCharacter(character) : () => true;
   let name = character ? character.name : 'none';
+  let bio = character ? character.bio : '';
 
   return (
-    <li className={ `${type} ${character ? 'not-empty' : 'empty'}` } onClick={ clickHandler }>
+    <li className={ `${type} ${character ? 'not-empty' : 'empty'}` } title={ bio } onClick={ clickHandler }>
       <img className="avatar" src={ `img/avatars/${slug}.gif` } />
       <div className="name">{ name }</div>
     </li>
