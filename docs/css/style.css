@@ -32,6 +32,37 @@ img.logo {
 }
 
 /* ==========================================================================
+  What's This?
+  ========================================================================== */
+details.info {
+  display: block;
+  width: 90%;
+  max-width: 900px;
+  margin: 10px auto;
+  border: #b3c5f3 solid 4px;
+  border-radius: 10px;
+  background: #cfd5ed linear-gradient(95deg, #cfd5ed, #eaecf7);
+  color: #557feb;
+  text-align: left;
+  padding: 5px;
+}
+
+details.info > summary {
+  display: block;
+  cursor: pointer;
+  outline: none;
+}
+
+details.info > p {
+  margin: 0;
+  padding: 10px 10px 0 10px;
+}
+
+details.info > p a {
+  color: #557feb;
+}
+
+/* ==========================================================================
   Character List
   ========================================================================== */
 ul.unstyled {
@@ -50,7 +81,7 @@ ul.character-list > li {
   display: inline-block;
   margin: 8px;
   color: #3d3e41;
-  border: white solid 4px;
+  border: #fff solid 4px;
   border-radius: 10px;
   background: #cfd5ed linear-gradient(95deg, #cfd5ed, #eaecf7);
   text-align: left;
