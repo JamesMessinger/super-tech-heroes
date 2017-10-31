@@ -58,7 +58,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "simplifyify": "^3.2.4",
-    "swagger2openapi": "^2.10.0",
+    "swagger2openapi": "^2.10.1",
     "yamljs": "^0.3.0"
   },
   "dependencies": {
