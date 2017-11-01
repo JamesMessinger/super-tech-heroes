@@ -286,3 +286,20 @@ li.character:hover > .character-details {
   overflow: auto;
   font-size: larger;
 }
+
+/* ==========================================================================
+  Footer
+  ========================================================================== */
+.footer {
+  display: block;
+  margin: 50px;
+  padding: 20px;
+  border-top: solid 1px #b3c5f3;
+  font-size: smaller;
+  text-align: center;
+  color: #fff;
+}
+
+.footer a {
+  color: #b3c5f3;
+}
