@@ -261,5 +261,27 @@
       "weakness": ":q",
       "bio": ""
     }
+  },
+  {
+    "name": "Super Coder",
+    "powers": [
+      "10-xing",
+      "Caffeine"
+    ],
+    "weakness": "Imposter syndrome",
+    "bio": "He can solve ANY problem... as long as someone else has already solved on StackOverflow",
+    "sidekick": {
+      "name": "Stack Overflow",
+      "powers": ["Has a solution to any problem"],
+      "weakness": "Has a BAD solution to any problem"
+    },
+    "nemesis": {
+      "name": "Bugs from Space!",
+      "powers": [
+        "Hiding in plain sight"
+      ],
+      "weakness": "",
+      "bio": ""
+    }
   }
 ]
