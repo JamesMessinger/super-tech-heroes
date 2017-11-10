@@ -342,6 +342,14 @@
     }
   },
   "components": {
+    "securitySchemes": {
+      "apiKey": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "Because this API is meant for demo and training purposes, it doesn't have very strict authentication requirements. You can set the `X-API-Key` header to any alphanumeric value. As long as it's a unique value, you won't have any conflicts with anyone else who's also calling the API.\nAny API calls that _don't_ include an `X-API-Key` header will default to the \"DEMO\" account, which means that conflicts are very likely.\n"
+      }
+    },
     "schemas": {
       "APIInfo": {
         "type": "object",
@@ -557,14 +565,6 @@
             "minLength": 1
           }
         }
-      }
-    },
-    "securitySchemes": {
-      "apiKey": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "X-API-Key",
-        "description": "Because this API is meant for demo and training purposes, it doesn't have very strict authentication requirements. You can set the `X-API-Key` header to any alphanumeric value. As long as it's a unique value, you won't have any conflicts with anyone else who's also calling the API.\nAny API calls that _don't_ include an `X-API-Key` header will default to the \"DEMO\" account, which means that conflicts are very likely.\n"
       }
     }
   }
