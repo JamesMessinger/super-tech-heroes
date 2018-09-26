@@ -2,7 +2,7 @@
 	"info": {
 		"name": "Super Tech Heroes API",
 		"_postman_id": "86192280-46ee-0454-d4bd-fde88928ca3c",
-		"description": "This API is manages a fun list of technology-themed superheroes, sidekicks, and villains.  It's a really simple REST API that I mostly use for demos and [training](http://apitesting.bigstickcarpet.com/).\n\n# Authentication\nBecause this API is meant for demo and training purposes, it doesn't have very strict authentication requirements. You can set the `X-API-Key` header to any alphanumeric value. As long as it's a unique value, you won't have any conflicts with anyone else who's also calling the API.\n\n> **WARNING:** Any API calls that _don't_ include an `X-API-Key` header will default to the \"DEMO\" account, which means that conflicts are very likely.\n\n# Data structure\nThere's really only one data type in this API: `character`, which is a person whose `type` is either `hero`, `sidekick`, or `villain`.  Characters have a name, a short bio, a list of powers, and a weakness.\n\n### Related characters\nHeroes can have a `sidekick` and/or a `nemesis`, which are simply references to other characters.  Only heroes can have sidekicks and nemesis. You'll get an error if you try to assign a sidekick or nemesis to a non-hero character.  You'll also get an error if you try to assign a villain as a sidekick.\n\n> **TIP:** See [the OpenAPI definition](https://api.heroes.bigstickcarpet.com/schema) for detailed schemas",
+		"description": "This API is manages a fun list of technology-themed superheroes, sidekicks, and villains.  It's a really simple REST API that I mostly use for demos and [training](https://apitesting.jamesmessinger.com/).\n\n# Authentication\nBecause this API is meant for demo and training purposes, it doesn't have very strict authentication requirements. You can set the `X-API-Key` header to any alphanumeric value. As long as it's a unique value, you won't have any conflicts with anyone else who's also calling the API.\n\n> **WARNING:** Any API calls that _don't_ include an `X-API-Key` header will default to the \"DEMO\" account, which means that conflicts are very likely.\n\n# Data structure\nThere's really only one data type in this API: `character`, which is a person whose `type` is either `hero`, `sidekick`, or `villain`.  Characters have a name, a short bio, a list of powers, and a weakness.\n\n### Related characters\nHeroes can have a `sidekick` and/or a `nemesis`, which are simply references to other characters.  Only heroes can have sidekicks and nemesis. You'll get an error if you try to assign a sidekick or nemesis to a non-hero character.  You'll also get an error if you try to assign a villain as a sidekick.\n\n> **TIP:** See [the OpenAPI definition](https://api.heroes.jamesmessinger.com/schema) for detailed schemas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -121,7 +121,7 @@
 					],
 					"cookie": [],
 					"responseTime": 568,
-					"body": "{\"name\":\"Super Tech Heroes API\",\"version\":\"1.0.17\",\"description\":\"A REST API for technology-themed superheroes\",\"links\":{\"characters\":\"https://api.heroes.bigstickcarpet.com/characters\",\"www\":\"http://heroes.bigstickcarpet.com\",\"schema\":\"https://api.heroes.bigstickcarpet.com/schema\",\"docs\":\"https://documenter.getpostman.com/view/220187/super-tech-heroes-api/77cf6KB\"}}"
+					"body": "{\"name\":\"Super Tech Heroes API\",\"version\":\"1.0.17\",\"description\":\"A REST API for technology-themed superheroes\",\"links\":{\"characters\":\"https://api.heroes.jamesmessinger.com/characters\",\"www\":\"https://heroes.jamesmessinger.com\",\"schema\":\"https://api.heroes.jamesmessinger.com/schema\",\"docs\":\"https://documenter.getpostman.com/view/220187/super-tech-heroes-api/77cf6KB\"}}"
 				}
 			]
 		},
@@ -145,7 +145,7 @@
 						"schema"
 					]
 				},
-				"description": "This endpoint returns the API definition in one of several popular formats, such as Swagger 2.0, OpenAPI 3.0, and Postman Collection 2.0.\n\n### Response Format\nBy default, the response is in **OpenAPI v3.0 JSON** format, but you can optionally specify your desired format via the `Accept` header.  Any of the following MIME types are supported:\n\n|`Accept` header | Response format\n|:---------------|:-------------------------------------\n|`application/json` `application/openapi+json;version=3.0`| [OpenAPI v3.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md), in JSON format\n|`text/yaml` `application/openapi+yaml;version=3.0`| [OpenAPI v3.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md) in YAML format\n|`application/swagger+json` `application/openapi+json;version=2.0`| [OpenAPI v2.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) in JSON format\n|`application/swagger+yaml` `application/openapi+yaml;version=2.0` | [OpenAPI v2.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) in YAML format\n|`application/postman+json;version=2.0` | [Postman Collection v2.0](https://schema.getpostman.com/json/collection/v2.0.0/docs/index.html) in JSON format\n\n> **TIP:** You can set an `accept` query parameter rather than setting the `Accept` header if you prefer. This makes it easy to link to a specific format. For example [`https://api.heroes.bigstickcarpet.com/schema?accept=application/openapi+yaml;version=2.0`](https://api.heroes.bigstickcarpet.com/schema?accept=application/openapi+yaml;version=2.0)"
+				"description": "This endpoint returns the API definition in one of several popular formats, such as Swagger 2.0, OpenAPI 3.0, and Postman Collection 2.0.\n\n### Response Format\nBy default, the response is in **OpenAPI v3.0 JSON** format, but you can optionally specify your desired format via the `Accept` header.  Any of the following MIME types are supported:\n\n|`Accept` header | Response format\n|:---------------|:-------------------------------------\n|`application/json` `application/openapi+json;version=3.0`| [OpenAPI v3.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md), in JSON format\n|`text/yaml` `application/openapi+yaml;version=3.0`| [OpenAPI v3.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md) in YAML format\n|`application/swagger+json` `application/openapi+json;version=2.0`| [OpenAPI v2.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) in JSON format\n|`application/swagger+yaml` `application/openapi+yaml;version=2.0` | [OpenAPI v2.0](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md) in YAML format\n|`application/postman+json;version=2.0` | [Postman Collection v2.0](https://schema.getpostman.com/json/collection/v2.0.0/docs/index.html) in JSON format\n\n> **TIP:** You can set an `accept` query parameter rather than setting the `Accept` header if you prefer. This makes it easy to link to a specific format. For example [`https://api.heroes.jamesmessinger.com/schema?accept=application/openapi+yaml;version=2.0`](https://api.heroes.jamesmessinger.com/schema?accept=application/openapi+yaml;version=2.0)"
 			},
 			"response": [
 				{
@@ -364,7 +364,7 @@
 					],
 					"cookie": [],
 					"responseTime": 4159,
-					"body": "[{\"name\":\"Professor Capital\",\"type\":\"villain\",\"powers\":[],\"weakness\":\"\",\"bio\":\"\",\"links\":{\"self\":\"https://api.heroes.bigstickcarpet.com/characters/professorcapital\"}},{\"name\":\"Startup Man\",\"type\":\"hero\",\"powers\":[],\"weakness\":\"\",\"bio\":\"\",\"links\":{\"self\":\"https://api.heroes.bigstickcarpet.com/characters/startupman\",\"sidekick\":\"https://api.heroes.bigstickcarpet.com/characters/theincrediblemvp\",\"nemesis\":\"https://api.heroes.bigstickcarpet.com/characters/professorcapital\"}},{\"name\":\"The Incredible MVP\",\"type\":\"sidekick\",\"powers\":[],\"weakness\":\"\",\"bio\":\"\",\"links\":{\"self\":\"https://api.heroes.bigstickcarpet.com/characters/theincrediblemvp\"}}]"
+					"body": "[{\"name\":\"Professor Capital\",\"type\":\"villain\",\"powers\":[],\"weakness\":\"\",\"bio\":\"\",\"links\":{\"self\":\"https://api.heroes.jamesmessinger.com/characters/professorcapital\"}},{\"name\":\"Startup Man\",\"type\":\"hero\",\"powers\":[],\"weakness\":\"\",\"bio\":\"\",\"links\":{\"self\":\"https://api.heroes.jamesmessinger.com/characters/startupman\",\"sidekick\":\"https://api.heroes.jamesmessinger.com/characters/theincrediblemvp\",\"nemesis\":\"https://api.heroes.jamesmessinger.com/characters/professorcapital\"}},{\"name\":\"The Incredible MVP\",\"type\":\"sidekick\",\"powers\":[],\"weakness\":\"\",\"bio\":\"\",\"links\":{\"self\":\"https://api.heroes.jamesmessinger.com/characters/theincrediblemvp\"}}]"
 				}
 			]
 		},
@@ -502,7 +502,7 @@
 						},
 						{
 							"key": "Location",
-							"value": "https://api.heroes.bigstickcarpet.com/characters/supercoder",
+							"value": "https://api.heroes.jamesmessinger.com/characters/supercoder",
 							"name": "Location",
 							"description": "Used in redirection, or when a new resource has been created."
 						},
@@ -539,7 +539,7 @@
 					],
 					"cookie": [],
 					"responseTime": 445,
-					"body": "{\"name\":\"Super Coder\",\"type\":\"hero\",\"powers\":[\"10-xing\",\"Caffeine\"],\"weakness\":\"Imposter syndrome\",\"bio\":\"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\"links\":{\"self\":\"https://api.heroes.bigstickcarpet.com/characters/supercoder\",\"sidekick\":\"https://api.heroes.bigstickcarpet.com/characters/stackoverflow\"}}"
+					"body": "{\"name\":\"Super Coder\",\"type\":\"hero\",\"powers\":[\"10-xing\",\"Caffeine\"],\"weakness\":\"Imposter syndrome\",\"bio\":\"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\"links\":{\"self\":\"https://api.heroes.jamesmessinger.com/characters/supercoder\",\"sidekick\":\"https://api.heroes.jamesmessinger.com/characters/stackoverflow\"}}"
 				}
 			]
 		},
@@ -574,7 +574,7 @@
 						"characters"
 					]
 				},
-				"description": "This endpoint creates a new character. The following properties are allowed:\n\n|Property       |Type       |Required?  |Description\n|:--------------|:----------|:----------|:-----------------------\n|`name`         |`string`   |yes        |The character's name. You'll get a `409 (Conflict)` error if the name is not unique.\n|`type`         |`string`   |no         |Must be `hero`, `sidekick`, or `villain`. Defaults to `hero`.\n|`powers`       |`array` of `string`|no |An array of the character's super powers\n|`weakness`     |`string`   |no         |The character's weakness\n|`bio`          |`string`   |no         |A little background information about the character\n\nIn addition to the properties listed above, heroes can also have a `sidekick` and/or `nemesis`. The `sidekick` and `nemesis` properties can either a be the URL of an existing character (e.g. `http://api.heroes.bigstickcarpet.com/characters/codereviewboy`) or a nested character object. If you specify nested characters, then they will also be created in addition to the hero.\n\n> **WARNING:**  You'll get a `400 (Bad Request)` error if you try to assign a sidekick or nemesis to a character that's not a hero."
+				"description": "This endpoint creates a new character. The following properties are allowed:\n\n|Property       |Type       |Required?  |Description\n|:--------------|:----------|:----------|:-----------------------\n|`name`         |`string`   |yes        |The character's name. You'll get a `409 (Conflict)` error if the name is not unique.\n|`type`         |`string`   |no         |Must be `hero`, `sidekick`, or `villain`. Defaults to `hero`.\n|`powers`       |`array` of `string`|no |An array of the character's super powers\n|`weakness`     |`string`   |no         |The character's weakness\n|`bio`          |`string`   |no         |A little background information about the character\n\nIn addition to the properties listed above, heroes can also have a `sidekick` and/or `nemesis`. The `sidekick` and `nemesis` properties can either a be the URL of an existing character (e.g. `https://api.heroes.jamesmessinger.com/characters/codereviewboy`) or a nested character object. If you specify nested characters, then they will also be created in addition to the hero.\n\n> **WARNING:**  You'll get a `400 (Bad Request)` error if you try to assign a sidekick or nemesis to a character that's not a hero."
 			},
 			"response": [
 				{
@@ -647,7 +647,7 @@
 						},
 						{
 							"key": "Location",
-							"value": "https://api.heroes.bigstickcarpet.com/characters/supercoder",
+							"value": "https://api.heroes.jamesmessinger.com/characters/supercoder",
 							"name": "Location",
 							"description": "Used in redirection, or when a new resource has been created."
 						},
@@ -684,7 +684,7 @@
 					],
 					"cookie": [],
 					"responseTime": 902,
-					"body": "{\"name\":\"Super Coder\",\"type\":\"hero\",\"powers\":[\"10-xing\",\"Caffeine\"],\"weakness\":\"Imposter syndrome\",\"bio\":\"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\"links\":{\"self\":\"https://api.heroes.bigstickcarpet.com/characters/supercoder\",\"sidekick\":\"https://api.heroes.bigstickcarpet.com/characters/stackoverflow\"}}"
+					"body": "{\"name\":\"Super Coder\",\"type\":\"hero\",\"powers\":[\"10-xing\",\"Caffeine\"],\"weakness\":\"Imposter syndrome\",\"bio\":\"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\"links\":{\"self\":\"https://api.heroes.jamesmessinger.com/characters/supercoder\",\"sidekick\":\"https://api.heroes.jamesmessinger.com/characters/stackoverflow\"}}"
 				}
 			]
 		},
@@ -744,7 +744,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Super Coder\",\n    \"type\": \"hero\",\n    \"powers\": [\n        \"10-xing\",\n        \"Caffeine\"\n    ],\n    \"weakness\": \"Imposter syndrome\",\n    \"bio\": \"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\n    \"sidekick\": \"https://api.heroes.bigstickcarpet.com/characters/stackoverflow\"\n}"
+							"raw": "{\n    \"name\": \"Super Coder\",\n    \"type\": \"hero\",\n    \"powers\": [\n        \"10-xing\",\n        \"Caffeine\"\n    ],\n    \"weakness\": \"Imposter syndrome\",\n    \"bio\": \"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\n    \"sidekick\": \"https://api.heroes.jamesmessinger.com/characters/stackoverflow\"\n}"
 						},
 						"url": {
 							"raw": "{{API_ROOT}}/characters/{{SLUG}}",
@@ -794,7 +794,7 @@
 						},
 						{
 							"key": "Location",
-							"value": "https://api.heroes.bigstickcarpet.com/characters/supercoder",
+							"value": "https://api.heroes.jamesmessinger.com/characters/supercoder",
 							"name": "Location",
 							"description": "Used in redirection, or when a new resource has been created."
 						},
@@ -831,7 +831,7 @@
 					],
 					"cookie": [],
 					"responseTime": 801,
-					"body": "{\"name\":\"Super Coder\",\"type\":\"hero\",\"powers\":[\"10-xing\",\"Caffeine\"],\"weakness\":\"Imposter syndrome\",\"bio\":\"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\"links\":{\"self\":\"https://api.heroes.bigstickcarpet.com/characters/supercoder\",\"sidekick\":\"https://api.heroes.bigstickcarpet.com/characters/stackoverflow\"}}"
+					"body": "{\"name\":\"Super Coder\",\"type\":\"hero\",\"powers\":[\"10-xing\",\"Caffeine\"],\"weakness\":\"Imposter syndrome\",\"bio\":\"There's no problem big or small that Super Coder can't solve with a little bit of googling.\",\"links\":{\"self\":\"https://api.heroes.jamesmessinger.com/characters/supercoder\",\"sidekick\":\"https://api.heroes.jamesmessinger.com/characters/stackoverflow\"}}"
 				}
 			]
 		},

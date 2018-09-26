@@ -44,7 +44,7 @@ var App = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.request = _axios2.default.create({
-      baseURL: (0, _util.getQueryParam)('API_ROOT', 'https://api.heroes.bigstickcarpet.com'),
+      baseURL: (0, _util.getQueryParam)('API_ROOT', 'https://api.heroes.jamesmessinger.com'),
       headers: {
         'X-API-Key': (0, _util.getQueryParam)('API_KEY', 'DEMO')
       }
@@ -426,7 +426,7 @@ function findByUrl(characters, url) {
 /**
  * Returns the slug part of a character's URL
  *
- * @param {string} url - The character's full URL (e.g. "http://api.heroes.bigstickcarpet.com/characters/wonderwoman")
+ * @param {string} url - The character's full URL (e.g. "https://api.heroes.jamesmessinger.com/characters/wonderwoman")
  * @returns {string} - The character's slug (e.g. "wonderwoman")
  */
 function getSlug(url) {
@@ -2063,7 +2063,7 @@ module.exports = camelizeStyleName;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * 
+ *
  */
 
 var isTextNode = require('./isTextNode');
@@ -2101,7 +2101,7 @@ module.exports = containsNode;
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * 
+ *
  */
 
 function makeEmptyFunction(arg) {
@@ -2391,7 +2391,7 @@ module.exports = isTextNode;
  * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
- * 
+ *
  */
 
 /*eslint-disable no-self-compare */
@@ -14492,7 +14492,7 @@ function setValueForProperty(node, name, value) {
   }
 
   {
-    
+
   }
 }
 
@@ -14507,7 +14507,7 @@ function setValueForAttribute(node, name, value) {
   }
 
   {
-    
+
   }
 }
 

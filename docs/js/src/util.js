@@ -12,7 +12,7 @@ export function findByUrl (characters, url) {
 /**
  * Returns the slug part of a character's URL
  *
- * @param {string} url - The character's full URL (e.g. "http://api.heroes.bigstickcarpet.com/characters/wonderwoman")
+ * @param {string} url - The character's full URL (e.g. "https://api.heroes.jamesmessinger.com/characters/wonderwoman")
  * @returns {string} - The character's slug (e.g. "wonderwoman")
  */
 export function getSlug (url) {

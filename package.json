@@ -10,13 +10,13 @@
   ],
   "author": {
     "name": "James Messinger",
-    "url": "http://bigstickcarpet.com"
+    "url": "https://jamesmessinger.com"
   },
   "license": "MIT",
-  "homepage": "http://heroes.bigstickcarpet.com",
+  "homepage": "https://heroes.jamesmessinger.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/BigstickCarpet/super-tech-heroes.git"
+    "url": "https://github.com/James-Messinger/super-tech-heroes.git"
   },
   "main": "lib/index.js",
   "bin": "bin/server.js",

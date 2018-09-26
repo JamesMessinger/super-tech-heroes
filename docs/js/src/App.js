@@ -12,7 +12,7 @@ export default class App extends React.Component {
 
     // Create an Axios instance that's setup for the Super Tech Heroes API
     this.request = axios.create({
-      baseURL: getQueryParam('API_ROOT', 'https://api.heroes.bigstickcarpet.com'),
+      baseURL: getQueryParam('API_ROOT', 'https://api.heroes.jamesmessinger.com'),
       headers: {
         'X-API-Key': getQueryParam('API_KEY', 'DEMO'),
       },
