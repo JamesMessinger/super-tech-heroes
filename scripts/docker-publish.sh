@@ -14,16 +14,16 @@ version=$(node -p "require('./package.json').version")
 echo Building Docker image...
 build_output="$(
   docker image build \
-    --tag bigstickcarpet/super-tech-heroes:${version} \
-    --tag bigstickcarpet/super-tech-heroes:latest .
+    --tag jamesmessinger/super-tech-heroes:${version} \
+    --tag jamesmessinger/super-tech-heroes:latest .
 )"
 
 echo Publishing v${version} to Docker...
 push_version_output="$(
-  docker image push bigstickcarpet/super-tech-heroes:${version}
+  docker image push jamesmessinger/super-tech-heroes:${version}
 )"
 push_latest_output="$(
-  docker image push bigstickcarpet/super-tech-heroes:latest
+  docker image push jamesmessinger/super-tech-heroes:latest
 )"
 
 # echo

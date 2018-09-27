@@ -3,7 +3,7 @@
 #
 # You can run this docker image using the following CLI command:
 #
-#     docker run -p 8080:8080 -p 7070:7070 bigstickcarpet/super-tech-heroes
+#     docker run -p 8080:8080 -p 7070:7070 jamesmessinger/super-tech-heroes
 #
 # And then you can access the Super Tech Heroes API at http://localhost:8080,
 # and the Super Tech Heroes website at http://localhost:7070

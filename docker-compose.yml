@@ -19,7 +19,7 @@ services:
       - 9090:8000   # DynamoDB
 
   super-tech-heroes:
-    image: bigstickcarpet/super-tech-heroes
+    image: jamesmessinger/super-tech-heroes
     environment:
       SUPER_TECH_HEROES_TABLE_NAME: SuperTechHeroes.Characters
       AWS_DYNAMODB_HOST: dynamodb
