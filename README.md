@@ -1,7 +1,7 @@
 Super Tech Heroes
 ============================
 [![Build Status](https://api.travis-ci.org/James-Messinger/super-tech-heroes.svg?branch=master)](https://travis-ci.org/James-Messinger/super-tech-heroes)
-[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/bigstickcarpet/super-tech-heroes?svg=true&branch=master&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/BigstickCarpet/super-tech-heroes/branch/master)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/james-messinger/super-tech-heroes?svg=true&branch=master&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/BigstickCarpet/super-tech-heroes/branch/master)
 [![Dependencies](https://david-dm.org/James-Messinger/super-tech-heroes.svg)](https://david-dm.org/James-Messinger/super-tech-heroes)
 
 [![Coverage Status](https://coveralls.io/repos/BigstickCarpet/super-tech-heroes/badge.svg?branch=master&service=github)](https://coveralls.io/r/BigstickCarpet/super-tech-heroes)
