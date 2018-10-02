@@ -2,10 +2,6 @@ Super Tech Heroes
 ============================
 [![Build Status](https://api.travis-ci.org/James-Messinger/super-tech-heroes.svg?branch=master)](https://travis-ci.org/James-Messinger/super-tech-heroes)
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/james-messinger/super-tech-heroes?svg=true&branch=master&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/BigstickCarpet/super-tech-heroes/branch/master)
-[![Dependencies](https://david-dm.org/James-Messinger/super-tech-heroes.svg)](https://david-dm.org/James-Messinger/super-tech-heroes)
-
-[![Coverage Status](https://coveralls.io/repos/github/James-Messinger/super-tech-heroes/badge.svg?branch=master)](https://coveralls.io/github/James-Messinger/super-tech-heroes)
-[![Codacy Score](https://api.codacy.com/project/badge/Grade/801b3bea7fab4c2f83c228014020a9ba)](https://www.codacy.com/public/jamesmessinger/super-tech-heroes)
 
 Super Tech Heroes is a fun list of technology-themed superheroes, sidekicks, and villains, which I use for demos and [training](https://apitesting.jamesmessinger.com/). It demonstrates various aspects of web development, API development, and testing.
 
