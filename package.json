@@ -26,7 +26,7 @@
     "schemas"
   ],
   "scripts": {
-    "lint": "eslint bin lib test docs/js/src --fix",
+    "lint": "eslint bin lib test docs/js/src",
     "build": "scripts/build.sh",
     "test": "mocha",
     "test:offline": ". scripts/dynamodb-local.sh && npm test",
