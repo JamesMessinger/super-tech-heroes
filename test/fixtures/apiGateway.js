@@ -1,17 +1,17 @@
-'use strict';
+"use strict";
 
 // NOTE: Environment variables must be set BEFORE loading the API
-require('./environment');
+require("./environment");
 
-const _ = require('lodash');
-const uuid = require('uuid');
-const querystring = require('querystring');
-const requestTemplate = require('../../bin/request-template.json');
-const contextTemplate = require('../../bin/context-template.json');
-const util = require('../../lib/util');
-const superTechHeroesAPI = require('../../lib');
+const _ = require("lodash");
+const uuid = require("uuid");
+const querystring = require("querystring");
+const requestTemplate = require("../../bin/request-template.json");
+const contextTemplate = require("../../bin/context-template.json");
+const util = require("../../lib/util");
+const superTechHeroesAPI = require("../../lib");
 
-let apiKey = '';
+let apiKey = "";
 
 let apiGateway = module.exports = {
   auth: (userId) => {
@@ -19,10 +19,10 @@ let apiGateway = module.exports = {
     return apiGateway;
   },
 
-  get: (path) => sendRequest('GET', path),
-  post: (path, data) => sendRequest('POST', path, data),
-  put: (path, data) => sendRequest('PUT', path, data),
-  delete: (path) => sendRequest('DELETE', path),
+  get: (path) => sendRequest("GET", path),
+  post: (path, data) => sendRequest("POST", path, data),
+  put: (path, data) => sendRequest("PUT", path, data),
+  delete: (path) => sendRequest("DELETE", path),
 };
 
 /**
@@ -53,25 +53,25 @@ function sendRequest (method, path, data) {
  */
 function createRequest (method, path, data) {
   let query;
-  [path, query] = path.split('?');
+  [path, query] = path.split("?");
 
   let request = _.cloneDeep(requestTemplate);
 
   request.path = path;
   request.httpMethod = method;
-  request.headers.Host = 'localhost';
+  request.headers.Host = "localhost";
   request.pathParameters.proxy = path;
   request.queryStringParameters = query && querystring.parse(query);
   request.requestContext.path = path;
   request.requestContext.requestId = uuid.v4();
 
   if (data) {
-    request.headers['Content-Type'] = 'application/json';
+    request.headers["Content-Type"] = "application/json";
     request.body = JSON.stringify(data);
   }
 
-  if (typeof apiKey === 'string') {
-    request.headers['X-API-Key'] = apiKey;
+  if (typeof apiKey === "string") {
+    request.headers["X-API-Key"] = apiKey;
   }
 
   return request;

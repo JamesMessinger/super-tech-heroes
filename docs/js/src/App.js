@@ -1,7 +1,7 @@
-import React from 'react';
-import axios from 'axios';
-import { getQueryParam } from './util';
-import CharacterList from './CharacterList';
+import React from "react";
+import axios from "axios";
+import { getQueryParam } from "./util";
+import CharacterList from "./CharacterList";
 
 /**
  * The entire Super Tech Heroes app
@@ -12,9 +12,9 @@ export default class App extends React.Component {
 
     // Create an Axios instance that's setup for the Super Tech Heroes API
     this.request = axios.create({
-      baseURL: getQueryParam('API_ROOT', 'https://api.heroes.jamesmessinger.com'),
+      baseURL: getQueryParam("API_ROOT", "https://api.heroes.jamesmessinger.com"),
       headers: {
-        'X-API-Key': getQueryParam('API_KEY', 'DEMO'),
+        "X-API-Key": getQueryParam("API_KEY", "DEMO"),
       },
     });
 
@@ -43,7 +43,7 @@ export default class App extends React.Component {
    * Immediately populates the full list of characters when the app is mounted
    */
   componentDidMount () {
-    this.request('/characters')
+    this.request("/characters")
       .then(response => {
         this.setState({ characters: response.data });
       })
@@ -70,7 +70,7 @@ export default class App extends React.Component {
       console.log(`${character.name} was selected`);
     }
     else {
-      console.log('No character is selected');
+      console.log("No character is selected");
     }
 
     // this.setState({ selectedCharacter: character });
@@ -93,8 +93,8 @@ export default class App extends React.Component {
       errorMessage = error.response.statusText;
     }
     else {
-      errorCode = error.name || error.type || 'Error';
-      errorMessage = error.message || 'Unknown error';
+      errorCode = error.name || error.type || "Error";
+      errorMessage = error.message || "Unknown error";
     }
 
     this.setState({ error: `${errorCode}: ${errorMessage}` });

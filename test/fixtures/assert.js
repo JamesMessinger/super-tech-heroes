@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const _ = require('lodash');
-const chai = require('chai');
+const _ = require("lodash");
+const chai = require("chai");
 const expect = chai.expect;
 chai.should();
 
@@ -14,26 +14,26 @@ let assert = module.exports = {
    */
   isValidCharacter (character) {
     try {
-      expect(character).to.be.an('object');
+      expect(character).to.be.an("object");
 
       // Requird properties
-      character.should.include.keys('name', 'type', 'links');
+      character.should.include.keys("name", "type", "links");
 
       // All possible properties
-      Object.keys(character).should.satisfy(subsetOf(['name', 'type', 'powers', 'weakness', 'bio', 'links']));
+      Object.keys(character).should.satisfy(subsetOf(["name", "type", "powers", "weakness", "bio", "links"]));
 
-      expect(character.name).to.be.a('string').and.not.empty;
-      expect(character.type).to.be.a('string').and.oneOf(['hero', 'sidekick', 'villain']);
-      expect(character.powers).to.be.an('array');
-      character.powers.forEach(power => expect(power).to.be.a('string').and.not.empty);
-      expect(character.weakness).to.be.a('string');
-      expect(character.bio).to.be.a('string');
-      expect(character.links).to.be.an('object');
-      character.links.should.include.keys('self');
-      Object.keys(character.links).should.satisfy(subsetOf(['self', 'sidekick', 'nemesis']));
+      expect(character.name).to.be.a("string").and.not.empty;
+      expect(character.type).to.be.a("string").and.oneOf(["hero", "sidekick", "villain"]);
+      expect(character.powers).to.be.an("array");
+      character.powers.forEach(power => expect(power).to.be.a("string").and.not.empty);
+      expect(character.weakness).to.be.a("string");
+      expect(character.bio).to.be.a("string");
+      expect(character.links).to.be.an("object");
+      character.links.should.include.keys("self");
+      Object.keys(character.links).should.satisfy(subsetOf(["self", "sidekick", "nemesis"]));
 
       _.forEach(character.links, link => {
-        expect(link).to.be.a('string');
+        expect(link).to.be.a("string");
         link.should.match(/^http:\/\/localhost\/characters\/[a-z0-9]+$/);
       });
 
@@ -54,20 +54,20 @@ let assert = module.exports = {
    */
   isValidResponse (response, statusCode) {
     try {
-      expect(response).to.be.an('object');
-      response.should.have.keys('statusCode', 'headers', 'body');
+      expect(response).to.be.an("object");
+      response.should.have.keys("statusCode", "headers", "body");
 
-      expect(response.statusCode).to.be.a('number');
+      expect(response.statusCode).to.be.a("number");
       response.statusCode.should.equal(statusCode);
       response.statusCode.should.be.at.least(100).and.below(600);
 
-      expect(response.headers).to.be.an('object');
+      expect(response.headers).to.be.an("object");
       for (let key of Object.keys(response.headers)) {
-        expect(key).to.be.a('string').and.match(/^[a-z]+(\-[a-z]+)*$/i);
-        expect(response.headers[key]).to.be.a('string');
+        expect(key).to.be.a("string").and.match(/^[a-z]+(\-[a-z]+)*$/i);
+        expect(response.headers[key]).to.be.a("string");
       }
 
-      expect(response.body).to.be.a('string').and.not.empty;
+      expect(response.body).to.be.a("string").and.not.empty;
       return JSON.parse(response.body);
     }
     catch (error) {
@@ -100,10 +100,10 @@ let assert = module.exports = {
     let body = assert.isValidResponse(response, statusCode);
     response.statusCode.should.be.at.least(400).and.below(600);
 
-    body.should.be.an('object');
-    body.should.have.keys('error', 'message');
-    body.error.should.be.a('string').and.match(/^[A-Z]+(_[A-Z]+)*$/);
-    body.message.should.be.a('string').and.not.empty;
+    body.should.be.an("object");
+    body.should.have.keys("error", "message");
+    body.error.should.be.a("string").and.match(/^[A-Z]+(_[A-Z]+)*$/);
+    body.message.should.be.a("string").and.not.empty;
 
     return body;
   },

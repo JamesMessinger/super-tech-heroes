@@ -1,5 +1,5 @@
-import React from 'react';
-import { getSlug } from './util';
+import React from "react";
+import { getSlug } from "./util";
 
 /**
  * Renders the detailed view of the currently-selected character
@@ -24,12 +24,12 @@ export default function CharacterDetails (props) {
             }
           </ul>
           <ul className="weakness">
-            <li className={ character.weakness ? '' : 'none' }>
-              { character.weakness || 'none' }
+            <li className={ character.weakness ? "" : "none" }>
+              { character.weakness || "none" }
             </li>
           </ul>
         </div>
-        <div className="bio">{ character.bio || 'no bio :(' }</div>
+        <div className="bio">{ character.bio || "no bio :(" }</div>
       </article>
     );
   }

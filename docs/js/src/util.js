@@ -27,7 +27,7 @@ export function getSlug (url) {
  * @returns {string}
  */
 export function getQueryParam (name, defaultValue) {
-  let regex = new RegExp(`[?&]${name}=([^&]+)`, 'i');
+  let regex = new RegExp(`[?&]${name}=([^&]+)`, "i");
   let match = regex.exec(location.search);
 
   if (match) {

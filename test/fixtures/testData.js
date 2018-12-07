@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-const _ = require('lodash');
-const characterStore = require('../../lib/characterStore');
-const requestTemplate = require('../../bin/request-template.json');
+const _ = require("lodash");
+const characterStore = require("../../lib/characterStore");
+const requestTemplate = require("../../bin/request-template.json");
 
 module.exports = {
   /**
@@ -18,7 +18,7 @@ module.exports = {
       return characterStore.createHierarchy({ user, hierarchy })
         .then(updatedCharacter => {
           let request = _.cloneDeep(requestTemplate);
-          request.headers.Host = 'localhost';
+          request.headers.Host = "localhost";
 
           Object.assign(hierarchy, updatedCharacter.toResource(request));
         });
