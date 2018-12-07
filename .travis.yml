@@ -16,12 +16,7 @@ os:
   # https://github.com/travis-ci/travis-build/pull/1544
   # - windows
 
-script:
-  # Run linter
-  - npm run lint
-
-  # Run tests and gather code-coverage data
-  - npm run cover
+script: npm run lint && npm run coverage
 
 after_success:
   # send code-coverage data to Coveralls
