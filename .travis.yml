@@ -3,14 +3,18 @@
 # https://docs.travis-ci.com/user/customizing-the-build/
 # https://docs.travis-ci.com/user/migrating-from-legacy/
 
-dist: trusty
-sudo: false
 language: node_js
 
-matrix:
-  include:
-    # AWS Lambda runtime version
-    - node_js: 6.10
+node_js:
+  - 6.10    # AWS Lambda runtime version
+
+os:
+  - linux
+  - osx
+
+  # FIXME: Travis-CI does not currently support secrets on Windows (i.e. AWS_SECRET_ACCESS_KEY)
+  # https://github.com/travis-ci/travis-build/pull/1544
+  # - windows
 
 script:
   # Run linter
