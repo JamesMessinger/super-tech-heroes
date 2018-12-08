@@ -1,7 +1,7 @@
 Super Tech Heroes
 ============================
 
-[![Build Status](https://api.travis-ci.org/JamesMessinger/super-tech-heroes.svg?branch=master)](https://travis-ci.org/JamesMessinger/super-tech-heroes)
+[![Build Status](https://api.travis-ci.com/JamesMessinger/super-tech-heroes.svg?branch=master)](https://travis-ci.com/JamesMessinger/super-tech-heroes)
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/github/JamesMessinger/super-tech-heroes?svg=true&branch=master&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/JamesMessinger/super-tech-heroes/branch/master)
 [![Coverage Status](https://coveralls.io/repos/github/JamesMessinger/super-tech-heroes/badge.svg?branch=master)](https://coveralls.io/github/JamesMessinger/super-tech-heroes)
 
